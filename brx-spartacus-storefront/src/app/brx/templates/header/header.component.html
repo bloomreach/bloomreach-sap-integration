@@ -1,0 +1,68 @@
+<!--
+  Copyright 2022-2023 BloomReach (https://www.bloomreach.com/)
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<app-brx-pixel></app-brx-pixel>
+<div class="header">
+  <div class="container">
+    <ul class="left">
+      <li>
+        <select name="" id="">
+          <option value="english">English</option>
+          <option value="french">French</option>
+        </select>
+      </li>
+      <li>
+        <select name="" id="">
+          <option value="$">$ USD</option>
+          <option value="r">&#8377; INR</option>
+        </select>
+      </li>
+    </ul>
+    <ul class="right">
+      <li>Find a Store</li>
+      <li>Contact Us</li>
+      <li>Help</li>
+    </ul>
+  </div>
+</div>
+
+<div class="header-two">
+  <div class="container">
+    <div class="left">
+      <a [href]="getLink()" class="logo">
+        <img
+          src="https://spartacus-demo.eastus.cloudapp.azure.com:8443/medias/SAP-scrn-R.png?context=bWFzdGVyfGltYWdlc3wxMDEyN3xpbWFnZS9wbmd8aW1hZ2VzL2gyYy9oMzQvODc5NzQ1OTU3ODkxMC5wbmd8NTM3OTViNDNlOThhNmViZmUxNjQzY2M3ODg1NGNmY2Q1ZjJlZTZhNWFlNTgzYzg1M2VjNzFhYjY1ZGFmNzhiMg"
+          alt=""
+          width="80"
+          height="40"
+        />
+      </a>
+    </div>
+    <div class="header-container">
+      <ng-container brComponent="header"></ng-container>
+    </div>
+    <div class="cart-container">
+      <div><ng-container brComponent="signin"></ng-container></div>
+      <div><ng-container brComponent="cart"></ng-container></div>
+    </div>
+  </div>
+</div>
+
+<div class="header-three">
+  <div class="container">
+    <ng-container brComponent="menu"></ng-container>
+  </div>
+</div>

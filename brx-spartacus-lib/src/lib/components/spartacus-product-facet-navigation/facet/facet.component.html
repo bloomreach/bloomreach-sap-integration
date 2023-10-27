@@ -1,0 +1,81 @@
+<!--
+  Copyright 2020-2021 Hippo B.V. (http://www.onehippo.com)
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  Inspired by cms-components/product/product-list/product-facet-navigation/facet/facet.component.html
+  of SAP Spartacus Storefront project.
+  -->
+
+<ng-container *ngIf="state$ | async as state">
+  <button class="heading" (click)="toggleGroup($event)">
+    {{ facet.name }}
+    <cx-icon class="collapse-icon" [type]="collapseIcon"></cx-icon>
+    <cx-icon class="expand-icon" [type]="expandIcon"></cx-icon>
+  </button>
+
+  <a
+    *ngFor="let value of facet.values | slice: 0:state.topVisible"
+    #facetValue
+    [routerLink]="page.getUrl()! | parseUrl: 'pathname'"
+    [queryParams]="getLinkParams(value)"
+    class="value"
+    [class.selected]="value.selected"
+    [cxFocus]="{ key: value.name }"
+    (keydown.space)="openLink($event)"
+  >
+    <span>
+      <span class="label">{{ value.name }}</span>
+      <span class="count">{{ value.count }}</span>
+    </span>
+  </a>
+
+  <div class="more">
+    <a
+      *ngFor="let value of getMoreFacetValues(facet, state)"
+      #facetValue
+      [routerLink]="page.getUrl()! | parseUrl: 'pathname'"
+      [queryParams]="getLinkParams(value)"
+      class="value"
+      [class.selected]="value.selected"
+      [cxFocus]="{ key: value.name }"
+      (keydown.space)="openLink($event)"
+    >
+      <span
+        >{{ value.name }}<span class="count">{{ value.count }}</span></span
+      >
+    </a>
+
+    <button
+      *ngIf="(state.maxVisible || 0) > (state.topVisible || 0)"
+      (click)="decreaseVisibleValues()"
+      class="cx-action-link"
+      [cxFocus]="{ key: 'moreorless' }"
+    >
+      {{ "productList.showLess" | cxTranslate }}
+    </button>
+
+    <button
+      *ngIf="
+        state.maxVisible &&
+        state.maxVisible > 0 &&
+        state.maxVisible < (facet.values?.length || 0)
+      "
+      (click)="increaseVisibleValues()"
+      class="cx-action-link"
+      [cxFocus]="{ key: 'moreorless' }"
+    >
+      {{ "productList.showMore" | cxTranslate }}
+    </button>
+  </div>
+</ng-container>

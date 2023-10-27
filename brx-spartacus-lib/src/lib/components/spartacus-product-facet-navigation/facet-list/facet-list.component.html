@@ -1,0 +1,53 @@
+<!--
+  Copyright 2020-2021 Hippo B.V. (http://www.onehippo.com)
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  Inspired by cms-components/product/product-list/product-facet-navigation/facet-list/facet-list.component.html
+  of SAP Spartacus Storefront project.
+  -->
+
+<div
+  class="inner"
+  *ngIf="(facetList$ | async)?.facets as facets"
+  [cxFocus]="isDialog ? dialogFocusConfig : {}"
+  (esc)="close($event)"
+  (click)="block($event)"
+>
+  <h4>
+    {{ "productList.filterBy.label" | cxTranslate }}
+    <button
+      type="button"
+      class="close"
+      [attr.aria-label]="'common.close' | cxTranslate"
+      (click)="close()"
+    >
+      <cx-icon aria-hidden="true" [type]="iconTypes.CLOSE"></cx-icon>
+    </button>
+  </h4>
+
+  <!-- 
+      Here we'd like to introduce configurable facet components, 
+      either by using specific configuration or generic sproutlets 
+  -->
+  <brx-facet
+    *ngFor="let facet of facets"
+    #facetRef
+    [facet]="facet"
+    [cxFocus]="{ lock: true, trap: true, autofocus: 'a' }"
+    (unlock)="expandFacetGroup(facet, facetRef)"
+    [class.expanded]="isExpanded(facet) | async"
+    [class.collapsed]="isCollapsed(facet) | async"
+    [page]="page"
+  ></brx-facet>
+</div>

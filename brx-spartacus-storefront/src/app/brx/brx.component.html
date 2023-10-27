@@ -1,0 +1,59 @@
+<!--
+  Copyright 2022-2023 BloomReach (https://www.bloomreach.com/)
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<ng-container *ngIf="pageContext$ | async as pageContext">
+  <br-page
+    [configuration]="configuration"
+    [mapping]="mapping"
+    (httpError)="onBrxHttpError($event)"
+    (state)="setVisitor($event)"
+  >
+    <ng-template let-page="page">
+      <app-header [token]="authorizationToken"></app-header>
+      <div [ngClass]="{'hidden': showSpinner}">
+        <div *ngIf="getPageTemplate(page) === 'one-column'">
+          <ng-container brComponent="main"></ng-container>
+        </div>
+        <div *ngIf="getPageTemplate(page) === 'two-column'">
+          <ng-container brComponent="top"></ng-container>
+          <div class="ProductListPageTemplate">
+            <!--  Add this changes documentation to the library -->
+            <div [ngClass]="!isCartContext(page) ? 'ProductLeftRefinements' : 'ProductListSlot'">
+              <ng-container brComponent="left"></ng-container>
+            </div>
+            <div [ngClass]="!isCartContext(page) ? 'ProductListSlot' : 'ProductLeftRefinements'">
+              <ng-container brComponent="right"></ng-container>
+            </div>
+          </div>
+          <ng-container brComponent="bottom"></ng-container>
+        </div>
+        <div *ngIf="getPageTemplate(page) === 'checkout'">
+          <ng-container brComponent="top"></ng-container>
+          <div class="MultiStepCheckoutSummaryPageTemplate">
+            <div class="BodyContent">
+              <ng-container brComponent="left"></ng-container>
+            </div>
+            <div class="SideContent">
+              <ng-container brComponent="right"></ng-container>
+            </div>
+          </div>
+          <ng-container brComponent="bottom"></ng-container>
+        </div>
+      </div>
+      <div [ngClass]="{'hidden': !showSpinner}" class="spinner"><p><i class="fas fa-spinner fa-2x fa-spin"></i> Loading ...</p></div>
+      <app-footer></app-footer>
+    </ng-template>
+  </br-page>
+</ng-container>

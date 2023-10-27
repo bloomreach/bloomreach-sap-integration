@@ -1,0 +1,83 @@
+<!--
+  Copyright 2020-2021 Hippo B.V. (http://www.onehippo.com)
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+<ng-template [ngIf]="menu">
+  <ng-container [brManageMenuButton]="menu"></ng-container>
+  <nav
+    class="navbar navbar-expand-lg navbar-light"
+    style="background-color: #212738"
+  >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      (click)="navbarOpen = !navbarOpen"
+    >
+      <!-- data-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02"
+      aria-expanded="false"
+      aria-label="Toggle navigation" -->
+      <span class="" role="button"
+        ><i class="fa fa-bars" aria-hidden="true" style="color: #e6e6ff"></i
+      ></span>
+    </button>
+
+    <div
+      class="collapse navbar-collapse"
+      [ngClass]="{ show: navbarOpen }"
+      id="navbarTogglerDemo02"
+    >
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li
+          *ngFor="let item of menu.getItems()"
+          key="{index}"
+          class="nav-item"
+          [ngClass]="{
+            active: item.getName() === selectedMenutem,
+            dropdown: item.getChildren().length > 0
+          }"
+          (click)="selectedItem(item)"
+        >
+          <ng-container *ngIf="item.getChildren().length > 0; else menuitem">
+            <a
+              class="nav-link dropdown-toggle"
+              href="javascript:void(0)"
+              id="navbarDropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              (click)="setActiveSubMenu(item)"
+            >
+              {{ item.getName() }}
+            </a>
+            <div
+              class="dropdown-menu"
+              [ngClass]="{ show: menuName === item.getName() }"
+              aria-labelledby="navbarDropdownMenuLink"
+            >
+              <brx-menu-item
+                *ngFor="let childitem of item.getChildren()"
+                [item]="childitem"
+              ></brx-menu-item>
+            </div>
+          </ng-container>
+          <ng-template #menuitem
+            ><brx-menu-item [item]="item"></brx-menu-item
+          ></ng-template>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</ng-template>

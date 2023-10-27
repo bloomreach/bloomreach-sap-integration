@@ -1,0 +1,115 @@
+/*
+ * Copyright 2020-2021 Hippo B.V. (http://www.onehippo.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+ * Inspired by scss/components/product/list/_facet-list.scss
+ * of SAP Spartacus Styles project.
+ */
+body.modal-open {
+  overflow: hidden;
+}
+
+%cx-dialog {
+  z-index: 11;
+  // could also be absolute
+  position: fixed;
+
+  > .inner {
+    background-color: var(--cx-color-background);
+    transition: transform 0.3s ease-in-out;
+  }
+  &.active {
+    > .inner {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
+
+%cx-modal {
+  @extend %cx-dialog;
+
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  transition: background-color 0.3s ease-in-out;
+  &.active {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > .inner {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+%cx-overlay {
+  @extend %cx-modal;
+  justify-content: start;
+  > .inner {
+    height: 100vh;
+    width: 50vw;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+brx-facet-list {
+  .inner {
+    @include media-breakpoint-down(md) {
+      max-height: 100vh;
+      overflow: scroll;
+    }
+
+    padding-top: 0;
+    padding-inline-end: 10px;
+    padding-bottom: 10px;
+    padding-inline-start: 10px;
+
+    h4 {
+      position: sticky;
+      top: 0;
+      background: var(--cx-color-background);
+
+      padding: 0.4rem;
+      padding-top: 10px;
+
+      .close {
+        opacity: 1;
+        &:hover {
+          color: var(--cx-color-primary);
+        }
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      h4 {
+        display: none;
+      }
+    }
+  }
+
+  &.dialog {
+    @extend %cx-modal;
+    > .inner {
+      width: 95vw;
+      height: 95%;
+    }
+  }
+}

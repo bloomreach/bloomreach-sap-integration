@@ -1,0 +1,27 @@
+{
+  "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "./dist",
+  "lib": {
+    "entryFile": "src/public-api.ts",
+    "umdModuleIds": {
+      "@bloomreach/spa-sdk": "BloomreachSpaSdk",
+      "@bloomreach/ng-sdk": "BloomreachNgSdk",
+      "@spartacus/storefront": "SpartacusStorefront",
+      "@spartacus/core": "SpartacusCore",
+      "@spartacus/user/account/components": "SpartacusUserArofileComponents",
+      "@spartacus/user/profile/components": "SpartacusUserProfileComponents",
+      "@spartacus/user/profile/root": "SpartacusUserProfile",
+      "@ngrx/store": "NgrxStore",
+      "@spartacus/cart/quick-order/components": "SpartacusQuickOrderComponents",
+      "@spartacus/cart/saved-cart/components": "SpartacusSavedCartComponents",
+      "@spartacus/cart/import-export/components": "SpartacusImportExportComponents",
+      "@spartacus/user/account/root": "SpartacusUserAccountService",
+      "@spartacus/checkout/components": "SpartacusCheckoutComponents"
+    }
+  },
+  "allowedNonPeerDependencies": [
+    "@bloomreach/spa-sdk",
+    "@ngrx/store"
+  ],
+  "assets": ["**/*.scss"]
+}

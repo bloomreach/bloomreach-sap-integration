@@ -1,0 +1,62 @@
+div {
+    margin-bottom: 10px;
+}
+
+a.link-container {
+    padding: 5px 40px;
+    display: block;
+    text-align: center; 
+    outline: none;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.title {
+    font-weight: bold;
+    margin: 10px 0 0 20px;
+    font-size: 1.5em;
+}
+
+.name {
+    font-size: var(--cx-font-size, 1rem);
+    font-weight: var(--cx-font-weight-bold);
+    line-height: var(--cx-line-height, 1.2222222222);
+    text-align: center;
+    margin: 0 0 3px 0;
+    color: var(--cx-color-dark);
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-orient: vertical;
+    line-clamp: 2;
+    max-width: 100%;
+    height: 40px;
+    display: block;
+    &:hover {
+        color: var(--cx-color-primary);;
+    }
+}
+
+.price {
+    font-size: var(--cx-font-size, 1.375rem);
+    font-weight: var(--cx-font-weight-semi);
+    line-height: var(--cx-line-height, 1.2222222222);
+    text-align: center;
+    margin: 1rem 0;
+    color: #212738;
+}
+
+.description {
+  margin-bottom: 12px;
+  display: block; 
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-height: 20px;
+  max-height: 60px;
+  overflow: hidden;
+}

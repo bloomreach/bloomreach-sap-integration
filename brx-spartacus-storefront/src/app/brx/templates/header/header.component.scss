@@ -1,0 +1,115 @@
+/*
+ * Copyright 2022-2023 BloomReach (https://www.bloomreach.com/)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.header {
+  border-bottom: 1px solid #fff;
+  background-color: #212738;
+}
+
+.logo {
+  text-decoration: none;
+  outline: none !important;
+}
+
+.header-two,
+.header-three {
+  background-color: #212738;
+}
+
+.header-two {
+  padding: 0.5rem 0;
+  img {
+    margin-left: 60px;
+  }
+  .signin li {
+    font-size: 1.1em;
+    color: red;
+    a {
+      outline: none;
+    }
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  ul {
+    list-style-type: none;
+    display: flex;
+    margin: 1rem 0;
+    li {
+      color: #d0d3d8;
+      margin: 0 10px;
+      select {
+        background: no-repeat;
+        outline: none;
+        border: 0;
+        color: #d0d3d8;
+      }
+    }
+  }
+}
+
+.header-three {
+  .container ul li {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    select {
+      color: #fff;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.header-container {
+  min-width: 250px;
+}
+
+.cart-container {
+  min-width: 250px;
+  display: flex;
+  justify-content: space-evenly;
+  div {
+    min-width: 100px;
+  }
+}
+
+:host ::ng-deep {
+  cx-searchbox {
+    z-index: 11;
+    input {
+      outline: none;
+      color: #fff;
+    }
+    cx-icon.cx-icon {
+      color: #fff;
+    }
+  }
+
+  .cx-login-greet {
+    color: var(--cx-color-inverse);
+    font-size: var(--cx-font-size,.875rem);
+    font-weight: var(--cx-font-weight-normal);
+    line-height: var(--cx-line-height,1.2222222222);
+    font-weight: var(--cx-font-weight-semi);
+  }
+
+  cx-mini-cart {
+    color: #fff;
+  }
+}
