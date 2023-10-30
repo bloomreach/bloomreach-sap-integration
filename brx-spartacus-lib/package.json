@@ -19,12 +19,7 @@
     "url": "https://issues.onehippo.com/projects/ENT/issues"
   },
   "scripts": {
-    "build": "ng build",
-    "lint": "ng lint",
-    "ng": "ng",
-    "prepare": "$npm_execpath run build && rm dist/package.json dist/README.md",
-    "test": "ng test --passWithNoTests",
-    "release": "YARN_NPM_AUTH_TOKEN=${NPM_AUTH_TOKEN} npm publish --access public --new-version"
+    "build": "ng build"
   },
   "main": "dist/bundles/bloomreach-brx-spartacus-library.umd.js",
   "module": "dist/fesm2015/bloomreach-brx-spartacus-library.js",
@@ -38,85 +33,43 @@
     "dist/**/*.d.ts",
     "dist/**/*.scss"
   ],
-  "peerDependencies": {
-    "@angular/common": "^12.2.0",
-    "@angular/core": "^12.2.0",
-    "@angular/platform-browser": "^12.2.0",
-    "@angular/router": "^12.2.0",
-    "@bloomreach/ng-sdk": "^15.3.1",
-    "@spartacus/assets": "^4.0.1",
-    "@spartacus/cart": "^4.0.1",
-    "@spartacus/checkout": "^4.0.1",
-    "@spartacus/core": "^4.0.1",
-    "@spartacus/storefront": "^4.0.1",
-    "@spartacus/styles": "^4.0.1",
-    "@spartacus/user": "^4.0.1",
-    "bootstrap": "^4.3.1",
-    "rxjs": "^6.6.0"
-  },
   "dependencies": {
-    "@bloomreach/spa-sdk": "^15.3.1",
-    "@ngrx/store": "^12.4.0",
-    "tslib": "^2.3.0"
+    "@bloomreach/spa-sdk": "15.5.0",
+    "tslib": "2.6.2"
+  },
+  "peerDependencies": {
+    "@angular/common": "12.2.17",
+    "@angular/core": "12.2.17",
+    "@angular/platform-browser": "12.2.17",
+    "@angular/router": "12.2.17",
+    "@bloomreach/ng-sdk": "15.5.0",
+    "@spartacus/assets": "4.3.8",
+    "@spartacus/cart": "4.3.8",
+    "@spartacus/checkout": "4.3.8",
+    "@spartacus/core": "4.3.8",
+    "@spartacus/storefront": "4.3.8",
+    "@spartacus/styles": "4.3.8",
+    "@spartacus/user": "4.3.8",
+    "@ngrx/store": "12.5.1",
+    "bootstrap": "4.6.2",
+    "rxjs": "6.6.7"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^12.2.0",
-    "@angular-eslint/builder": "^12.5.0",
-    "@angular-eslint/eslint-plugin": "^12.5.0",
-    "@angular-eslint/eslint-plugin-template": "^12.5.0",
-    "@angular-eslint/template-parser": "^12.5.0",
-    "@angular/cli": "^12.2.0",
-    "@angular/compiler": "^12.2.0",
-    "@angular/compiler-cli": "^12.2.0",
-    "@angular/language-service": "^12.2.0",
-    "@bloomreach/eslint-config-angular": "12.1.1",
-    "@types/jasmine": "~3.6.0",
-    "@types/jasminewd2": "~2.0.3",
-    "@types/prettier": "^2",
-    "@typescript-eslint/eslint-plugin": "^5.1.0",
-    "@typescript-eslint/parser": "^5.1.0",
-    "codelyzer": "^6.0.0",
-    "eslint": "^7.12",
-    "jasmine-core": "~3.6.0",
-    "jasmine-spec-reporter": "~5.0.0",
-    "karma": "~6.3.4",
-    "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage-istanbul-reporter": "~3.0.2",
-    "karma-jasmine": "~4.0.0",
-    "karma-jasmine-html-reporter": "^1.5.0",
-    "ng-packagr": "^12.2.0",
-    "prettier": "^2.4.1",
-    "ts-node": "~8.3.0",
-    "typescript": "~4.3.5",
-    "zone.js": "~0.11.4"
+    "@angular-devkit/build-angular": "12.2.18",
+    "@angular/cli": "12.2.18",
+    "@angular/compiler": "12.2.17",
+    "@angular/compiler-cli": "12.2.17",
+    "@angular/language-service": "12.2.17",
+    "ng-packagr": "12.2.7",
+    "ts-node": "8.3.0",
+    "typescript": "4.3.5",
+    "zone.js": "0.11.8"
   },
-  "eslintConfig": {
-    "extends": [
-      "@bloomreach/eslint-config-angular"
-    ],
-    "parserOptions": {
-      "project": [
-        "tsconfig.lib.json"
-      ],
-      "createDefaultProgram": true
-    },
-    "rules": {
-      "@angular-eslint/component-selector": [
-        "error",
-        {
-          "prefix": "brx",
-          "style": "kebab-case",
-          "type": "element"
-        }
-      ],
-      "@angular-eslint/directive-selector": [
-        "error",
-        {
-          "prefix": "brx",
-          "style": "camelCase",
-          "type": "attribute"
-        }
-      ]
+  "overrides": {
+    "@bloomreach/ng-sdk": {
+      "@angular/common": "12.2.17",
+      "@angular/core": "12.2.17",
+      "@angular/platform-browser": "12.2.17"
     }
   }
 }
