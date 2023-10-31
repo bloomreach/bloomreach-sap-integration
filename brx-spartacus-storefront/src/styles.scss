@@ -18,10 +18,10 @@
 
 $styleVersion: 3.3;
 //TODO: Use only the brx-spartacus-library import once beta3 is released
-@import "~bootstrap/dist/css/bootstrap.css";
-@import '~@spartacus/styles/index';
-@import '~@spartacus/checkout/index';
-@import '~@bloomreach/brx-spartacus-library/dist/src/lib/styles/index';
+@import "bootstrap/dist/css/bootstrap.css";
+@import '@spartacus/styles/index';
+@import '@spartacus/checkout/index';
+@import '@bloomreach/brx-spartacus-library/src/lib/styles/index';
 
 .has-edit-button {
   position: relative;

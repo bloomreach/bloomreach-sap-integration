@@ -21,18 +21,13 @@
   "scripts": {
     "build": "ng build"
   },
-  "main": "dist/bundles/bloomreach-brx-spartacus-library.umd.js",
-  "module": "dist/fesm2015/bloomreach-brx-spartacus-library.js",
-  "es2015": "dist/fesm2015/bloomreach-brx-spartacus-library.js",
-  "esm2015": "dist/esm2015/bloomreach-brx-spartacus-library.js",
-  "fesm2015": "dist/fesm2015/bloomreach-brx-spartacus-library.js",
-  "typings": "dist/bloomreach-brx-spartacus-library.d.ts",
+  "main": "bundles/bloomreach-brx-spartacus-library.umd.js",
+  "module": "fesm2015/bloomreach-brx-spartacus-library.js",
+  "es2015": "fesm2015/bloomreach-brx-spartacus-library.js",
+  "esm2015": "esm2015/bloomreach-brx-spartacus-library.js",
+  "fesm2015": "fesm2015/bloomreach-brx-spartacus-library.js",
+  "typings": "bloomreach-brx-spartacus-library.d.ts",
   "sideEffects": false,
-  "files": [
-    "dist/*/**",
-    "dist/**/*.d.ts",
-    "dist/**/*.scss"
-  ],
   "dependencies": {
     "@bloomreach/spa-sdk": "15.5.0",
     "tslib": "2.6.2"
