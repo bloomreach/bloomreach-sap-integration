@@ -21,7 +21,7 @@ $styleVersion: 3.3;
 @import "bootstrap/dist/css/bootstrap.css";
 @import '@spartacus/styles/index';
 @import '@spartacus/checkout/index';
-@import '@bloomreach/brx-spartacus-library/src/lib/styles/index';
+@import '@bloomreach/brx-spartacus-library/dist/src/lib/styles/index';
 
 .has-edit-button {
   position: relative;

@@ -3,4 +3,5 @@ node_modules
 .vscode
 .vim
 .yalc
+yalc.lock
 
