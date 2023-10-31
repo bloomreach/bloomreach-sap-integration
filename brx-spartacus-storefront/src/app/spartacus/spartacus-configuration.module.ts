@@ -43,7 +43,7 @@ import { defaultSavedCartFormLayoutConfig } from './default-saved-cart-form-layo
   providers: [provideConfig(layoutConfig), provideConfig(mediaConfig), ...defaultCmsContentProviders, provideConfig({
     backend: {
       occ: {
-        baseUrl: 'https://api.cvbrtj6s9u-bloomreac1-d1-public.model-t.cc.commerce.ondemand.com', prefix: '/occ/v2/'
+        baseUrl: 'https://api.cvbrtj6s9u-bloomreac2-d1-public.model-t.cc.commerce.ondemand.com', prefix: '/occ/v2/'
       }
     },
   } as OccConfig), provideConfig({
