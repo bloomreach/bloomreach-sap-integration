@@ -16,20 +16,9 @@
 
 <div class="container" [ngClass]="{ 'has-edit-button': page.isPreview() }">
   <h3 class="title">{{ title }}</h3>
-  <div
-    *ngIf="categoriesList$ | async as list"
-    class="row cat_highlight_continer"
-  >
-    <div
-      *ngFor="let item of commerceCategoryCompound; index as i"
-      class="col-12 col-sm-6 col-md-4 col-lg-3"
-    >
-      <a
-        [routerLink]="getQuery(item)"
-        class="btn btn-primary btn-block"
-        *ngIf="item"
-        [title]="list[item]"
-      >
+  <div *ngIf="categoriesList$ | async as list" class="row cat_highlight_continer">
+    <div *ngFor="let item of commerceCategoryCompound; index as i" class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <a [routerLink]="getQuery(item)" class="btn btn-primary btn-block" *ngIf="item" [title]="list[item]">
         {{ list[item] }}
       </a>
     </div>

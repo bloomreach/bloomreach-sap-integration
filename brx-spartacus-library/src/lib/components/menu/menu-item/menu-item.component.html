@@ -18,19 +18,14 @@
   {{ item.getName() }}
 </span>
 
-<a
-  *ngIf="item.getLink() | isExternalLink"
-  class="nav-link text-capitalize"
-  [href]="item.getUrl()"
->
+<a *ngIf="item.getLink() | isExternalLink" class="nav-link text-capitalize" [href]="item.getUrl()">
   {{ item.getName() }}
 </a>
 
 <a
   *ngIf="item.getLink() | isInternalLink"
   class="nav-link text-capitalize"
-  [routerLink]="item.getUrl() | parseUrl: 'pathname'"
-  [queryParams]="item.getUrl() | parseUrl: 'searchParams'"
->
+  [routerLink]="item.getUrl() | parseUrl : 'pathname'"
+  [queryParams]="item.getUrl() | parseUrl : 'searchParams'">
   {{ item.getName() }}
 </a>

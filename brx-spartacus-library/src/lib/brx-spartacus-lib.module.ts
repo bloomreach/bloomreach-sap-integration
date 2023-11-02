@@ -31,7 +31,7 @@ import { SpartacusProductListComponent } from './components/spartacus-product-li
 import { SpartacusProductListDirective } from './components/spartacus-product-list/spartacus-product-list.directive';
 import { SpartacusSearchBoxComponent } from './components/spartacus-search-box/spartacus-search-box.component';
 import { SpartacusSearchBoxDirective } from './components/spartacus-search-box/spartacus-search-box.directive';
-import { configType } from './models/brx-config-type.model';
+import { ConfigType } from './models/brx-config-type.model';
 import { BrxEndpointService } from './services/brx-endpoint.service';
 import { BrxProductSearchModule } from './spartacus/brx/adapters/brx-product-search.module';
 import { CmsBrxModule } from './spartacus/brx/cms-brx.module';
@@ -122,7 +122,7 @@ import { SpartacusForgotPassswordDirective } from './components/spartacus-forgot
     SpartacusWishListComponent,
     SpartacusWishListDirective,
     SpartacusForgotPasswordComponent,
-    SpartacusForgotPassswordDirective
+    SpartacusForgotPassswordDirective,
   ],
   imports: [
     BrowserModule,
@@ -169,7 +169,7 @@ import { SpartacusForgotPassswordDirective } from './components/spartacus-forgot
     SpartacusMiniCartComponent,
     MyAccountMenuComponent,
     SpartacusWishListComponent,
-    SpartacusForgotPasswordComponent
+    SpartacusForgotPasswordComponent,
   ],
 })
 export class BrxSpartacusLibModule {}

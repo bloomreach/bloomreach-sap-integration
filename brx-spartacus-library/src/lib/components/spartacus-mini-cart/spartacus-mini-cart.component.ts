@@ -24,7 +24,6 @@ import { SpartacusMiniCartDirective } from './spartacus-mini-cart.directive';
   templateUrl: './spartacus-mini-cart.component.html',
 })
 export class SpartacusMiniCartComponent implements OnInit {
-
   @Input() component!: BrComponent;
 
   @Input() page!: Page;
@@ -34,7 +33,7 @@ export class SpartacusMiniCartComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
-    protected activeCartService: ActiveCartService
+    protected activeCartService: ActiveCartService,
   ) {}
 
   ngOnInit(): void {
@@ -56,5 +55,5 @@ export class SpartacusMiniCartComponent implements OnInit {
     });
 
     viewContainerRef.createComponent<MiniCartComponent>(componentFactory, 0, componentInjector);
-}
+  }
 }

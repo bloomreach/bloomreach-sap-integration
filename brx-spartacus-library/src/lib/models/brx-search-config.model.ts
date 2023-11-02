@@ -17,9 +17,9 @@
 import { SearchConfig } from '@spartacus/core';
 
 export interface BrxSearchConfig extends SearchConfig {
-  type?: SEARCH_TYPE_SEARCH | SEARCH_TYPE_SUGGESTION | SEARCH_TYPE_CATEGORY;
+  type?: SearchTypeSearch | SearchTypeSuggestion | SearchTypeCategory;
 }
 
-type SEARCH_TYPE_SEARCH = 'search';
-type SEARCH_TYPE_SUGGESTION = 'suggestion';
-type SEARCH_TYPE_CATEGORY = 'category';
+type SearchTypeSearch = 'search';
+type SearchTypeSuggestion = 'suggestion';
+type SearchTypeCategory = 'category';

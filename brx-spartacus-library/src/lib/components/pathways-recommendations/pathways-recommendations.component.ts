@@ -39,7 +39,9 @@ export class PathwaysRecommendationsComponent implements OnInit {
 
   ngOnInit(): void {
     this.renderWrappedPathways();
-    this.products$ = this.brxpathwaysrecommendationsservice.productsSubject.pipe(map((item: any) => Object.values(item).map((val: any) => of(val))));
+    this.products$ = this.brxpathwaysrecommendationsservice.productsSubject.pipe(
+      map((item: any) => Object.values(item).map((val: any) => of(val))),
+    );
   }
 
   getempty(): Observable<any>[] {
@@ -90,17 +92,16 @@ export class PathwaysRecommendationsComponent implements OnInit {
       this.errorMessage = 'Please configure Widget ID and Widget Type first';
     }
 
-    this.brxpathwaysrecommendationsservice
-      .getproducts(
-        this.page.isPreview(),
-        keyword,
-        {
-          pageSize: this.limit,
-        },
-        widgetType,
-        widgetId,
-        categoryid || '',
-        pids?.join(',') ?? '',
-      );
+    this.brxpathwaysrecommendationsservice.getproducts(
+      this.page.isPreview(),
+      keyword,
+      {
+        pageSize: this.limit,
+      },
+      widgetType,
+      widgetId,
+      categoryid || '',
+      pids?.join(',') ?? '',
+    );
   }
 }

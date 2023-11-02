@@ -27,15 +27,13 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
             [ngClass]="{ show: navbarOpen }"
-            (click)="navbarOpen = !navbarOpen"
-          >
+            (click)="navbarOpen = !navbarOpen">
             My Account
           </a>
           <ul
             [ngClass]="{ show: navbarOpen }"
             class="dropdown-menu dropdown-menu-dark"
-            aria-labelledby="navbarDarkDropdownMenuLink"
-          >
+            aria-labelledby="navbarDarkDropdownMenuLink">
             <li>
               <a class="dropdown-item" routerLink="/wishlist">Wish List</a>
             </li>

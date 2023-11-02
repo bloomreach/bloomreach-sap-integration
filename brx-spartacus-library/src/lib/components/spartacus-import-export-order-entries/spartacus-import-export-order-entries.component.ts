@@ -16,13 +16,13 @@
 import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { ImportExportOrderEntriesComponent } from '@spartacus/cart/import-export/components';
-import { SpartacusImportExportOrderEntriesDirective } from './spartacus-import-export-order-entries.directive';
 import { ContextService } from '@spartacus/storefront';
+import { SpartacusImportExportOrderEntriesDirective } from './spartacus-import-export-order-entries.directive';
 
 @Component({
   selector: 'brx-spartacus-import-export-order-entries',
   templateUrl: './spartacus-import-export-order-entries.component.html',
-  styleUrls: ['./spartacus-import-export-order-entries.component.scss']
+  styleUrls: ['./spartacus-import-export-order-entries.component.scss'],
 })
 export class SpartacusImportExportOrderEntriesComponent implements OnInit {
   @Input() component!: BrComponent;
@@ -34,7 +34,7 @@ export class SpartacusImportExportOrderEntriesComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
-    protected contextService: ContextService
+    protected contextService: ContextService,
   ) {}
 
   ngOnInit(): void {
@@ -51,11 +51,10 @@ export class SpartacusImportExportOrderEntriesComponent implements OnInit {
         {
           provide: ContextService,
           useValue: this.contextService,
-        }
+        },
       ],
     });
 
     viewContainerRef.createComponent<ImportExportOrderEntriesComponent>(componentFactory, 0, componentInjector);
-}
-
+  }
 }

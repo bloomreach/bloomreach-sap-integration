@@ -23,10 +23,9 @@ import { SpartacusCartCouponDirective } from './spartacus-cart-coupon.directive'
 @Component({
   selector: 'brx-spartacus-cart-coupon',
   templateUrl: './spartacus-cart-coupon.component.html',
-  styleUrls: ['./spartacus-cart-coupon.component.scss']
+  styleUrls: ['./spartacus-cart-coupon.component.scss'],
 })
 export class SpartacusCartCouponComponent implements OnInit {
-
   @Input() component!: BrComponent;
 
   @Input() page!: Page;
@@ -36,7 +35,7 @@ export class SpartacusCartCouponComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
-    private activeCartService: ActiveCartService
+    private activeCartService: ActiveCartService,
   ) {}
 
   ngOnInit(): void {
@@ -53,11 +52,10 @@ export class SpartacusCartCouponComponent implements OnInit {
         {
           provide: ActiveCartService,
           useValue: this.activeCartService,
-        }
+        },
       ],
     });
 
     viewContainerRef.createComponent<CartCouponComponent>(componentFactory, 0, componentInjector);
-}
-
+  }
 }

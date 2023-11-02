@@ -22,16 +22,10 @@
   *ngIf="(facetList$ | async)?.facets as facets"
   [cxFocus]="isDialog ? dialogFocusConfig : {}"
   (esc)="close($event)"
-  (click)="block($event)"
->
+  (click)="block($event)">
   <h4>
-    {{ "productList.filterBy.label" | cxTranslate }}
-    <button
-      type="button"
-      class="close"
-      [attr.aria-label]="'common.close' | cxTranslate"
-      (click)="close()"
-    >
+    {{ 'productList.filterBy.label' | cxTranslate }}
+    <button type="button" class="close" [attr.aria-label]="'common.close' | cxTranslate" (click)="close()">
       <cx-icon aria-hidden="true" [type]="iconTypes.CLOSE"></cx-icon>
     </button>
   </h4>
@@ -48,6 +42,5 @@
     (unlock)="expandFacetGroup(facet, facetRef)"
     [class.expanded]="isExpanded(facet) | async"
     [class.collapsed]="isCollapsed(facet) | async"
-    [page]="page"
-  ></brx-facet>
+    [page]="page"></brx-facet>
 </div>

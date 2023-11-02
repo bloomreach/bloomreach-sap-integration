@@ -13,9 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import {
+  Component,
+  ComponentFactoryResolver,
+  Injector,
+  Input,
+  OnInit,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
-import { ActiveCartService, AuthService, CartVoucherService, CustomerCouponService, RoutingService } from '@spartacus/core';
+import {
+  ActiveCartService,
+  AuthService,
+  CartVoucherService,
+  CustomerCouponService,
+  RoutingService,
+} from '@spartacus/core';
 import { LaunchDialogService } from '@spartacus/storefront';
 import { AddToSavedCartComponent } from '@spartacus/cart/saved-cart/components';
 import { SpartacusAddToSavedCartDirective } from './spartacus-add-to-saved-cart.directive';
@@ -23,10 +37,9 @@ import { SpartacusAddToSavedCartDirective } from './spartacus-add-to-saved-cart.
 @Component({
   selector: 'brx-spartacus-add-to-saved-cart',
   templateUrl: './spartacus-add-to-saved-cart.component.html',
-  styleUrls: ['./spartacus-add-to-saved-cart.component.scss']
+  styleUrls: ['./spartacus-add-to-saved-cart.component.scss'],
 })
 export class SpartacusAddToSavedCartComponent implements OnInit {
-
   @Input() component!: BrComponent;
 
   @Input() page!: Page;
@@ -40,7 +53,7 @@ export class SpartacusAddToSavedCartComponent implements OnInit {
     protected authService: AuthService,
     protected routingService: RoutingService,
     protected vcr: ViewContainerRef,
-    protected launchDialogService: LaunchDialogService
+    protected launchDialogService: LaunchDialogService,
   ) {}
 
   ngOnInit(): void {
@@ -78,6 +91,5 @@ export class SpartacusAddToSavedCartComponent implements OnInit {
     });
 
     viewContainerRef.createComponent<AddToSavedCartComponent>(componentFactory, 0, componentInjector);
-}
-
+  }
 }
