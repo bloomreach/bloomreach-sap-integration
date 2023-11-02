@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { BrxEndpointService } from '@bloomreach/brx-spartacus-library';
-import { LibConfig, APP_CONFIG } from 'src/app.config';
+import { APP_CONFIG, LibConfig } from 'src/app.config';
 import { environment } from 'src/environments/environment';
 
 export interface ChannelProps {
@@ -31,16 +30,16 @@ export interface ChannelProps {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EnvConfigService {
   config: LibConfig = {} as LibConfig;
 
-  constructor(private brxService: BrxEndpointService, private http: HttpClient, @Inject(APP_CONFIG) private netlifyConfig: LibConfig) { }
+  constructor(private brxService: BrxEndpointService, @Inject(APP_CONFIG) private netlifyConfig: LibConfig) {}
 
   initilizeConfigFromNetlify(): void {
-    const envVariables = {...environment.libConfig};
-    const netlifyVariables = {...this.netlifyConfig};
+    const envVariables = { ...environment.libConfig };
+    const netlifyVariables = { ...this.netlifyConfig };
 
     this.config = {
       endpoint: netlifyVariables.endpoint || envVariables.endpoint,
@@ -57,7 +56,8 @@ export class EnvConfigService {
     this.config.endpoint = endpointFromParms || this.config.endpoint;
     const { discoveryAccountId, discoveryDomainKey } = channelProps;
 
-    // Overwrite ENV variables if endpoint paramaneter is passed in the query param and account Id and Domain key are not set
+    // Overwrite ENV variables if endpoint paramaneter is passed in the query param
+    // and account Id and Domain key are not set
     this.config.accountId = discoveryAccountId || this.config.accountId;
     this.config.domainKey = discoveryDomainKey || this.config.domainKey;
 
@@ -67,5 +67,4 @@ export class EnvConfigService {
   setEnvConfigInLibrary(): void {
     this.brxService.envConfig = this.config;
   }
-
 }

@@ -25,7 +25,7 @@ import {
   ProductModule,
   ProductOccModule,
   UserOccTransitionalModule,
-  UserTransitionalModule
+  UserTransitionalModule,
 } from '@spartacus/core';
 import {
   AddressBookModule,
@@ -74,7 +74,7 @@ import {
   SiteContextSelectorModule,
   StockNotificationModule,
   TabParagraphContainerModule,
-  WishListModule
+  WishListModule,
 } from '@spartacus/storefront';
 import { CartSavedCartFeatureModule } from './features/cart/cart-saved-cart-feature.module';
 import { CheckoutFeatureModule } from './features/checkout/checkout-feature.module';
@@ -158,6 +158,6 @@ import { UserFeatureModule } from './features/user/user-feature.module';
     ProductVariantsFeatureModule,
     CheckoutFeatureModule,
     CartSavedCartFeatureModule,
-  ]
+  ],
 })
-export class SpartacusFeaturesModule { }
+export class SpartacusFeaturesModule {}

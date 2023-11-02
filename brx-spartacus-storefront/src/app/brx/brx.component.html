@@ -18,11 +18,10 @@
     [configuration]="configuration"
     [mapping]="mapping"
     (httpError)="onBrxHttpError($event)"
-    (state)="setVisitor($event)"
-  >
+    (state)="setVisitor($event)">
     <ng-template let-page="page">
       <app-header [token]="authorizationToken"></app-header>
-      <div [ngClass]="{'hidden': showSpinner}">
+      <div [ngClass]="{ hidden: showSpinner }">
         <div *ngIf="getPageTemplate(page) === 'one-column'">
           <ng-container brComponent="main"></ng-container>
         </div>
@@ -52,7 +51,9 @@
           <ng-container brComponent="bottom"></ng-container>
         </div>
       </div>
-      <div [ngClass]="{'hidden': !showSpinner}" class="spinner"><p><i class="fas fa-spinner fa-2x fa-spin"></i> Loading ...</p></div>
+      <div [ngClass]="{ hidden: !showSpinner }" class="spinner">
+        <p><i class="fas fa-spinner fa-2x fa-spin"></i> Loading ...</p>
+      </div>
       <app-footer></app-footer>
     </ng-template>
   </br-page>

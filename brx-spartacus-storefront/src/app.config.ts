@@ -25,4 +25,4 @@ export interface LibConfig {
   authKey: string;
 }
 
-export let APP_CONFIG = new InjectionToken<LibConfig>('APP_CONFIG');
+export const APP_CONFIG = new InjectionToken<LibConfig>('APP_CONFIG');

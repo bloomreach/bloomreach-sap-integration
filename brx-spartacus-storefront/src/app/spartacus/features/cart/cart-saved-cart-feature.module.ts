@@ -21,23 +21,21 @@ import { CmsConfig, I18nConfig, provideConfig } from '@spartacus/core';
 
 @NgModule({
   declarations: [],
-  imports: [
-    SavedCartRootModule
-  ],
-  providers: [provideConfig({
-    featureModules: {
-      [CART_SAVED_CART_FEATURE]: {
-        module: () =>
-          import('@spartacus/cart/saved-cart').then((m) => m.SavedCartModule),
+  imports: [SavedCartRootModule],
+  providers: [
+    provideConfig({
+      featureModules: {
+        [CART_SAVED_CART_FEATURE]: {
+          module: () => import('@spartacus/cart/saved-cart').then((m) => m.SavedCartModule),
+        },
       },
-    }
-  } as CmsConfig),
-  provideConfig({
-    i18n: {
-      resources: savedCartTranslations,
-      chunks: savedCartTranslationChunksConfig,
-    },
-  } as I18nConfig)
-  ]
+    } as CmsConfig),
+    provideConfig({
+      i18n: {
+        resources: savedCartTranslations,
+        chunks: savedCartTranslationChunksConfig,
+      },
+    } as I18nConfig),
+  ],
 })
-export class CartSavedCartFeatureModule { }
+export class CartSavedCartFeatureModule {}

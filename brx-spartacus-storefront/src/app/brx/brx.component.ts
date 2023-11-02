@@ -14,38 +14,17 @@
  * limitations under the License.
  */
 
-import {
-  Component,
-  Inject,
-  InjectionToken,
-  Input,
-  OnDestroy,
-  OnInit,
-  Optional,
-} from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, Inject, InjectionToken, OnDestroy, OnInit, Optional } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Page, Configuration } from '@bloomreach/spa-sdk';
-import { REQUEST } from '@nguniversal/express-engine/tokens';
-import { OutletPosition } from '@spartacus/storefront';
-import { Request } from 'express';
-import { Observable } from 'rxjs';
-import { filter, tap } from 'rxjs/operators';
 import {
   BannerComponent,
-  SpartacusBannerComponent,
-  SpartacusLoginFormComponent,
-  SpartacusProductListComponent,
-  SpartacusSearchBoxComponent,
-  SpartacusProductDetailsComponent,
-  SpartacusProductHighlightComponent,
-  SpartacusProductFacetNavigationComponent,
   CategoryHighlightComponent,
-  SpartacusParagraphComponent,
-  SpartacusBreadcrumbComponent,
   MenuComponent,
-  SpartacusRegisterComponent,
-  SpartacusLoginRegisterComponent,
   MyAccountMenuComponent,
+  PathwaysRecommendationsComponent,
+  SpartacusBannerComponent,
+  SpartacusBreadcrumbComponent,
   SpartacusCartCouponComponent,
   SpartacusCartDetailsComponent,
   SpartacusCartQuickOrderFormComponent,
@@ -57,27 +36,40 @@ import {
   SpartacusDeliveryModeComponent,
   SpartacusForgotPasswordComponent,
   SpartacusLoginComponent,
+  SpartacusLoginFormComponent,
+  SpartacusLoginRegisterComponent,
   SpartacusMiniCartComponent,
   SpartacusOrderConfirmationItemsComponent,
   SpartacusOrderConfirmationOverviewComponent,
   SpartacusOrderConfirmationThankYouMessageComponent,
   SpartacusOrderConfirmationTotalsComponent,
+  SpartacusParagraphComponent,
   SpartacusPaymentMethodComponent,
   SpartacusPlaceOrderComponent,
+  SpartacusProductDetailsComponent,
+  SpartacusProductFacetNavigationComponent,
+  SpartacusProductHighlightComponent,
+  SpartacusProductListComponent,
+  SpartacusRegisterComponent,
   SpartacusReviewSubmitComponent,
+  SpartacusSearchBoxComponent,
   SpartacusShippingAddressComponent,
   SpartacusWishListComponent,
-  PathwaysRecommendationsComponent,
 } from '@bloomreach/brx-spartacus-library';
-import { HttpErrorResponse } from '@angular/common/http';
+import { Configuration, Page } from '@bloomreach/spa-sdk';
+import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { PageContext, RoutingService } from '@spartacus/core';
+import { OutletPosition } from '@spartacus/storefront';
+import { Request } from 'express';
+import { Observable } from 'rxjs';
+import { filter, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { EnvConfigService } from '../services/env-config.service';
 
 export const ENDPOINT = new InjectionToken<string>('brXM API endpoint');
 
 @Component({
-  // tslint:disable-next-line:component-selector
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'brx-spartacus',
   templateUrl: './brx.component.html',
   styleUrls: ['./brx.component.scss'],
@@ -88,8 +80,11 @@ export class BrxComponent implements OnInit, OnDestroy {
   outletPosition = OutletPosition;
 
   authorizationToken?: string;
+
   serverId?: string;
+
   endpointFromParams?: string;
+
   mapping = {
     Banner: BannerComponent,
     SpartacusBanner: SpartacusBannerComponent,
@@ -127,7 +122,7 @@ export class BrxComponent implements OnInit, OnDestroy {
     SpartacusOrderConfirmationItems: SpartacusOrderConfirmationItemsComponent,
     SpartacusOrderConfirmationOverview: SpartacusOrderConfirmationOverviewComponent,
     SpartacusOrderConfirmationTotals: SpartacusOrderConfirmationTotalsComponent,
-    SpartacusForgotPassword: SpartacusForgotPasswordComponent
+    SpartacusForgotPassword: SpartacusForgotPasswordComponent,
   };
 
   brxHttpError?: HttpErrorResponse;
@@ -137,6 +132,7 @@ export class BrxComponent implements OnInit, OnDestroy {
   private navigationEnd: Observable<NavigationEnd>;
 
   showSpinner = true;
+
   spinnerTimeout: any;
 
   constructor(
@@ -144,36 +140,33 @@ export class BrxComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private routingService: RoutingService,
     private envConfigService: EnvConfigService,
-    @Inject(REQUEST) @Optional() request?: Request
+    @Inject(REQUEST) @Optional() request?: Request,
   ) {
-
-     const PREVIEW_TOKEN_KEY = 'token';
-     const PREVIEW_SERVER_ID_KEY = 'server-id';
+    const PREVIEW_TOKEN_KEY = 'token';
+    const PREVIEW_SERVER_ID_KEY = 'server-id';
 
     // Read a token and server id from the query params
-     route.queryParams
-      .subscribe(params => {
-        const queryToken = params[PREVIEW_TOKEN_KEY];
-        const queryServerId = params[PREVIEW_SERVER_ID_KEY];
+    route.queryParams.subscribe((params) => {
+      const queryToken = params[PREVIEW_TOKEN_KEY];
+      const queryServerId = params[PREVIEW_SERVER_ID_KEY];
 
-        this.authorizationToken = this.authorizationToken ?? queryToken;
-        this.serverId = this.serverId ?? queryServerId;
+      this.authorizationToken = this.authorizationToken ?? queryToken;
+      this.serverId = this.serverId ?? queryServerId;
 
-        this.configuration = {
-            debug: true,
-            endpoint: environment.libConfig.endpoint,
-            request,
-            endpointQueryParameter: 'endpoint',
-            path: router.url,
-            ...(this.authorizationToken ? { authorizationToken : this.authorizationToken } : {}),
-            ...(this.serverId ? { serverId : this.serverId } : {}),
-          } as BrxComponent['configuration'];
-        }
-      );
+      this.configuration = {
+        debug: true,
+        endpoint: environment.libConfig.endpoint,
+        request,
+        endpointQueryParameter: 'endpoint',
+        path: router.url,
+        ...(this.authorizationToken ? { authorizationToken: this.authorizationToken } : {}),
+        ...(this.serverId ? { serverId: this.serverId } : {}),
+      } as BrxComponent['configuration'];
+    });
 
-     this.navigationEnd = router.events.pipe(
-        filter((event) => event instanceof NavigationEnd)
-      ) as Observable<NavigationEnd>;
+    this.navigationEnd = router.events.pipe(
+      filter((event) => event instanceof NavigationEnd),
+    ) as Observable<NavigationEnd>;
   }
 
   ngOnInit(): void {
@@ -183,31 +176,30 @@ export class BrxComponent implements OnInit, OnDestroy {
       this.endpointFromParams = this.route.snapshot.queryParamMap.get('endpoint') || undefined;
       this.configuration = {
         ...this.configuration,
-        endpoint: this.endpointFromParams ? this.endpointFromParams : this.envConfigService.config.endpoint
+        endpoint: this.endpointFromParams ? this.endpointFromParams : this.envConfigService.config.endpoint,
       };
 
       this.configuration = { ...this.configuration, path: event.url };
       this.brxHttpError = undefined;
       this.pageContext$ = this.routingService
         .getPageContext()
-        .pipe(
-          tap((pageContext) =>
-            console.log('[BrxComponent.PageContext]: ', pageContext)
-          )
-        );
+        .pipe(tap((pageContext) => console.log('[BrxComponent.PageContext]: ', pageContext)));
       const timeout = +environment.appConfig.defaultLoadingTime * 1000;
-      if (event.url !== '/') {   // Ignoring the spinner for the landing page
+      if (event.url !== '/') {
+        // Ignoring the spinner for the landing page
         this.spinnerTimeout = setTimeout(() => {
           this.showSpinner = false;
         }, timeout);
       } else {
-          this.showSpinner = false;
+        this.showSpinner = false;
       }
     });
   }
 
   setVisitor(page?: Page): void {
-    if (page && this.endpointFromParams) { this.envConfigService.setEnvVariables(page.getChannelParameters(), this.endpointFromParams); }
+    if (page && this.endpointFromParams) {
+      this.envConfigService.setEnvVariables(page.getChannelParameters(), this.endpointFromParams);
+    }
     this.configuration.visitor = page?.getVisitor();
   }
 
@@ -227,5 +219,5 @@ export class BrxComponent implements OnInit, OnDestroy {
     if (this.spinnerTimeout) {
       clearTimeout(this.spinnerTimeout);
     }
-}
+  }
 }

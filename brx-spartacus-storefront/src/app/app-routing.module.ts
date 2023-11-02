@@ -1,4 +1,3 @@
-
 /*
  * Copyright 2022-2023 BloomReach (https://www.bloomreach.com/)
  *
@@ -15,22 +14,21 @@
  * limitations under the License.
  */
 
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {NewsPageComponent} from './pages/news-page/news-page.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { NewsPageComponent } from './pages/news-page/news-page.component';
 
-const routes: Routes = [
-  {path: 'news', component: NewsPageComponent},
-];
+const routes: Routes = [{ path: 'news', component: NewsPageComponent }];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    anchorScrolling: 'enabled',
-    relativeLinkResolution: 'corrected',
-    initialNavigation: 'enabled',
-    scrollPositionRestoration: 'enabled'   // Fixing the scrool restoration issue
-  })],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {
+      anchorScrolling: 'enabled',
+      relativeLinkResolution: 'corrected',
+      initialNavigation: 'enabled',
+      scrollPositionRestoration: 'enabled', // Fixing the scrool restoration issue
+    }),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

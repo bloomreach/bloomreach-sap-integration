@@ -21,28 +21,29 @@ import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 import { APP_CONFIG, LibConfig } from './app.config';
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Get the ENV variables from netlify
-  if (environment.netlifyEnvUrl) {
-    fetch(environment.netlifyEnvUrl)
-    .then((res) => res.json())
-    .then((config) => {
-      bootstrapApp(config);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  } else {
-    const config = {} as LibConfig;
-    bootstrapApp(config);
-  }
-});
-
 function bootstrapApp(config: LibConfig): void {
   if (environment.production) {
     enableProdMode();
   }
 
-  platformBrowserDynamic([{ provide: APP_CONFIG, useValue: config }]).bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+  platformBrowserDynamic([{ provide: APP_CONFIG, useValue: config }])
+    .bootstrapModule(AppModule)
+    .catch((err) => console.error(err));
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Get the ENV variables from netlify
+  if (environment.netlifyEnvUrl) {
+    fetch(environment.netlifyEnvUrl)
+      .then((res) => res.json())
+      .then((config) => {
+        bootstrapApp(config);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  } else {
+    const config = {} as LibConfig;
+    bootstrapApp(config);
+  }
+});
