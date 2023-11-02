@@ -74,6 +74,12 @@ Releasing a new version follows the standard angular appraoch for releasing libr
 - Run `npm run build` to create the package build in `dist/`
 - Inside `dist/` run `npm publish`
 
+### Development
+
+If developing this in tandem with the [storefront](../brx-spartacus-storefront) we suggest to use
+[yalc](https://github.com/wclr/yalc) to publish from the `dist/` folder to your local system and `yalc link` it in the
+storefront app.
+
 ## License
 
 Published under [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0) license.
