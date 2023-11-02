@@ -2,7 +2,7 @@ name: CI
 on: [push, pull_request]
 jobs:
   build:
-    name: Build
+    name: Build, lint & test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -20,6 +20,9 @@ jobs:
       - name: 'Lint library'
         working-directory: './brx-spartacus-library'
         run: npm run lint
+      - name: 'Test library'
+        working-directory: './brx-spartacus-library'
+        run: npm run test
       - name: 'Install dependencies for storefront'
         working-directory: './brx-spartacus-storefront'
         run: npm ci
@@ -29,3 +32,6 @@ jobs:
       - name: 'Lint storefront'
         working-directory: './brx-spartacus-storefront'
         run: npm run lint
+      - name: 'Test storefront'
+        working-directory: './brx-spartacus-storefront'
+        run: npm run test

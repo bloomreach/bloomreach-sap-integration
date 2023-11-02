@@ -81,6 +81,12 @@
             }
           }
         },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "tsConfig": "./tsconfig.spec.json"
+          }
+        },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
