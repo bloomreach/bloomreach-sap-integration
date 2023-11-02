@@ -17,9 +17,15 @@ jobs:
       - name: 'Build library'
         working-directory: './brx-spartacus-library'
         run: npm run build
+      - name: 'Lint library'
+        working-directory: './brx-spartacus-library'
+        run: npm run lint
       - name: 'Install dependencies for storefront'
         working-directory: './brx-spartacus-storefront'
         run: npm ci
       - name: 'Build storefront'
         working-directory: './brx-spartacus-storefront'
         run: npm run build
+      - name: 'Lint storefront'
+        working-directory: './brx-spartacus-storefront'
+        run: npm run lint
