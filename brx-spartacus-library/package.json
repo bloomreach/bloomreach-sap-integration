@@ -20,6 +20,7 @@
     "url": "https://github.com/bloomreach/bloomreach-sap-integration/issues"
   },
   "scripts": {
+    "ng": "ng",
     "build": "ng build && rm dist/package.json dist/README.md"
   },
   "files": [

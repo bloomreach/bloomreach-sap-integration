@@ -2,6 +2,7 @@
   "name": "@bloomreach/brx-spartacus-storefront",
   "version": "1.1.0",
   "scripts": {
+    "ng": "ng",
     "start": "ng serve",
     "build": "ng build --configuration=production",
     "build:dev": "ng build",

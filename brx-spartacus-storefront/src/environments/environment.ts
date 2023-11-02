@@ -20,7 +20,7 @@
 
 export const environment = {
   production: false,
-  netlifyEnvUrl: '', // https://brx-spartacus-latest.netlify.app/.netlify/functions/get-env-variables
+  netlifyEnvUrl: '', // https://bloomreach-spartacus.netlify.app/.netlify/functions/get-env-variables
   libConfig: {
     endpoint: '', // Local Development Endpoint - 'http://localhost:8080/delivery/site/v1/channels/spartacus/pages'
     smEndPoint: 'https://pathways.dxpapi.com/api/',
