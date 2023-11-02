@@ -21,19 +21,16 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { BrxSpartacusLibModule } from '@bloomreach/brx-spartacus-library';
+import { I18nModule } from '@spartacus/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrxModule } from './brx/brx.module';
 import { SpartacusModule } from './spartacus/spartacus.module';
 import { NewsPageComponent } from './pages/news-page/news-page.component';
-import { I18nModule } from '@spartacus/core';
 import { EnvConfigService } from './services/env-config.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NewsPageComponent
-  ],
+  declarations: [AppComponent, NewsPageComponent],
   imports: [
     CommonModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -47,11 +44,11 @@ import { EnvConfigService } from './services/env-config.service';
     BrxModule,
     BrxSpartacusLibModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor(private envConfigService: EnvConfigService) {
     // Initilize Environemnt variables
     this.envConfigService.initilizeConfigFromNetlify();
   }
- }
+}

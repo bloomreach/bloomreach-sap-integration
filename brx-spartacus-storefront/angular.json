@@ -67,7 +67,7 @@
               ]
             }
           },
-          "defaultConfiguration": ""
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -79,6 +79,15 @@
             "production": {
               "browserTarget": "brx-spartacus:build:production"
             }
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.component.html"
+            ]
           }
         },
         "extract-i18n": {
@@ -138,5 +147,8 @@
         }
       }
     }},
-  "defaultProject": "brx-spartacus"
+  "defaultProject": "brx-spartacus",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }

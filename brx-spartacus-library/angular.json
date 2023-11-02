@@ -29,7 +29,7 @@
           "options": {
             "lintFilePatterns": [
               "src/**/*.ts",
-              "src/**/*.html"
+              "src/**/*.component.html"
             ]
           }
         }

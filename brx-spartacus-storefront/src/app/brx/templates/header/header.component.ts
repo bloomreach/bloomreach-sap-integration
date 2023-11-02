@@ -14,22 +14,17 @@
  * limitations under the License.
  */
 
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
-
+export class HeaderComponent {
   @Input() token?: string;
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
   getLink(): string {
-   return this.token ? `/?token=${this.token}` : '/';
+    return this.token ? `/?token=${this.token}` : '/';
   }
 }

@@ -21,11 +21,11 @@ export const environment = {
     endpoint: '', // production endpoint
     smEndPoint: 'https://pathways.dxpapi.com/api/',
     smSuggestionEndPoint: 'https://suggest.dxpapi.com/api/',
-    accountId: '',  // add account Id
+    accountId: '', // add account Id
     domainKey: '', // add domain Key
     authKey: '', // add authKey
   },
   appConfig: {
-    defaultLoadingTime: 2 // in seconds
-  }
+    defaultLoadingTime: 2, // in seconds
+  },
 };

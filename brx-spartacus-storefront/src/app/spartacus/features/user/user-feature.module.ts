@@ -23,38 +23,34 @@ import { UserProfileRootModule, USER_PROFILE_FEATURE } from '@spartacus/user/pro
 
 @NgModule({
   declarations: [],
-  imports: [
-    UserAccountRootModule,
-    UserProfileRootModule
+  imports: [UserAccountRootModule, UserProfileRootModule],
+  providers: [
+    provideConfig({
+      featureModules: {
+        [USER_ACCOUNT_FEATURE]: {
+          module: () => import('@spartacus/user/account').then((m) => m.UserAccountModule),
+        },
+      },
+    } as CmsConfig),
+    provideConfig({
+      i18n: {
+        resources: userAccountTranslations,
+        chunks: userAccountTranslationChunksConfig,
+      },
+    } as I18nConfig),
+    provideConfig({
+      featureModules: {
+        [USER_PROFILE_FEATURE]: {
+          module: () => import('@spartacus/user/profile').then((m) => m.UserProfileModule),
+        },
+      },
+    } as CmsConfig),
+    provideConfig({
+      i18n: {
+        resources: userProfileTranslations,
+        chunks: userProfileTranslationChunksConfig,
+      },
+    } as I18nConfig),
   ],
-  providers: [provideConfig({
-    featureModules: {
-      [USER_ACCOUNT_FEATURE]: {
-        module: () =>
-          import('@spartacus/user/account').then((m) => m.UserAccountModule),
-      },
-    }
-  } as CmsConfig),
-  provideConfig({
-    i18n: {
-      resources: userAccountTranslations,
-      chunks: userAccountTranslationChunksConfig,
-    },
-  } as I18nConfig),
-  provideConfig({
-    featureModules: {
-      [USER_PROFILE_FEATURE]: {
-        module: () =>
-          import('@spartacus/user/profile').then((m) => m.UserProfileModule),
-      },
-    }
-  } as CmsConfig),
-  provideConfig({
-    i18n: {
-      resources: userProfileTranslations,
-      chunks: userProfileTranslationChunksConfig,
-    },
-  } as I18nConfig)
-  ]
 })
-export class UserFeatureModule { }
+export class UserFeatureModule {}

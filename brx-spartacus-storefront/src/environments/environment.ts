@@ -25,13 +25,13 @@ export const environment = {
     endpoint: '', // Local Development Endpoint - 'http://localhost:8080/delivery/site/v1/channels/spartacus/pages'
     smEndPoint: 'https://pathways.dxpapi.com/api/',
     smSuggestionEndPoint: 'https://suggest.dxpapi.com/api/',
-    accountId: '',  // add account Id
+    accountId: '', // add account Id
     domainKey: '', // add domain Key
     authKey: '', // add authKey
   },
   appConfig: {
-    defaultLoadingTime: 2 // in seconds
-  }
+    defaultLoadingTime: 2, // in seconds
+  },
 };
 
 /*

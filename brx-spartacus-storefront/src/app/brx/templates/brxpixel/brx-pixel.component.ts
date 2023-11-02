@@ -14,24 +14,24 @@
  * limitations under the License.
  */
 
+import { AfterViewInit, Component } from '@angular/core';
 import { environment } from '../../../../environments/environment';
-import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-brx-pixel',
   templateUrl: './brx-pixel.component.html',
   styleUrls: ['./brx-pixel.component.scss'],
 })
-export class BrxPixelComponent implements OnInit, AfterViewInit {
+export class BrxPixelComponent implements AfterViewInit {
   pageType = 'search';
-  pageLabels = 'pacific,nut,bolt,commerce';
-  type = 'pageview';
 
-  ngOnInit(): void {}
+  pageLabels = 'pacific,nut,bolt,commerce';
+
+  type = 'pageview';
 
   ngAfterViewInit(): void {
     const accountid = environment.libConfig.accountId;
-    const domainKey = environment.libConfig.domainKey;
+    const { domainKey } = environment.libConfig;
 
     if (/^\d+$/.test(accountid)) {
       (window as any).br_data = {

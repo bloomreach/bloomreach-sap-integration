@@ -21,17 +21,14 @@ import { CmsConfig, I18nConfig, provideConfig } from '@spartacus/core';
 
 @NgModule({
   declarations: [],
-  imports: [
-    CheckoutRootModule
-  ],
+  imports: [CheckoutRootModule],
   providers: [
     provideConfig({
       featureModules: {
         [CHECKOUT_FEATURE]: {
-          module: () =>
-            import('@spartacus/checkout').then((m) => m.CheckoutModule),
+          module: () => import('@spartacus/checkout').then((m) => m.CheckoutModule),
         },
-      }
+      },
     } as CmsConfig),
     provideConfig({
       i18n: {
@@ -39,6 +36,6 @@ import { CmsConfig, I18nConfig, provideConfig } from '@spartacus/core';
         chunks: checkoutTranslationChunksConfig,
       },
     } as I18nConfig),
-  ]
+  ],
 })
-export class CheckoutFeatureModule { }
+export class CheckoutFeatureModule {}
