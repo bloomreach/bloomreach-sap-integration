@@ -4,7 +4,7 @@ import { ConverterService, PRODUCT_NORMALIZER } from '@spartacus/core';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BrxSearchConfig } from '../models/brx-search-config.model';
-import { configType } from '../models/brx-config-type.model';
+import { ConfigType } from '../models/brx-config-type.model';
 import { BrxEndpointService } from './brx-endpoint.service';
 
 @Injectable({
@@ -17,9 +17,8 @@ export class BrxPathwaysRecommendations {
     protected converter: ConverterService,
   ) {}
 
-
   productsSubject = new BehaviorSubject<any>([]);
-  
+
   getproducts(
     isPreview: boolean,
     query = '',
@@ -52,8 +51,8 @@ export class BrxPathwaysRecommendations {
         }),
       );
 
-      req.subscribe(data => {
-        this.productsSubject.next(data);
-      })
+    req.subscribe((data) => {
+      this.productsSubject.next(data);
+    });
   }
 }

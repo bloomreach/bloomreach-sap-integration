@@ -36,7 +36,7 @@ export class SpartacusLoginComponent implements OnInit {
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
     private auth: AuthService,
-    private userAccount: UserAccountFacade
+    private userAccount: UserAccountFacade,
   ) {}
 
   ngOnInit(): void {

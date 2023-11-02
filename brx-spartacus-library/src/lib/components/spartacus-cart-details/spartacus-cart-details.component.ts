@@ -23,7 +23,7 @@ import { SpartacusCartDetailsDirective } from './spartacus-cart-details.directiv
 @Component({
   selector: 'brx-spartacus-cart-details',
   templateUrl: './spartacus-cart-details.component.html',
-  styleUrls: ['./spartacus-cart-details.component.scss']
+  styleUrls: ['./spartacus-cart-details.component.scss'],
 })
 export class SpartacusCartDetailsComponent implements OnInit {
   @Input() component!: BrComponent;
@@ -38,7 +38,7 @@ export class SpartacusCartDetailsComponent implements OnInit {
     private activeCartService: ActiveCartService,
     private selectiveCartService: SelectiveCartService,
     private authService: AuthService,
-    private routingService: RoutingService
+    private routingService: RoutingService,
   ) {}
 
   ngOnInit(): void {
@@ -72,6 +72,5 @@ export class SpartacusCartDetailsComponent implements OnInit {
     });
 
     viewContainerRef.createComponent<CartDetailsComponent>(componentFactory, 0, componentInjector);
-
-}
+  }
 }

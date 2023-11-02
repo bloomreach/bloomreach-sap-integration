@@ -1,5 +1,3 @@
-
-   
 /*
  * Copyright 2020 Hippo B.V. (http://www.onehippo.com)
  *

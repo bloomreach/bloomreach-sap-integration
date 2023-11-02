@@ -19,15 +19,14 @@
 
 <ng-container *ngIf="facetList$ | async as facetList">
   <h4 *ngIf="(facetList?.activeFacets?.length || 0) > 0">
-    {{ "productList.appliedFilter" | cxTranslate }}
+    {{ 'productList.appliedFilter' | cxTranslate }}
   </h4>
 
   <a
     *ngFor="let facet of facetList?.activeFacets"
-    [routerLink]="page.getUrl()! | parseUrl: 'pathname'"
+    [routerLink]="page.getUrl()! | parseUrl : 'pathname'"
     [queryParams]="getLinkParams(facet)"
-    [cxFocus]="{ key: getFocusKey(facetList, facet) }"
-  >
+    [cxFocus]="{ key: getFocusKey(facetList, facet) }">
     <span>{{ facet.facetValueName }}</span>
     <cx-icon aria-hidden="true" [type]="closeIcon"></cx-icon>
   </a>

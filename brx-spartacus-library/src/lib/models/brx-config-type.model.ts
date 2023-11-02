@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-export interface configType {
+export interface ConfigType {
   endpoint: string;
   smEndPoint: string;
   smSuggestionEndPoint: string;

@@ -17,7 +17,13 @@
 import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
-import { AnonymousConsentsConfig, AnonymousConsentsService, AuthConfigService, GlobalMessageService, RoutingService } from '@spartacus/core';
+import {
+  AnonymousConsentsConfig,
+  AnonymousConsentsService,
+  AuthConfigService,
+  GlobalMessageService,
+  RoutingService,
+} from '@spartacus/core';
 import { RegisterComponent } from '@spartacus/user/profile/components';
 import { UserRegisterFacade } from '@spartacus/user/profile/root';
 import { SpartacusRegisterDirective } from './spartacus-register.directive';

@@ -25,15 +25,14 @@
   </button>
 
   <a
-    *ngFor="let value of facet.values | slice: 0:state.topVisible"
+    *ngFor="let value of facet.values | slice : 0 : state.topVisible"
     #facetValue
-    [routerLink]="page.getUrl()! | parseUrl: 'pathname'"
+    [routerLink]="page.getUrl()! | parseUrl : 'pathname'"
     [queryParams]="getLinkParams(value)"
     class="value"
     [class.selected]="value.selected"
     [cxFocus]="{ key: value.name }"
-    (keydown.space)="openLink($event)"
-  >
+    (keydown.space)="openLink($event)">
     <span>
       <span class="label">{{ value.name }}</span>
       <span class="count">{{ value.count }}</span>
@@ -44,13 +43,12 @@
     <a
       *ngFor="let value of getMoreFacetValues(facet, state)"
       #facetValue
-      [routerLink]="page.getUrl()! | parseUrl: 'pathname'"
+      [routerLink]="page.getUrl()! | parseUrl : 'pathname'"
       [queryParams]="getLinkParams(value)"
       class="value"
       [class.selected]="value.selected"
       [cxFocus]="{ key: value.name }"
-      (keydown.space)="openLink($event)"
-    >
+      (keydown.space)="openLink($event)">
       <span
         >{{ value.name }}<span class="count">{{ value.count }}</span></span
       >
@@ -60,22 +58,16 @@
       *ngIf="(state.maxVisible || 0) > (state.topVisible || 0)"
       (click)="decreaseVisibleValues()"
       class="cx-action-link"
-      [cxFocus]="{ key: 'moreorless' }"
-    >
-      {{ "productList.showLess" | cxTranslate }}
+      [cxFocus]="{ key: 'moreorless' }">
+      {{ 'productList.showLess' | cxTranslate }}
     </button>
 
     <button
-      *ngIf="
-        state.maxVisible &&
-        state.maxVisible > 0 &&
-        state.maxVisible < (facet.values?.length || 0)
-      "
+      *ngIf="state.maxVisible && state.maxVisible > 0 && state.maxVisible < (facet.values?.length || 0)"
       (click)="increaseVisibleValues()"
       class="cx-action-link"
-      [cxFocus]="{ key: 'moreorless' }"
-    >
-      {{ "productList.showMore" | cxTranslate }}
+      [cxFocus]="{ key: 'moreorless' }">
+      {{ 'productList.showMore' | cxTranslate }}
     </button>
   </div>
 </ng-container>

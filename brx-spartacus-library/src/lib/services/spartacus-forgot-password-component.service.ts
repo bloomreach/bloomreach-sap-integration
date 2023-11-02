@@ -27,8 +27,8 @@ export class SpartacusForgotPasswordComponentService extends ForgotPasswordCompo
     protected userPasswordService: UserPasswordFacade,
     protected routingService: RoutingService,
     protected authConfigService: AuthConfigService,
-    protected globalMessage: GlobalMessageService
+    protected globalMessage: GlobalMessageService,
   ) {
-    super(userPasswordService, routingService, authConfigService, globalMessage)
+    super(userPasswordService, routingService, authConfigService, globalMessage);
   }
 }

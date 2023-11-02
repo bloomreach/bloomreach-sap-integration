@@ -19,10 +19,7 @@
     <ng-container *ngIf="summaryComponents$ | async as summaryComponents">
       <ng-container *ngFor="let component of summaryComponents; let i = index">
         <ng-container *ngIf="component">
-          <ng-template
-            [cxOutlet]="component.flexType"
-            [cxOutletContext]="{ component: component }"
-          >
+          <ng-template [cxOutlet]="component.flexType" [cxOutletContext]="{ component: component }">
             <ng-container [cxComponentWrapper]="component"></ng-container>
           </ng-template>
         </ng-container>

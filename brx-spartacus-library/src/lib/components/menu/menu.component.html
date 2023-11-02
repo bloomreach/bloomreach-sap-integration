@@ -15,30 +15,16 @@
   -->
 <ng-template [ngIf]="menu">
   <ng-container [brManageMenuButton]="menu"></ng-container>
-  <nav
-    class="navbar navbar-expand-lg navbar-light"
-    style="background-color: #212738"
-  >
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      (click)="navbarOpen = !navbarOpen"
-    >
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #212738">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="navbarOpen = !navbarOpen">
       <!-- data-target="#navbarTogglerDemo02"
       aria-controls="navbarTogglerDemo02"
       aria-expanded="false"
       aria-label="Toggle navigation" -->
-      <span class="" role="button"
-        ><i class="fa fa-bars" aria-hidden="true" style="color: #e6e6ff"></i
-      ></span>
+      <span class="" role="button"><i class="fa fa-bars" aria-hidden="true" style="color: #e6e6ff"></i></span>
     </button>
 
-    <div
-      class="collapse navbar-collapse"
-      [ngClass]="{ show: navbarOpen }"
-      id="navbarTogglerDemo02"
-    >
+    <div class="collapse navbar-collapse" [ngClass]="{ show: navbarOpen }" id="navbarTogglerDemo02">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li
           *ngFor="let item of menu.getItems()"
@@ -48,8 +34,7 @@
             active: item.getName() === selectedMenutem,
             dropdown: item.getChildren().length > 0
           }"
-          (click)="selectedItem(item)"
-        >
+          (click)="selectedItem(item)">
           <ng-container *ngIf="item.getChildren().length > 0; else menuitem">
             <a
               class="nav-link dropdown-toggle"
@@ -58,24 +43,17 @@
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-              (click)="setActiveSubMenu(item)"
-            >
+              (click)="setActiveSubMenu(item)">
               {{ item.getName() }}
             </a>
             <div
               class="dropdown-menu"
               [ngClass]="{ show: menuName === item.getName() }"
-              aria-labelledby="navbarDropdownMenuLink"
-            >
-              <brx-menu-item
-                *ngFor="let childitem of item.getChildren()"
-                [item]="childitem"
-              ></brx-menu-item>
+              aria-labelledby="navbarDropdownMenuLink">
+              <brx-menu-item *ngFor="let childitem of item.getChildren()" [item]="childitem"></brx-menu-item>
             </div>
           </ng-container>
-          <ng-template #menuitem
-            ><brx-menu-item [item]="item"></brx-menu-item
-          ></ng-template>
+          <ng-template #menuitem><brx-menu-item [item]="item"></brx-menu-item></ng-template>
         </li>
       </ul>
     </div>

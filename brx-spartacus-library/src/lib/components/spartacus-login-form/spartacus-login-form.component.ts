@@ -34,7 +34,7 @@ export class SpartacusLoginFormComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
-    private readonly loginFormComponentService: SpartacusLoginFormComponentService
+    private readonly loginFormComponentService: SpartacusLoginFormComponentService,
   ) {}
 
   ngOnInit(): void {

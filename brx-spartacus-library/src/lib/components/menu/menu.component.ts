@@ -22,9 +22,6 @@ import { MenuModels } from '../../models/common-types.model';
   selector: 'brx-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
-  host: {
-    '(document:click)': 'onClick($event)',
-  },
 })
 export class MenuComponent {
   @Input() component!: BrComponent;
@@ -60,9 +57,10 @@ export class MenuComponent {
     this.menuName = this.menuName !== item.getName() ? item.getName() : '';
   }
 
+  @HostBinding('document:click')
   onClick(event: { target: any }) {
-    if (!event.target.className.includes("dropdown-toggle")) {
+    if (!event.target.className.includes('dropdown-toggle')) {
       this.menuName = '';
     }
-   }
+  }
 }

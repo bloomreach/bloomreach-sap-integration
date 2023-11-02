@@ -7,25 +7,13 @@
     <div class="col-12 col-lg-12">
       <div class="pathways-and-recommendations mw-container mx-auto">
         <h4 class="mb-4 title">{{ title }}</h4>
-        <cx-carousel
-          [items]="(products$ | async) || getempty()"
-          [template]="carouselItem"
-          itemWidth="285px"
-        >
+        <cx-carousel [items]="(products$ | async) || getempty()" [template]="carouselItem" itemWidth="285px">
         </cx-carousel>
 
         <ng-template #carouselItem let-item="item">
-          <a
-            tabindex="0"
-            routerLink="/product/{{ item.code }}"
-            class="link-container text-decoration-none text-reset"
-          >
+          <a tabindex="0" routerLink="/product/{{ item.code }}" class="link-container text-decoration-none text-reset">
             <div class="img-container">
-              <cx-media
-                *ngIf="item.images?.PRIMARY"
-                [container]="item.images?.PRIMARY"
-                format="product"
-              ></cx-media>
+              <cx-media *ngIf="item.images?.PRIMARY" [container]="item.images?.PRIMARY" format="product"></cx-media>
             </div>
 
             <div *ngIf="showTitle" class="name" [title]="item.name">
@@ -33,9 +21,7 @@
             </div>
 
             <div *ngIf="showPid" class="text-muted">
-              Product No. <br /><span class="text-primary ml-1">{{
-                item.code
-              }}</span>
+              Product No. <br /><span class="text-primary ml-1">{{ item.code }}</span>
             </div>
 
             <div *ngIf="showDescription" class="description text-muted">

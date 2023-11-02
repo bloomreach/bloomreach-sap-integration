@@ -17,16 +17,15 @@
 import { Inject, Injectable } from '@angular/core';
 import { PaginationModel } from '@spartacus/core';
 import { BrxSearchConfig } from '../models/brx-search-config.model';
-import { configType } from '../models/brx-config-type.model';
+import { ConfigType } from '../models/brx-config-type.model';
 import { getCookie } from '../utils/get-cookie';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BrxEndpointService {
-  
   // Get Values Form Env
-  envConfig!: configType;
+  envConfig!: ConfigType;
 
   // Default parameters
   DEFAULT_PARAMS = {
@@ -63,8 +62,6 @@ export class BrxEndpointService {
   viewId = '';
 
   catalogViews = '';
-
-  constructor() {}
 
   buildSearchUrl(query = '', searchConfig: BrxSearchConfig = {}, facets?: string[]): string {
     // console.log('[BrxEndpointService.buildSearchUrl.query]: ', query);

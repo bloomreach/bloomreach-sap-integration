@@ -22,11 +22,7 @@ import { LoginFormComponentService } from '@spartacus/user/account/components';
   providedIn: 'root',
 })
 export class SpartacusLoginFormComponentService extends LoginFormComponentService {
-  constructor(
-    protected auth: AuthService,
-    protected globalMessage: GlobalMessageService,
-    protected winRef: WindowRef
-  ) {
-    super(auth, globalMessage, winRef)
+  constructor(protected auth: AuthService, protected globalMessage: GlobalMessageService, protected winRef: WindowRef) {
+    super(auth, globalMessage, winRef);
   }
 }

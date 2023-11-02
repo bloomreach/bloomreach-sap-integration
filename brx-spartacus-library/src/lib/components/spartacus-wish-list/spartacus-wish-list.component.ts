@@ -22,10 +22,9 @@ import { SpartacusWishListDirective } from './spartacus-wish-list.directive';
 
 @Component({
   selector: 'brx-spartacus-wish-list',
-  templateUrl: './spartacus-wish-list.component.html'
+  templateUrl: './spartacus-wish-list.component.html',
 })
 export class SpartacusWishListComponent implements OnInit {
-
   @Input() component!: BrComponent;
 
   @Input() page!: Page;

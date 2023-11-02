@@ -15,7 +15,7 @@
  */
 
 import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
-import { Component as BrComponent, Page } from '@bloomreach/spa-sdk'
+import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { ForgotPasswordComponent, ForgotPasswordComponentService } from '@spartacus/user/profile/components';
 import { SpartacusForgotPasswordComponentService } from '../../services/spartacus-forgot-password-component.service';
 import { SpartacusForgotPassswordDirective } from './spartacus-forgot-password.directive';
@@ -23,10 +23,9 @@ import { SpartacusForgotPassswordDirective } from './spartacus-forgot-password.d
 @Component({
   selector: 'brx-spartacus-forgot-password',
   templateUrl: './spartacus-forgot-password.component.html',
-  styleUrls: ['./spartacus-forgot-password.component.scss']
+  styleUrls: ['./spartacus-forgot-password.component.scss'],
 })
 export class SpartacusForgotPasswordComponent implements OnInit {
-
   @Input() component!: BrComponent;
 
   @Input() page!: Page;
@@ -36,7 +35,7 @@ export class SpartacusForgotPasswordComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
-    private fpservice: SpartacusForgotPasswordComponentService
+    private fpservice: SpartacusForgotPasswordComponentService,
   ) {}
 
   ngOnInit(): void {
@@ -53,10 +52,9 @@ export class SpartacusForgotPasswordComponent implements OnInit {
         {
           provide: ForgotPasswordComponentService,
           useValue: this.fpservice,
-        }
+        },
       ],
     });
     viewContainerRef.createComponent<ForgotPasswordComponent>(componentFactory, 0, componentInjector);
   }
-
 }

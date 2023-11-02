@@ -20,14 +20,12 @@ import { ActiveCartService, CartVoucherService, CustomerCouponService } from '@s
 import { CartTotalsComponent } from '@spartacus/storefront';
 import { SpartacusCartTotalsDirective } from './spartacus-cart-totals.directive';
 
-
 @Component({
   selector: 'brx-spartacus-cart-totals',
   templateUrl: './spartacus-cart-totals.component.html',
-  styleUrls: ['./spartacus-cart-totals.component.scss']
+  styleUrls: ['./spartacus-cart-totals.component.scss'],
 })
 export class SpartacusCartTotalsComponent implements OnInit {
-
   @Input() component!: BrComponent;
 
   @Input() page!: Page;
@@ -40,7 +38,7 @@ export class SpartacusCartTotalsComponent implements OnInit {
     private cartVoucherService: CartVoucherService,
     private formBuilder: FormBuilder,
     private customerCouponService: CustomerCouponService,
-    private activeCartService: ActiveCartService
+    private activeCartService: ActiveCartService,
   ) {}
 
   ngOnInit(): void {
@@ -74,5 +72,5 @@ export class SpartacusCartTotalsComponent implements OnInit {
     });
 
     viewContainerRef.createComponent<CartTotalsComponent>(componentFactory, 0, componentInjector);
-}
+  }
 }

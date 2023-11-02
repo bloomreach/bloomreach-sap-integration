@@ -24,10 +24,9 @@ import { SpartacusCartQuickOrderFormDirective } from './spartacus-cart-quick-ord
 @Component({
   selector: 'brx-spartacus-cart-quick-order-form',
   templateUrl: './spartacus-cart-quick-order-form.component.html',
-  styleUrls: ['./spartacus-cart-quick-order-form.component.scss']
+  styleUrls: ['./spartacus-cart-quick-order-form.component.scss'],
 })
 export class SpartacusCartQuickOrderFormComponent implements OnInit {
-
   @Input() component!: BrComponent;
 
   @Input() page!: Page;
@@ -40,7 +39,7 @@ export class SpartacusCartQuickOrderFormComponent implements OnInit {
     protected activeCartService: ActiveCartService,
     protected eventService: EventService,
     protected formBuilder: FormBuilder,
-    protected globalMessageService: GlobalMessageService
+    protected globalMessageService: GlobalMessageService,
   ) {}
 
   ngOnInit(): void {
@@ -74,5 +73,5 @@ export class SpartacusCartQuickOrderFormComponent implements OnInit {
     });
 
     viewContainerRef.createComponent<CartQuickOrderFormComponent>(componentFactory, 0, componentInjector);
-}
+  }
 }
