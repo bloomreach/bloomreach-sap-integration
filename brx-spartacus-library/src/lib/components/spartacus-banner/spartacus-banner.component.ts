@@ -48,6 +48,7 @@ export class SpartacusBannerComponent implements OnInit {
     const banner = getContainerItemContent<BannerCompound>(this.component, this.page);
     const image = banner?.image && this.page.getContent<ImageSet>(banner.image);
     const link = banner?.link && this.page.getContent<Document>(banner.link);
+
     const componentProperties: CmsBannerComponent = {
       headline: banner?.title,
       content: this.page.rewriteLinks(banner?.content?.value ?? ''),

@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PathwaysRecommendationsComponent renderWrappedPathways should show an error message if widgetId or widgetType are missing 1`] = `
+<div
+  id="root3"
+>
+  
+  <div
+    class="alert alert-danger"
+    role="alert"
+  >
+     Please configure Widget ID and Widget Type first
+
+  </div>
+  
+</div>
+`;
+
+exports[`PathwaysRecommendationsComponent should initialize component correctly 1`] = `
+<div
+  id="root0"
+>
+  
+  
+  <div
+    class="container"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="col-12 col-lg-12"
+      >
+        <div
+          class="pathways-and-recommendations mw-container mx-auto"
+        >
+          <h4
+            class="mb-4 title"
+          >
+            test
+          </h4>
+          <cx-carousel
+            itemwidth="285px"
+          />
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
