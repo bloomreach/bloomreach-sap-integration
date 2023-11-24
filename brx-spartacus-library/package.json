@@ -36,6 +36,7 @@
   "typings": "dist/bloomreach-brx-spartacus-library.d.ts",
   "sideEffects": false,
   "dependencies": {
+    "@angular/core": "12.2.17",
     "@bloomreach/spa-sdk": "15.5.0",
     "tslib": "2.6.2"
   },
