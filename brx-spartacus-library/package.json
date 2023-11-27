@@ -69,6 +69,7 @@
     "@angular/compiler": "14.3.0",
     "@angular/compiler-cli": "14.3.0",
     "@angular/language-service": "14.3.0",
+    "@spartacus/schematics": "4.3.8",
     "@types/jest": "28.1.1",
     "@typescript-eslint/eslint-plugin": "4.28.2",
     "@typescript-eslint/parser": "4.28.2",
