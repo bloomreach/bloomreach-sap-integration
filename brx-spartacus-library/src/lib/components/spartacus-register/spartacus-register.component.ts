@@ -15,7 +15,7 @@
  */
 
 import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import {
   AnonymousConsentsConfig,
@@ -44,7 +44,7 @@ export class SpartacusRegisterComponent implements OnInit {
     private readonly componentFactoryResolver: ComponentFactoryResolver,
     protected userRegister: UserRegisterFacade,
     protected globalMessageService: GlobalMessageService,
-    protected fb: FormBuilder,
+    protected fb: UntypedFormBuilder,
     protected router: RoutingService,
     protected anonymousConsentsService: AnonymousConsentsService,
     protected anonymousConsentsConfig: AnonymousConsentsConfig,
@@ -72,7 +72,7 @@ export class SpartacusRegisterComponent implements OnInit {
           useValue: this.globalMessageService,
         },
         {
-          provide: FormBuilder,
+          provide: UntypedFormBuilder,
           useValue: this.fb,
         },
         {

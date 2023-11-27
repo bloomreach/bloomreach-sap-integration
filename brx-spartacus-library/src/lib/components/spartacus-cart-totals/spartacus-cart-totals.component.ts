@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { ActiveCartService, CartVoucherService, CustomerCouponService } from '@spartacus/core';
 import { CartTotalsComponent } from '@spartacus/storefront';
@@ -36,7 +36,7 @@ export class SpartacusCartTotalsComponent implements OnInit {
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
     private cartVoucherService: CartVoucherService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private customerCouponService: CustomerCouponService,
     private activeCartService: ActiveCartService,
   ) {}
@@ -61,7 +61,7 @@ export class SpartacusCartTotalsComponent implements OnInit {
           useValue: this.cartVoucherService,
         },
         {
-          provide: FormBuilder,
+          provide: UntypedFormBuilder,
           useValue: this.formBuilder,
         },
         {
