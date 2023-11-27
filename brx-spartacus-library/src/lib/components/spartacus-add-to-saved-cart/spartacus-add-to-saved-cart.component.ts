@@ -49,6 +49,8 @@ export class SpartacusAddToSavedCartComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
+// TODO:Spartacus - Property 'activeCartService' was removed from Class 'AddToSavedCartComponent'. Use activeCartFacade instead.
+// TODO:Spartacus - Property 'activeCartService' was removed from Class 'CartVoucherService'. 
     protected activeCartService: ActiveCartService,
     protected authService: AuthService,
     protected routingService: RoutingService,
@@ -69,6 +71,8 @@ export class SpartacusAddToSavedCartComponent implements OnInit {
       providers: [
         {
           provide: ActiveCartService,
+// TODO:Spartacus - Property 'activeCartService' was removed from Class 'AddToSavedCartComponent'. Use activeCartFacade instead.
+// TODO:Spartacus - Property 'activeCartService' was removed from Class 'CartVoucherService'. 
           useValue: this.activeCartService,
         },
         {

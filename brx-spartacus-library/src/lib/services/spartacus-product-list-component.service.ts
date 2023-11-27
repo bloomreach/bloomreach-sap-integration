@@ -54,6 +54,7 @@ export class SpartacusProductListComponentService extends ProductListComponentSe
       query:
         queryParams.query ||
         this.getQueryFromComponentParams(this.componentParams ?? {}) ||
+// TODO:Spartacus - The 'getQueryFromRouteParams' method's signature changed to: 'getQueryFromRouteParams(  { query, categoryCode, brandCode, }: ProductListRouteParams): string | undefined'
         this.getQueryFromRouteParams(routeParams),
       pageSize: queryParams.pageSize || this.config.view?.defaultPageSize,
       currentPage: queryParams.currentPage,

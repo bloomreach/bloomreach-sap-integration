@@ -42,8 +42,10 @@ export class SpartacusRegisterComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
+// TODO:Spartacus - Property 'userRegister' was removed from Class 'RegisterComponent'. 
     protected userRegister: UserRegisterFacade,
     protected globalMessageService: GlobalMessageService,
+// TODO:Spartacus - The type of property 'fb: FormBuilder' changed to: 'fb: UntypedFormBuilder' 
     protected fb: UntypedFormBuilder,
     protected router: RoutingService,
     protected anonymousConsentsService: AnonymousConsentsService,
@@ -65,6 +67,7 @@ export class SpartacusRegisterComponent implements OnInit {
       providers: [
         {
           provide: UserRegisterFacade,
+// TODO:Spartacus - Property 'userRegister' was removed from Class 'RegisterComponent'. 
           useValue: this.userRegister,
         },
         {
@@ -73,6 +76,7 @@ export class SpartacusRegisterComponent implements OnInit {
         },
         {
           provide: UntypedFormBuilder,
+// TODO:Spartacus - The type of property 'fb: FormBuilder' changed to: 'fb: UntypedFormBuilder' 
           useValue: this.fb,
         },
         {

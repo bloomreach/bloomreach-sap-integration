@@ -34,6 +34,7 @@ export class SpartacusWishListComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
+// TODO:Spartacus - Property 'wishListService' was removed from Class 'WishListComponent'. 
     private wishListService: WishListService,
   ) {}
 
@@ -50,6 +51,7 @@ export class SpartacusWishListComponent implements OnInit {
       providers: [
         {
           provide: WishListService,
+// TODO:Spartacus - Property 'wishListService' was removed from Class 'WishListComponent'. 
           useValue: this.wishListService,
         },
       ],

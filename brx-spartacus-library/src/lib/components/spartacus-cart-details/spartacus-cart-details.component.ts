@@ -35,7 +35,9 @@ export class SpartacusCartDetailsComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
+// TODO:Spartacus - The type of property 'activeCartService: ActiveCartService' changed to: 'activeCartService: ActiveCartFacade' 
     private activeCartService: ActiveCartService,
+// TODO:Spartacus - The type of property 'selectiveCartService: SelectiveCartService' changed to: 'selectiveCartService: SelectiveCartFacade' 
     private selectiveCartService: SelectiveCartService,
     private authService: AuthService,
     private routingService: RoutingService,
@@ -54,10 +56,12 @@ export class SpartacusCartDetailsComponent implements OnInit {
       providers: [
         {
           provide: ActiveCartService,
+// TODO:Spartacus - The type of property 'activeCartService: ActiveCartService' changed to: 'activeCartService: ActiveCartFacade' 
           useValue: this.activeCartService,
         },
         {
           provide: SelectiveCartService,
+// TODO:Spartacus - The type of property 'selectiveCartService: SelectiveCartService' changed to: 'selectiveCartService: SelectiveCartFacade' 
           useValue: this.selectiveCartService,
         },
         {

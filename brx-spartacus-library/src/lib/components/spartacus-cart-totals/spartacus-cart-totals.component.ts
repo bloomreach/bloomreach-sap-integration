@@ -38,6 +38,8 @@ export class SpartacusCartTotalsComponent implements OnInit {
     private cartVoucherService: CartVoucherService,
     private formBuilder: UntypedFormBuilder,
     private customerCouponService: CustomerCouponService,
+// TODO:Spartacus - Property 'activeCartService' was removed from Class 'CartVoucherService'. 
+// TODO:Spartacus - The type of property 'activeCartService: ActiveCartService' changed to: 'activeCartService: ActiveCartFacade' 
     private activeCartService: ActiveCartService,
   ) {}
 
@@ -54,6 +56,8 @@ export class SpartacusCartTotalsComponent implements OnInit {
       providers: [
         {
           provide: ActiveCartService,
+// TODO:Spartacus - Property 'activeCartService' was removed from Class 'CartVoucherService'. 
+// TODO:Spartacus - The type of property 'activeCartService: ActiveCartService' changed to: 'activeCartService: ActiveCartFacade' 
           useValue: this.activeCartService,
         },
         {

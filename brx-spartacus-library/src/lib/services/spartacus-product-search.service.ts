@@ -26,6 +26,7 @@ export class SpartacusProductSearchService extends ProductSearchService {
     super(store);
   }
 
+// TODO:Spartacus - The 'search' method's signature changed to: 'search(  query: string | undefined,  searchConfig: SearchConfig): void'
   search(query: string, searchConfig: SearchConfig): void {
     // console.log('[*** Custom Product Search Service Just used for Logging]', query, searchConfig);
     this.store.dispatch(

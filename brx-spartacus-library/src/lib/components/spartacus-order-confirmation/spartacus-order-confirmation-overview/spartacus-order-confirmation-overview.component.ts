@@ -16,6 +16,7 @@
 
 import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
+// TODO:Spartacus - // TODO:Spartacus - Class OrderConfirmationOverviewComponent has been removed and is no longer part of the public API. Use 'OrderDetailShippingComponent' instead from @spartacus/order/components
 import { OrderConfirmationOverviewComponent } from '@spartacus/checkout/components';
 import { SpartacusOrderConfirmationOverviewDirective } from './spartacus-order-confirmation-overview.directive';
 

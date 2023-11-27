@@ -33,6 +33,7 @@ export class SpartacusMiniCartComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
+// TODO:Spartacus - Property 'activeCartService' was removed from Class 'MiniCartComponent'. 
     protected activeCartService: ActiveCartService,
   ) {}
 
@@ -49,6 +50,7 @@ export class SpartacusMiniCartComponent implements OnInit {
       providers: [
         {
           provide: ActiveCartService,
+// TODO:Spartacus - Property 'activeCartService' was removed from Class 'MiniCartComponent'. 
           useValue: this.activeCartService,
         },
       ],

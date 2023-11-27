@@ -36,6 +36,7 @@ export class SpartacusCartQuickOrderFormComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
+// TODO:Spartacus - The type of property 'activeCartService: ActiveCartService' changed to: 'activeCartService: ActiveCartFacade' 
     protected activeCartService: ActiveCartService,
     protected eventService: EventService,
     protected formBuilder: UntypedFormBuilder,
@@ -55,6 +56,7 @@ export class SpartacusCartQuickOrderFormComponent implements OnInit {
       providers: [
         {
           provide: ActiveCartService,
+// TODO:Spartacus - The type of property 'activeCartService: ActiveCartService' changed to: 'activeCartService: ActiveCartFacade' 
           useValue: this.activeCartService,
         },
         {

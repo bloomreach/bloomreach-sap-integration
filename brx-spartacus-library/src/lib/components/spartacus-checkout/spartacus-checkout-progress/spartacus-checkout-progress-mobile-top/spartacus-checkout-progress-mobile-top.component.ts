@@ -33,6 +33,7 @@ export class SpartacusCheckoutProgressMobileTopComponent implements OnInit {
 
   constructor(private readonly componentFactoryResolver: ComponentFactoryResolver) {}
 
+// TODO:Spartacus - Method 'ngOnInit' was removed from Class 'CheckoutProgressMobileTopComponent'. It has been removed because we are no longer initializing the 'cart$' observable during Angular's initialization lifecycle, but it has been declared and initialized directly through the class property.
   ngOnInit(): void {
     this.renderWrappedCheckoutProgressMobileTop();
   }
