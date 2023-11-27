@@ -4,5 +4,3 @@ node_modules
 .vim
 .yalc
 yalc.lock
-
-/brx-spartacus-storefront/.npmrc
