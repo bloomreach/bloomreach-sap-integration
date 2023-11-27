@@ -46,6 +46,7 @@ describe('BrxPathwaysRecommendations', () => {
         { provide: BrxEndpointService, useValue: mockBrxEndpointService },
         { provide: ConverterService, useValue: mockConverterService },
       ],
+      teardown: { destroyAfterEach: false },
     });
     service = TestBed.inject(BrxPathwaysRecommendations);
   });
