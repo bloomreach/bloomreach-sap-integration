@@ -5,3 +5,4 @@ node_modules
 .yalc
 yalc.lock
 
+/brx-spartacus-storefront/.npmrc
