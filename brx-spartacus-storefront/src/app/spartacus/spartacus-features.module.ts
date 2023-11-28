@@ -15,18 +15,29 @@
  */
 
 import { NgModule } from '@angular/core';
+import { CartBaseCoreModule, CartPageEventModule } from '@spartacus/cart/base/core';
+import { CartBaseOccModule } from '@spartacus/cart/base/occ';
+import { WishListModule } from '@spartacus/cart/wish-list';
 import {
   AnonymousConsentsModule,
   AuthModule,
-  CartModule,
-  CartOccModule,
   CostCenterOccModule,
-  OrderOccModule,
   ProductModule,
   ProductOccModule,
-  UserOccTransitionalModule,
-  UserTransitionalModule,
+  UserOccModule,
+  UserModule,
 } from '@spartacus/core';
+import {
+  OrderCancellationModule,
+  OrderDetailsModule,
+  OrderHistoryModule,
+  OrderReturnModule,
+  ReplenishmentOrderDetailsModule,
+  ReplenishmentOrderHistoryModule,
+  ReturnRequestDetailModule,
+  ReturnRequestListModule,
+} from '@spartacus/order/components';
+import { OrderOccModule } from '@spartacus/order/occ';
 import {
   AddressBookModule,
   AnonymousConsentManagementBannerModule,
@@ -34,8 +45,6 @@ import {
   BannerCarouselModule,
   BannerModule,
   BreadcrumbModule,
-  CartComponentModule,
-  CartPageEventModule,
   CategoryNavigationModule,
   CmsParagraphModule,
   ConsentManagementModule,
@@ -50,10 +59,6 @@ import {
   NavigationEventModule,
   NavigationModule,
   NotificationPreferenceModule,
-  OrderCancellationModule,
-  OrderDetailsModule,
-  OrderHistoryModule,
-  OrderReturnModule,
   PaymentMethodsModule,
   ProductCarouselModule,
   ProductDetailsPageModule,
@@ -66,15 +71,10 @@ import {
   ProductReferencesModule,
   ProductSummaryModule,
   ProductTabsModule,
-  ReplenishmentOrderDetailsModule,
-  ReplenishmentOrderHistoryModule,
-  ReturnRequestDetailModule,
-  ReturnRequestListModule,
   SearchBoxModule,
   SiteContextSelectorModule,
   StockNotificationModule,
   TabParagraphContainerModule,
-  WishListModule,
 } from '@spartacus/storefront';
 import { CartSavedCartFeatureModule } from './features/cart/cart-saved-cart-feature.module';
 import { CheckoutFeatureModule } from './features/checkout/checkout-feature.module';
@@ -101,8 +101,8 @@ import { UserFeatureModule } from './features/user/user-feature.module';
     FooterNavigationModule,
     BreadcrumbModule,
     // User Core,
-    UserTransitionalModule,
-    UserOccTransitionalModule,
+    UserModule,
+    UserOccModule,
     // User UI,
     AddressBookModule,
     PaymentMethodsModule,
@@ -132,10 +132,9 @@ import { UserFeatureModule } from './features/user/user-feature.module';
     ProductSummaryModule,
     ProductIntroModule,
     // Cart Core,
-    CartModule.forRoot(),
-    CartOccModule,
+    CartBaseCoreModule,
+    CartBaseOccModule,
     // Cart UI,
-    CartComponentModule,
     WishListModule,
     CostCenterOccModule,
     // Order,

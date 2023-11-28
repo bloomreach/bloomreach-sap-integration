@@ -10,7 +10,6 @@
 # dependencies
 /node
 /node_modules
-/node
 
 # profiling files
 chrome-profiler-events*.json
@@ -34,6 +33,7 @@ speed-measure-plugin*.json
 .history/*
 
 # misc
+/.angular/cache
 /.sass-cache
 /connect.lock
 /coverage
@@ -46,3 +46,5 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+.npmrc

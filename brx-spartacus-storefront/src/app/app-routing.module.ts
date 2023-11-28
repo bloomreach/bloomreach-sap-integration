@@ -24,8 +24,7 @@ const routes: Routes = [{ path: 'news', component: NewsPageComponent }];
   imports: [
     RouterModule.forRoot(routes, {
       anchorScrolling: 'enabled',
-      relativeLinkResolution: 'corrected',
-      initialNavigation: 'enabled',
+      initialNavigation: 'enabledBlocking',
       scrollPositionRestoration: 'enabled', // Fixing the scrool restoration issue
     }),
   ],

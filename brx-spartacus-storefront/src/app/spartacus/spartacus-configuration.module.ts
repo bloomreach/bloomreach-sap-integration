@@ -82,7 +82,7 @@ import { defaultSavedCartFormLayoutConfig } from './default-saved-cart-form-layo
     } as I18nConfig),
     provideConfig({
       features: {
-        level: '4.0',
+        level: '5.1',
       },
     } as FeaturesConfig),
     provideConfig(defaultImportEntriesLayoutConfig),

@@ -161,7 +161,7 @@ export class BrxComponent implements OnInit, OnDestroy {
         path: router.url,
         ...(this.authorizationToken ? { authorizationToken: this.authorizationToken } : {}),
         ...(this.serverId ? { serverId: this.serverId } : {}),
-      } as BrxComponent['configuration'];
+      } as unknown as BrxComponent['configuration'];
     });
 
     this.navigationEnd = router.events.pipe(
