@@ -40,7 +40,7 @@ export class SpartacusBannerComponent implements OnInit {
     this.renderWrappedBanner();
   }
 
-  renderWrappedBanner(): void {
+  async renderWrappedBanner(): Promise<void> {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(BannerComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
@@ -48,10 +48,11 @@ export class SpartacusBannerComponent implements OnInit {
     const banner = getContainerItemContent<BannerCompound>(this.component, this.page);
     const image = banner?.image && this.page.getContent<ImageSet>(banner.image);
     const link = banner?.link && this.page.getContent<Document>(banner.link);
+    const content = await this.page.rewriteLinks(banner?.content?.value ?? '');
 
     const componentProperties: CmsBannerComponent = {
       headline: banner?.title,
-      content: this.page.rewriteLinks(banner?.content?.value ?? ''),
+      content,
       media: {
         url: image?.getOriginal()?.getUrl(),
       },

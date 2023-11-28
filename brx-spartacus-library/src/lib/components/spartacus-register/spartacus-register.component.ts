@@ -25,7 +25,6 @@ import {
   RoutingService,
 } from '@spartacus/core';
 import { RegisterComponent } from '@spartacus/user/profile/components';
-import { UserRegisterFacade } from '@spartacus/user/profile/root';
 import { SpartacusRegisterDirective } from './spartacus-register.directive';
 
 @Component({
@@ -42,10 +41,7 @@ export class SpartacusRegisterComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
-// TODO:Spartacus - Property 'userRegister' was removed from Class 'RegisterComponent'. 
-    protected userRegister: UserRegisterFacade,
     protected globalMessageService: GlobalMessageService,
-// TODO:Spartacus - The type of property 'fb: FormBuilder' changed to: 'fb: UntypedFormBuilder' 
     protected fb: UntypedFormBuilder,
     protected router: RoutingService,
     protected anonymousConsentsService: AnonymousConsentsService,
@@ -66,17 +62,11 @@ export class SpartacusRegisterComponent implements OnInit {
     const componentInjector = Injector.create({
       providers: [
         {
-          provide: UserRegisterFacade,
-// TODO:Spartacus - Property 'userRegister' was removed from Class 'RegisterComponent'. 
-          useValue: this.userRegister,
-        },
-        {
           provide: GlobalMessageService,
           useValue: this.globalMessageService,
         },
         {
           provide: UntypedFormBuilder,
-// TODO:Spartacus - The type of property 'fb: FormBuilder' changed to: 'fb: UntypedFormBuilder' 
           useValue: this.fb,
         },
         {

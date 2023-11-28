@@ -16,8 +16,8 @@
 
 import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
-import { WishListService } from '@spartacus/core';
-import { WishListComponent } from '@spartacus/storefront';
+import { WishListComponent } from '@spartacus/cart/wish-list/components';
+import { WishListFacade } from '@spartacus/cart/wish-list/root';
 import { SpartacusWishListDirective } from './spartacus-wish-list.directive';
 
 @Component({
@@ -34,8 +34,7 @@ export class SpartacusWishListComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
-// TODO:Spartacus - Property 'wishListService' was removed from Class 'WishListComponent'. 
-    private wishListService: WishListService,
+    private wishListFacade: WishListFacade,
   ) {}
 
   ngOnInit(): void {
@@ -50,9 +49,8 @@ export class SpartacusWishListComponent implements OnInit {
     const componentInjector = Injector.create({
       providers: [
         {
-          provide: WishListService,
-// TODO:Spartacus - Property 'wishListService' was removed from Class 'WishListComponent'. 
-          useValue: this.wishListService,
+          provide: WishListFacade,
+          useValue: this.wishListFacade,
         },
       ],
     });

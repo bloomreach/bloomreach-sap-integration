@@ -17,7 +17,7 @@
 import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
-import { ShippingAddressComponent } from '@spartacus/checkout/components';
+import { CheckoutDeliveryAddressComponent } from '@spartacus/checkout/base/components';
 import { setActivatedRouteSnapshotUrl } from '../utils/set-activated-route-snapshot-url';
 import { SpartacusShippingAddressDirective } from './spartacus-shipping-address.directive';
 
@@ -45,9 +45,9 @@ export class SpartacusShippingAddressComponent implements OnInit {
   }
 
   renderWrappedShippingAddress(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ShippingAddressComponent);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(CheckoutDeliveryAddressComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
-    viewContainerRef.createComponent<ShippingAddressComponent>(componentFactory, 0);
+    viewContainerRef.createComponent<CheckoutDeliveryAddressComponent>(componentFactory, 0);
   }
 }

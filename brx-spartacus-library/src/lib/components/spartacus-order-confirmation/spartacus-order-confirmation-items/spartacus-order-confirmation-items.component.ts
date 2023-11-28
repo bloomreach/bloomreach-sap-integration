@@ -16,7 +16,7 @@
 
 import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
-import { OrderConfirmationItemsComponent } from '@spartacus/checkout/components';
+import { OrderConfirmationItemsComponent } from '@spartacus/order/components';
 import { SpartacusOrderConfirmationItemsDirective } from './spartacus-order-confirmation-items.directive';
 
 @Component({

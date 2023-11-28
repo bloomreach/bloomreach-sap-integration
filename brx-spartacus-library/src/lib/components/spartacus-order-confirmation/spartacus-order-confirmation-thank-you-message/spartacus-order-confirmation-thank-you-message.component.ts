@@ -16,7 +16,7 @@
 
 import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
-import { OrderConfirmationThankYouMessageComponent } from '@spartacus/checkout/components';
+import { OrderConfirmationThankYouMessageComponent } from '@spartacus/order/components';
 // eslint-disable-next-line max-len
 import { SpartacusOrderConfirmationThankYouMessageDirective } from './spartacus-order-confirmation-thank-you-message.directive';
 

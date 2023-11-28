@@ -17,7 +17,7 @@
 import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
-import { DeliveryModeComponent } from '@spartacus/checkout/components';
+import { CheckoutDeliveryModeComponent } from '@spartacus/checkout/base/components';
 import { setActivatedRouteSnapshotUrl } from '../utils/set-activated-route-snapshot-url';
 import { SpartacusDeliveryModeDirective } from './spartacus-delivery-mode.directive';
 
@@ -45,10 +45,10 @@ export class SpartacusDeliveryModeComponent implements OnInit {
   }
 
   renderWrappedDeliveryMode(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(DeliveryModeComponent);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(CheckoutDeliveryModeComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
-    viewContainerRef.createComponent<DeliveryModeComponent>(componentFactory, 0);
+    viewContainerRef.createComponent<CheckoutDeliveryModeComponent>(componentFactory, 0);
   }
 }

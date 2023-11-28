@@ -16,8 +16,7 @@
 
 import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
-// TODO:Spartacus - // TODO:Spartacus - Class OrderConfirmationOverviewComponent has been removed and is no longer part of the public API. Use 'OrderDetailShippingComponent' instead from @spartacus/order/components
-import { OrderConfirmationOverviewComponent } from '@spartacus/checkout/components';
+import { OrderDetailShippingComponent } from '@spartacus/order/components';
 import { SpartacusOrderConfirmationOverviewDirective } from './spartacus-order-confirmation-overview.directive';
 
 @Component({
@@ -39,10 +38,10 @@ export class SpartacusOrderConfirmationOverviewComponent implements OnInit {
   }
 
   renderWrappedOrderConfirmationTotals(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(OrderConfirmationOverviewComponent);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(OrderDetailShippingComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
-    viewContainerRef.createComponent<OrderConfirmationOverviewComponent>(componentFactory, 0);
+    viewContainerRef.createComponent<OrderDetailShippingComponent>(componentFactory, 0);
   }
 }

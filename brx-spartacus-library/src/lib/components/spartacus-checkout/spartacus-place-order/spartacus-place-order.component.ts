@@ -16,7 +16,7 @@
 
 import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
-import { PlaceOrderComponent } from '@spartacus/checkout/components';
+import { CheckoutPlaceOrderComponent } from '@spartacus/checkout/base/components';
 import { SpartacusPlaceOrderDirective } from './spartacus-place-order.directive';
 
 @Component({
@@ -38,10 +38,10 @@ export class SpartacusPlaceOrderComponent implements OnInit {
   }
 
   renderWrappedPlaceOrder(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(PlaceOrderComponent);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(CheckoutPlaceOrderComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
-    viewContainerRef.createComponent<PlaceOrderComponent>(componentFactory, 0);
+    viewContainerRef.createComponent<CheckoutPlaceOrderComponent>(componentFactory, 0);
   }
 }

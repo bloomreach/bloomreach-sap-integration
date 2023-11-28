@@ -16,7 +16,7 @@
 
 import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
-import { CheckoutProgressMobileTopComponent } from '@spartacus/checkout/components';
+import { CheckoutProgressMobileTopComponent } from '@spartacus/checkout/base/components';
 import { SpartacusCheckoutProgressMobileTopDirective } from './spartacus-checkout-progress-mobile-top.directive';
 
 @Component({
@@ -33,7 +33,6 @@ export class SpartacusCheckoutProgressMobileTopComponent implements OnInit {
 
   constructor(private readonly componentFactoryResolver: ComponentFactoryResolver) {}
 
-// TODO:Spartacus - Method 'ngOnInit' was removed from Class 'CheckoutProgressMobileTopComponent'. It has been removed because we are no longer initializing the 'cart$' observable during Angular's initialization lifecycle, but it has been declared and initialized directly through the class property.
   ngOnInit(): void {
     this.renderWrappedCheckoutProgressMobileTop();
   }
