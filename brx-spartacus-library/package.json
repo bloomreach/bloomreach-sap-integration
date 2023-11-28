@@ -36,7 +36,7 @@
   "typings": "dist/index.d.ts",
   "sideEffects": false,
   "dependencies": {
-    "@bloomreach/spa-sdk": "19.0.1",
+    "@bloomreach/spa-sdk": "22.0.2",
     "tslib": "2.6.2"
   },
   "peerDependencies": {
@@ -45,7 +45,7 @@
     "@angular/forms": "14.3.0",
     "@angular/platform-browser": "14.3.0",
     "@angular/router": "14.3.0",
-    "@bloomreach/ng-sdk": "19.0.1",
+    "@bloomreach/ng-sdk": "22.0.2",
     "@ngrx/store": "14.3.3",
     "@spartacus/assets": "5.1.0",
     "@spartacus/cart": "5.1.0",
