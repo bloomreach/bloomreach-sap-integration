@@ -6,7 +6,8 @@
   },
   "allowedNonPeerDependencies": [
     "@bloomreach/spa-sdk",
-    "@ngrx/store"
+    "@ngrx/store",
+    "sanitize-html"
   ],
   "assets": ["**/*.scss"]
 }

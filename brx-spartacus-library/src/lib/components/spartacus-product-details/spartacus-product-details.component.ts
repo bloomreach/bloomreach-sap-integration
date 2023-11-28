@@ -23,6 +23,7 @@ import { map } from 'rxjs/operators';
 import { SelectionType, DocumentContent } from '../../models/common-types.model';
 import { BrxDeliveryTabService } from '../../services/brx-delivery-tab.service';
 import { SpartacusTabParagraphContainerDirective } from './spartacus-tab-paragraph-container.directive';
+import { sanitize } from '../../utils/sanitize';
 
 interface SpartacusProductDetailTabsCompound {
   tabs: SelectionType;
@@ -76,7 +77,8 @@ export class SpartacusProductDetailsComponent implements OnInit {
     };
 
     if (shipping?.value) {
-      const content = await this.page.rewriteLinks(shipping.value);
+      const sanitized = sanitize(shipping.value);
+      const content = this.page.rewriteLinks(sanitized);
       this.deliveryTabService.setContent(content);
     }
 
