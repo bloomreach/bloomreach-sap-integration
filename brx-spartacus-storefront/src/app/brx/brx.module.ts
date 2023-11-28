@@ -19,13 +19,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrSdkModule } from '@bloomreach/ng-sdk';
 import { SpartacusModule } from '../spartacus/spartacus.module';
-import { BrxComponent } from './brx.component';
+import { BrxComponent, ENDPOINT } from './brx.component';
 import { IsExternalLinkPipe } from './pipes/is-external-link.pipe';
 import { IsInternalLinkPipe } from './pipes/is-internal-link.pipe';
 import { ParseUrlPipe } from './pipes/parse-url.pipe';
 import { FooterComponent } from './templates/footer/footer.component';
 import { HeaderComponent } from './templates/header/header.component';
 import { BrxPixelComponent } from './templates/brxpixel/brx-pixel.component';
+import { environment } from '../../environments/environment';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,6 @@ import { BrxPixelComponent } from './templates/brxpixel/brx-pixel.component';
   ],
   imports: [CommonModule, BrSdkModule, RouterModule, SpartacusModule],
   exports: [BrxComponent],
-  providers: [],
+  providers: [{ provide: ENDPOINT, useValue: environment.libConfig.endpoint }],
 })
 export class BrxModule {}

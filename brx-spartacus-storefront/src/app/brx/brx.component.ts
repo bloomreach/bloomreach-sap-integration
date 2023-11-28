@@ -64,7 +64,9 @@ import { Request } from 'express';
 import { Observable } from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { BrPageComponent } from '@bloomreach/ng-sdk';
 import { EnvConfigService } from '../services/env-config.service';
+import { buildConfiguration } from '../utils/buildConfiguration';
 
 export const ENDPOINT = new InjectionToken<string>('brXM API endpoint');
 
@@ -75,7 +77,7 @@ export const ENDPOINT = new InjectionToken<string>('brXM API endpoint');
   styleUrls: ['./brx.component.scss'],
 })
 export class BrxComponent implements OnInit, OnDestroy {
-  configuration!: Configuration;
+  configuration!: BrPageComponent['configuration'];
 
   outletPosition = OutletPosition;
 
@@ -140,29 +142,10 @@ export class BrxComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private routingService: RoutingService,
     private envConfigService: EnvConfigService,
+    @Inject(ENDPOINT) endpoint?: string,
     @Inject(REQUEST) @Optional() request?: Request,
   ) {
-    const PREVIEW_TOKEN_KEY = 'token';
-    const PREVIEW_SERVER_ID_KEY = 'server-id';
-
-    // Read a token and server id from the query params
-    route.queryParams.subscribe((params) => {
-      const queryToken = params[PREVIEW_TOKEN_KEY];
-      const queryServerId = params[PREVIEW_SERVER_ID_KEY];
-
-      this.authorizationToken = this.authorizationToken ?? queryToken;
-      this.serverId = this.serverId ?? queryServerId;
-
-      this.configuration = {
-        debug: true,
-        endpoint: environment.libConfig.endpoint,
-        request,
-        endpointQueryParameter: 'endpoint',
-        path: router.url,
-        ...(this.authorizationToken ? { authorizationToken: this.authorizationToken } : {}),
-        ...(this.serverId ? { serverId: this.serverId } : {}),
-      } as unknown as BrxComponent['configuration'];
-    });
+    this.configuration = buildConfiguration(router.url, request, endpoint);
 
     this.navigationEnd = router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
@@ -172,12 +155,6 @@ export class BrxComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.navigationEnd.subscribe((event) => {
       this.showSpinner = true;
-
-      this.endpointFromParams = this.route.snapshot.queryParamMap.get('endpoint') || undefined;
-      this.configuration = {
-        ...this.configuration,
-        endpoint: this.endpointFromParams ? this.endpointFromParams : this.envConfigService.config.endpoint,
-      };
 
       this.configuration = { ...this.configuration, path: event.url };
       this.brxHttpError = undefined;

@@ -32,6 +32,7 @@ export const environment = {
   appConfig: {
     defaultLoadingTime: 2, // in seconds
   },
+  hasMultiTenantSupport: 'true',
 };
 
 /*
