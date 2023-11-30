@@ -76,7 +76,7 @@ export const ENDPOINT = new InjectionToken<string>('brXM API endpoint');
   templateUrl: './brx.component.html',
   styleUrls: ['./brx.component.scss'],
 })
-export class BrxComponent implements OnInit, OnDestroy {
+export class BrxComponent implements OnDestroy {
   configuration!: BrPageComponent['configuration'];
 
   outletPosition = OutletPosition;
@@ -131,8 +131,6 @@ export class BrxComponent implements OnInit, OnDestroy {
 
   pageContext$?: Observable<PageContext>;
 
-  private navigationEnd: Observable<NavigationEnd>;
-
   showSpinner = true;
 
   spinnerTimeout: any;
@@ -142,21 +140,19 @@ export class BrxComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private routingService: RoutingService,
     private envConfigService: EnvConfigService,
-    @Inject(ENDPOINT) endpoint?: string,
     @Inject(REQUEST) @Optional() request?: Request,
   ) {
-    this.configuration = buildConfiguration(router.url, request, endpoint);
-
-    this.navigationEnd = router.events.pipe(
-      filter((event) => event instanceof NavigationEnd),
-    ) as Observable<NavigationEnd>;
-  }
-
-  ngOnInit(): void {
-    this.navigationEnd.subscribe((event) => {
+    router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe((navigationEvent) => {
+      const event = navigationEvent as NavigationEnd;
       this.showSpinner = true;
 
-      this.configuration = { ...this.configuration, path: event.url };
+      this.endpointFromParams = this.route.snapshot.queryParamMap.get('endpoint') || undefined;
+      const endpoint: string = this.endpointFromParams
+        ? this.endpointFromParams
+        : this.envConfigService.config.endpoint;
+
+      this.configuration = buildConfiguration(event.url, request, endpoint);
+
       this.brxHttpError = undefined;
       this.pageContext$ = this.routingService
         .getPageContext()

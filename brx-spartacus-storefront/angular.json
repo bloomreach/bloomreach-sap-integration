@@ -80,6 +80,14 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -93,8 +101,12 @@
           "configurations": {
             "production": {
               "browserTarget": "brx-spartacus:build:production"
+            },
+            "development": {
+              "browserTarget": "brx-spartacus:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "test": {
           "builder": "@angular-builders/jest:run",
