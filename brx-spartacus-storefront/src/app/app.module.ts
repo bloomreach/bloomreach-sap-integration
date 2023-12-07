@@ -22,12 +22,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { BrxSpartacusLibModule } from '@bloomreach/brx-spartacus-library';
 import { I18nModule } from '@spartacus/core';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrxModule } from './brx/brx.module';
 import { SpartacusModule } from './spartacus/spartacus.module';
 import { NewsPageComponent } from './pages/news-page/news-page.component';
 import { EnvConfigService } from './services/env-config.service';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent, NewsPageComponent],
@@ -43,6 +45,10 @@ import { EnvConfigService } from './services/env-config.service';
     BrowserTransferStateModule,
     BrxModule,
     BrxSpartacusLibModule,
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
   ],
   bootstrap: [AppComponent],
 })

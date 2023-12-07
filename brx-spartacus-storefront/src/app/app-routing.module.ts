@@ -17,13 +17,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NewsPageComponent } from './pages/news-page/news-page.component';
-import { BrxComponent } from './brx/brx.component';
 
-const routes: Routes = [
-  { path: 'news', component: NewsPageComponent },
-  { path: 'product/:productCode', component: BrxComponent },
-  { path: '**', component: BrxComponent },
-];
+const routes: Routes = [{ path: 'news', component: NewsPageComponent }];
 
 @NgModule({
   imports: [

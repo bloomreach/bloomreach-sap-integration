@@ -18,7 +18,7 @@ describe('BrxEndpointService', () => {
   };
 
   beforeAll(() => {
-    jest.useFakeTimers('modern');
+    jest.useFakeTimers();
     jest.setSystemTime(new Date(2023, 11, 22));
   });
 
