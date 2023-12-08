@@ -39,6 +39,7 @@ export class SpartacusDeliveryModeComponent implements OnInit {
     private readonly router: Router,
   ) {}
 
+  // TODO:Spartacus - Method 'ngOnInit' was removed from Class 'CheckoutDeliveryModeComponent'.
   ngOnInit(): void {
     setActivatedRouteSnapshotUrl(this.page, this.activatedRoute, this.router);
     this.renderWrappedDeliveryMode();
