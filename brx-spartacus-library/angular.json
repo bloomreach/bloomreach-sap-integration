@@ -13,11 +13,6 @@
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "project": "ng-package.json",
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "node_modules/"
-              ]
-            }
           },
           "configurations": {
             "production": {
