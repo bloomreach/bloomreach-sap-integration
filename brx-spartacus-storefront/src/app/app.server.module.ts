@@ -19,9 +19,15 @@ import { ServerModule, ServerTransferStateModule } from '@angular/platform-serve
 
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
+import { provideServer } from '@spartacus/setup/ssr';
 
 @NgModule({
   imports: [AppModule, ServerModule, ServerTransferStateModule],
   bootstrap: [AppComponent],
+  providers: [
+    ...provideServer({
+       serverRequestOrigin: process.env['SERVER_REQUEST_ORIGIN'],
+     }),
+  ],
 })
 export class AppServerModule {}
