@@ -17,12 +17,14 @@
 import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { ContainerItem, getContainerItemContent, Page } from '@bloomreach/spa-sdk';
 import {
+  CmsComponentData,
   PageLayoutService,
   ProductListComponent,
   ProductListComponentService,
   ProductListRouteParams,
   ViewConfig,
 } from '@spartacus/storefront';
+import { of } from 'rxjs';
 import { PRODUCT_LIST_COMPONENT_PARAMS, SpartacusProductListComponentService } from '../../services';
 import { SelectionType } from '../../models/common-types.model';
 import { SpartacusProductListDirective } from './spartacus-product-list.directive';
@@ -88,14 +90,20 @@ export class SpartacusProductListComponent implements OnInit {
       },
     };
 
+    const componentProperties = {
+      composition: {
+        inner: ['ProductAddToCartComponent'],
+      },
+    };
+
     const componentInjector = Injector.create({
       providers: [
         { provide: PageLayoutService, useValue: this.pageLayoutService },
         { provide: ViewConfig, useValue: scrollConfig },
         { provide: PRODUCT_LIST_COMPONENT_PARAMS, useValue: componentParams },
         { provide: ProductListComponentService, useClass: SpartacusProductListComponentService },
+        { provide: CmsComponentData, useValue: { data$: of(componentProperties) } },
       ],
-      parent: this.injector,
     });
 
     viewContainerRef.createComponent<ProductListComponent>(componentFactory, 0, componentInjector);
