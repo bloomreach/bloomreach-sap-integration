@@ -104,6 +104,7 @@ export class SpartacusProductListComponent implements OnInit {
         { provide: ProductListComponentService, useClass: SpartacusProductListComponentService },
         { provide: CmsComponentData, useValue: { data$: of(componentProperties) } },
       ],
+      parent: this.injector,
     });
 
     viewContainerRef.createComponent<ProductListComponent>(componentFactory, 0, componentInjector);
