@@ -24,8 +24,9 @@ import {
   GlobalMessageService,
   RoutingService,
 } from '@spartacus/core';
-import { RegisterComponent } from '@spartacus/user/profile/components';
+import { RegisterComponent, RegisterComponentService } from '@spartacus/user/profile/components';
 import { SpartacusRegisterDirective } from './spartacus-register.directive';
+import { SpartacusRegisterComponentService } from '../../services/spartacus-register-component.service';
 
 @Component({
   selector: 'brx-spartacus-register',
@@ -41,6 +42,7 @@ export class SpartacusRegisterComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
+    private registerComponentService: SpartacusRegisterComponentService,
     protected globalMessageService: GlobalMessageService,
     protected fb: UntypedFormBuilder,
     protected router: RoutingService,
@@ -84,6 +86,10 @@ export class SpartacusRegisterComponent implements OnInit {
         {
           provide: AuthConfigService,
           useValue: this.authConfigService,
+        },
+        {
+          provide: RegisterComponentService,
+          useValue: this.registerComponentService,
         },
       ],
     });
