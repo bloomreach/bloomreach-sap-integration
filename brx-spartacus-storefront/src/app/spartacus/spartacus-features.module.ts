@@ -15,9 +15,6 @@
  */
 
 import { NgModule } from '@angular/core';
-import { CartBaseCoreModule, CartPageEventModule } from '@spartacus/cart/base/core';
-import { CartBaseOccModule } from '@spartacus/cart/base/occ';
-import { WishListModule } from '@spartacus/cart/wish-list';
 import {
   AnonymousConsentsModule,
   AuthModule,
@@ -26,18 +23,8 @@ import {
   ProductOccModule,
   UserOccModule,
   UserModule,
+  ExternalRoutesModule,
 } from '@spartacus/core';
-import {
-  OrderCancellationModule,
-  OrderDetailsModule,
-  OrderHistoryModule,
-  OrderReturnModule,
-  ReplenishmentOrderDetailsModule,
-  ReplenishmentOrderHistoryModule,
-  ReturnRequestDetailModule,
-  ReturnRequestListModule,
-} from '@spartacus/order/components';
-import { OrderOccModule } from '@spartacus/order/occ';
 import {
   AddressBookModule,
   AnonymousConsentManagementBannerModule,
@@ -80,15 +67,19 @@ import { CartSavedCartFeatureModule } from './features/cart/cart-saved-cart-feat
 import { CheckoutFeatureModule } from './features/checkout/checkout-feature.module';
 import { ProductVariantsFeatureModule } from './features/product/product-variants-feature.module';
 import { UserFeatureModule } from './features/user/user-feature.module';
+import { CartBaseFeatureModule } from './features/cart/cart-base-feature.module';
+import { CartImportExportFeatureModule } from './features/cart/cart-import-export-feature.module';
+import { CartQuickOrderFeatureModule } from './features/cart/cart-quick-order-feature.module';
+import { OrderFeatureModule } from './features/order/order-feature.module';
+import { WishListFeatureModule } from './features/cart/wish-list-feature.module';
+import { ProductImageZoomFeatureModule } from './features/product/product-image-zoom-feature.module';
 
 @NgModule({
   declarations: [],
   imports: [
-    // Auth Core
     AuthModule.forRoot(),
     LogoutModule,
     LoginRouteModule,
-    // Basic Cms Components
     HamburgerMenuModule,
     SiteContextSelectorModule,
     LinkModule,
@@ -100,10 +91,9 @@ import { UserFeatureModule } from './features/user/user-feature.module';
     NavigationModule,
     FooterNavigationModule,
     BreadcrumbModule,
-    // User Core,
+    // PageTitleModule,
     UserModule,
     UserOccModule,
-    // User UI,
     AddressBookModule,
     PaymentMethodsModule,
     NotificationPreferenceModule,
@@ -111,18 +101,13 @@ import { UserFeatureModule } from './features/user/user-feature.module';
     StockNotificationModule,
     ConsentManagementModule,
     MyCouponsModule,
-    // Anonymous Consents Core,
     AnonymousConsentsModule.forRoot(),
-    // Anonymous Consents UI,
     AnonymousConsentsDialogModule,
     AnonymousConsentManagementBannerModule,
-    // Product Core,
     ProductModule.forRoot(),
     ProductOccModule,
-    // Product UI,
     ProductDetailsPageModule,
     ProductListingPageModule,
-    ProductListModule,
     SearchBoxModule,
     ProductFacetNavigationModule,
     ProductTabsModule,
@@ -130,33 +115,24 @@ import { UserFeatureModule } from './features/user/user-feature.module';
     ProductReferencesModule,
     ProductImagesModule,
     ProductSummaryModule,
+    ProductListModule,
     ProductIntroModule,
-    // Cart Core,
-    CartBaseCoreModule,
-    CartBaseOccModule,
-    // Cart UI,
-    WishListModule,
     CostCenterOccModule,
-    // Order,
-    OrderHistoryModule,
-    OrderDetailsModule,
-    OrderCancellationModule,
-    OrderReturnModule,
-    ReturnRequestListModule,
-    ReturnRequestDetailModule,
-    ReplenishmentOrderHistoryModule,
-    ReplenishmentOrderDetailsModule,
-    OrderOccModule,
-    // Page Events,
     NavigationEventModule,
     HomePageEventModule,
-    CartPageEventModule,
     ProductPageEventModule,
-
+    ExternalRoutesModule.forRoot(),
     UserFeatureModule,
-    ProductVariantsFeatureModule,
-    CheckoutFeatureModule,
+    CartBaseFeatureModule,
     CartSavedCartFeatureModule,
+    WishListFeatureModule,
+    CartQuickOrderFeatureModule,
+    CartImportExportFeatureModule,
+    OrderFeatureModule,
+    CheckoutFeatureModule,
+    ProductVariantsFeatureModule,
+    ProductImageZoomFeatureModule,
+    ProductFacetNavigationModule,
   ],
 })
 export class SpartacusFeaturesModule {}
