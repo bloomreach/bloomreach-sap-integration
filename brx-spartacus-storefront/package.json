@@ -25,7 +25,7 @@
     "@angular/platform-server": "14.3.0",
     "@angular/router": "14.3.0",
     "@angular/service-worker": "14.3.0",
-    "@bloomreach/brx-spartacus-library": "file:.yalc/@bloomreach/brx-spartacus-library",
+    "@bloomreach/brx-spartacus-library": "2.0.0-alpha.0",
     "@bloomreach/ng-sdk": "22.0.2",
     "@bloomreach/spa-sdk": "22.0.2",
     "@ng-select/ng-select": "9.1.0",
