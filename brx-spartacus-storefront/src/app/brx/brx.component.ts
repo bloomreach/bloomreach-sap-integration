@@ -62,7 +62,7 @@ import { PageContext, RoutingService } from '@spartacus/core';
 import { OutletPosition } from '@spartacus/storefront';
 import { Request } from 'express';
 import { Observable } from 'rxjs';
-import {filter, tap} from 'rxjs/operators';
+import { filter, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { BrPageComponent } from '@bloomreach/ng-sdk';
 import { EnvConfigService } from '../services/env-config.service';
@@ -122,7 +122,7 @@ export class BrxComponent implements OnDestroy {
     SpartacusPlaceOrder: SpartacusPlaceOrderComponent,
     SpartacusOrderConfirmationThankYouMessage: SpartacusOrderConfirmationThankYouMessageComponent,
     SpartacusOrderConfirmationItems: SpartacusOrderConfirmationItemsComponent,
-    SpartacusOrderDetailShippingComponent: SpartacusOrderDetailShippingComponent,
+    SpartacusOrderDetailShippingComponent,
     SpartacusOrderConfirmationTotals: SpartacusOrderConfirmationTotalsComponent,
     SpartacusForgotPassword: SpartacusForgotPasswordComponent,
   };
