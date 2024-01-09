@@ -76,6 +76,8 @@ import { SpartacusCheckoutModule } from './components/spartacus-checkout/spartac
 import { SpartacusOrderConfirmationModule } from './components/spartacus-order-confirmation/spartacus-order-confirmation.module';
 import { SpartacusForgotPasswordComponent } from './components/spartacus-forgot-password/spartacus-forgot-password.component';
 import { SpartacusForgotPassswordDirective } from './components/spartacus-forgot-password/spartacus-forgot-password.directive';
+import { SpartacusOrderDetailShippingComponent } from './components/spartacus-order-detail-shipping/spartacus-order-detail-shipping.component';
+import { SpartacusOrderDetailShippingDirective } from './components/spartacus-order-detail-shipping/spartacus-order-detail-shipping.directive';
 
 @NgModule({
   declarations: [
@@ -123,6 +125,8 @@ import { SpartacusForgotPassswordDirective } from './components/spartacus-forgot
     SpartacusWishListDirective,
     SpartacusForgotPasswordComponent,
     SpartacusForgotPassswordDirective,
+    SpartacusOrderDetailShippingComponent,
+    SpartacusOrderDetailShippingDirective,
   ],
   imports: [
     BrowserModule,
@@ -170,6 +174,7 @@ import { SpartacusForgotPassswordDirective } from './components/spartacus-forgot
     MyAccountMenuComponent,
     SpartacusWishListComponent,
     SpartacusForgotPasswordComponent,
+    SpartacusOrderDetailShippingComponent,
   ],
 })
 export class BrxSpartacusLibModule {}
