@@ -16,8 +16,15 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CmsPageGuard } from '@spartacus/storefront';
+import { BrxComponent } from './brx/brx.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'search/:query', component: BrxComponent },
+  { path: 'product/:productCode', canActivate: [CmsPageGuard], component: BrxComponent },
+  { path: 'category/:categoryCode', component: BrxComponent },
+  { path: '**', component: BrxComponent },
+];
 
 @NgModule({
   imports: [
