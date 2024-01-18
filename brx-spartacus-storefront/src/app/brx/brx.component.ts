@@ -146,12 +146,21 @@ export class BrxComponent implements OnDestroy {
       const event = navigationEvent as NavigationEnd;
       this.showSpinner = true;
 
+      const PREVIEW_TOKEN_KEY = 'token';
+      const PREVIEW_SERVER_ID_KEY = 'server-id';
+
+      const queryToken = this.route.snapshot.queryParamMap.get(PREVIEW_TOKEN_KEY) || undefined;
+      const queryServerId = this.route.snapshot.queryParamMap.get(PREVIEW_SERVER_ID_KEY) || undefined;
+
+      this.authorizationToken = this.authorizationToken ?? queryToken;
+      this.serverId = this.serverId ?? queryServerId;
+
       this.endpointFromParams = this.route.snapshot.queryParamMap.get('endpoint') || undefined;
       const endpoint: string = this.endpointFromParams
         ? this.endpointFromParams
         : this.envConfigService.config.endpoint;
 
-      this.configuration = buildConfiguration(event.url, request, endpoint);
+      this.configuration = buildConfiguration(event.url, request, this.authorizationToken, this.serverId, endpoint);
 
       this.brxHttpError = undefined;
       this.pageContext$ = this.routingService

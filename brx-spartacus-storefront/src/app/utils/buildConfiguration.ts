@@ -28,6 +28,8 @@ type ConfigurationBuilder = Omit<Configuration & Partial<BuildConfigurationOptio
 export function buildConfiguration(
   path: string,
   request?: Request,
+  token?: string,
+  serverId?: string,
   endpoint: string = BRXM_ENDPOINT,
   hasMultiTenantSupport: boolean = BR_MULTI_TENANT_SUPPORT,
 ): ConfigurationBuilder {
@@ -49,6 +51,12 @@ export function buildConfiguration(
   }
   if (request) {
     configuration.request = request;
+  }
+  if (token) {
+    configuration.authorizationToken = token;
+  }
+  if (serverId) {
+    configuration.serverId = serverId;
   }
   return configuration;
 }
