@@ -15,7 +15,7 @@
  */
 
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, InjectionToken, OnDestroy, OnInit, Optional } from '@angular/core';
+import { Component, Inject, InjectionToken, OnDestroy, Optional } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import {
   BannerComponent,
