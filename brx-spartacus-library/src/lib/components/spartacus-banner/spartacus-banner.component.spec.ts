@@ -3,10 +3,13 @@ import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 import { ComponentFactoryResolver, CUSTOM_ELEMENTS_SCHEMA, ViewContainerRef } from '@angular/core';
 import { Page } from '@bloomreach/spa-sdk';
+import sanitizeHTML from 'sanitize-html';
 import mockPage from '../../../__mocks__/page';
 import mockComponent from '../../../__mocks__/container-item';
 import { SpartacusBannerComponent } from './spartacus-banner.component';
 import { SpartacusBannerDirective } from './spartacus-banner.directive';
+
+jest.mock('sanitize-html', jest.fn);
 
 describe('SpartacusBannerComponent', () => {
   let component: SpartacusBannerComponent;
@@ -35,8 +38,8 @@ describe('SpartacusBannerComponent', () => {
     getUrl: jest.fn(() => mockLinkUrl),
   };
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(() => {
+    TestBed.configureTestingModule({
       imports: [RouterModule],
       declarations: [SpartacusBannerComponent],
       providers: [
@@ -83,6 +86,12 @@ describe('SpartacusBannerComponent', () => {
     component.wrappedComponent = new SpartacusBannerDirective(
       mockWrappedComponent.viewContainerRef as unknown as ViewContainerRef,
     );
+
+    // eslint-disable-next-line no-import-assign
+    (sanitizeHTML as any) = jest.fn();
+    (sanitizeHTML.defaults as any) = {
+      allowedTags: [],
+    };
 
     fixture.detectChanges();
   });

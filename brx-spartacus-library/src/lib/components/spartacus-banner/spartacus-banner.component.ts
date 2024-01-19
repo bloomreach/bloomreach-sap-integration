@@ -41,7 +41,7 @@ export class SpartacusBannerComponent implements OnInit {
     this.renderWrappedBanner();
   }
 
-  async renderWrappedBanner(): Promise<void> {
+  renderWrappedBanner(): void {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(BannerComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();

@@ -4,7 +4,6 @@ exports[`PathwaysRecommendationsComponent renderWrappedPathways should show an e
 <div
   id="root3"
 >
-  
   <div
     class="alert alert-danger"
     role="alert"
@@ -13,6 +12,7 @@ exports[`PathwaysRecommendationsComponent renderWrappedPathways should show an e
 
   </div>
   
+  
 </div>
 `;
 
@@ -20,7 +20,6 @@ exports[`PathwaysRecommendationsComponent should initialize component correctly 
 <div
   id="root0"
 >
-  
   
   <div
     class="container"
@@ -47,5 +46,6 @@ exports[`PathwaysRecommendationsComponent should initialize component correctly 
       </div>
     </div>
   </div>
+  
 </div>
 `;
