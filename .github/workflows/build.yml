@@ -11,9 +11,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          env:
-            NODE_AUTH_TOKEN: ${{secrets.NPM_SAP_TOKEN}}
       - name: 'Install dependencies for library'
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         working-directory: './brx-spartacus-library'
         run: npm ci
       - name: 'Build library'
@@ -26,6 +26,8 @@ jobs:
         working-directory: './brx-spartacus-library'
         run: npm run test
       - name: 'Install dependencies for storefront'
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         working-directory: './brx-spartacus-storefront'
         run: npm ci
       - name: 'Build storefront'
