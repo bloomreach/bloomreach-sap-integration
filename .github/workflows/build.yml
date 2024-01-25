@@ -11,6 +11,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
+          env:
+            NODE_AUTH_TOKEN: ${{secrets.NPM_SAP_TOKEN}}
       - name: 'Install dependencies for library'
         working-directory: './brx-spartacus-library'
         run: npm ci
