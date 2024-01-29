@@ -20,7 +20,7 @@ import { DocumentModels, DocumentData } from '../../models/common-types.model';
 import { sanitize } from '../../utils/sanitize';
 
 @Component({
-  selector: 'br-banner',
+  selector: 'brx-banner',
   templateUrl: './banner.component.html',
 })
 export class BannerComponent implements OnInit {
