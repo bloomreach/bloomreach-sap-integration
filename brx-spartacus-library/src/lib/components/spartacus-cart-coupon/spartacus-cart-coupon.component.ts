@@ -16,8 +16,8 @@
 
 import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
-import { ActiveCartService } from '@spartacus/core';
-import { CartCouponComponent } from '@spartacus/storefront';
+import { CartCouponComponent } from '@spartacus/cart/base/components';
+import { ActiveCartFacade } from '@spartacus/cart/base/root';
 import { SpartacusCartCouponDirective } from './spartacus-cart-coupon.directive';
 
 @Component({
@@ -35,7 +35,7 @@ export class SpartacusCartCouponComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
-    private activeCartService: ActiveCartService,
+    private activeCartService: ActiveCartFacade,
   ) {}
 
   ngOnInit(): void {
@@ -50,7 +50,7 @@ export class SpartacusCartCouponComponent implements OnInit {
     const componentInjector = Injector.create({
       providers: [
         {
-          provide: ActiveCartService,
+          provide: ActiveCartFacade,
           useValue: this.activeCartService,
         },
       ],

@@ -15,7 +15,7 @@
  */
 
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, InjectionToken, OnDestroy, OnInit, Optional } from '@angular/core';
+import { Component, Inject, InjectionToken, OnDestroy, Optional } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import {
   BannerComponent,
@@ -40,7 +40,7 @@ import {
   SpartacusLoginRegisterComponent,
   SpartacusMiniCartComponent,
   SpartacusOrderConfirmationItemsComponent,
-  SpartacusOrderConfirmationOverviewComponent,
+  SpartacusOrderDetailShippingComponent,
   SpartacusOrderConfirmationThankYouMessageComponent,
   SpartacusOrderConfirmationTotalsComponent,
   SpartacusParagraphComponent,
@@ -56,7 +56,7 @@ import {
   SpartacusShippingAddressComponent,
   SpartacusWishListComponent,
 } from '@bloomreach/brx-spartacus-library';
-import { Configuration, Page } from '@bloomreach/spa-sdk';
+import { Page } from '@bloomreach/spa-sdk';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { PageContext, RoutingService } from '@spartacus/core';
 import { OutletPosition } from '@spartacus/storefront';
@@ -64,7 +64,9 @@ import { Request } from 'express';
 import { Observable } from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { BrPageComponent } from '@bloomreach/ng-sdk';
 import { EnvConfigService } from '../services/env-config.service';
+import { buildConfiguration } from '../utils/buildConfiguration';
 
 export const ENDPOINT = new InjectionToken<string>('brXM API endpoint');
 
@@ -74,8 +76,8 @@ export const ENDPOINT = new InjectionToken<string>('brXM API endpoint');
   templateUrl: './brx.component.html',
   styleUrls: ['./brx.component.scss'],
 })
-export class BrxComponent implements OnInit, OnDestroy {
-  configuration!: Configuration;
+export class BrxComponent implements OnDestroy {
+  configuration!: BrPageComponent['configuration'];
 
   outletPosition = OutletPosition;
 
@@ -120,7 +122,7 @@ export class BrxComponent implements OnInit, OnDestroy {
     SpartacusPlaceOrder: SpartacusPlaceOrderComponent,
     SpartacusOrderConfirmationThankYouMessage: SpartacusOrderConfirmationThankYouMessageComponent,
     SpartacusOrderConfirmationItems: SpartacusOrderConfirmationItemsComponent,
-    SpartacusOrderConfirmationOverview: SpartacusOrderConfirmationOverviewComponent,
+    SpartacusOrderDetailShippingComponent,
     SpartacusOrderConfirmationTotals: SpartacusOrderConfirmationTotalsComponent,
     SpartacusForgotPassword: SpartacusForgotPasswordComponent,
   };
@@ -128,8 +130,6 @@ export class BrxComponent implements OnInit, OnDestroy {
   brxHttpError?: HttpErrorResponse;
 
   pageContext$?: Observable<PageContext>;
-
-  private navigationEnd: Observable<NavigationEnd>;
 
   showSpinner = true;
 
@@ -142,44 +142,26 @@ export class BrxComponent implements OnInit, OnDestroy {
     private envConfigService: EnvConfigService,
     @Inject(REQUEST) @Optional() request?: Request,
   ) {
-    const PREVIEW_TOKEN_KEY = 'token';
-    const PREVIEW_SERVER_ID_KEY = 'server-id';
+    router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe((navigationEvent) => {
+      const event = navigationEvent as NavigationEnd;
+      this.showSpinner = true;
 
-    // Read a token and server id from the query params
-    route.queryParams.subscribe((params) => {
-      const queryToken = params[PREVIEW_TOKEN_KEY];
-      const queryServerId = params[PREVIEW_SERVER_ID_KEY];
+      const PREVIEW_TOKEN_KEY = 'token';
+      const PREVIEW_SERVER_ID_KEY = 'server-id';
+
+      const queryToken = this.route.snapshot.queryParamMap.get(PREVIEW_TOKEN_KEY) || undefined;
+      const queryServerId = this.route.snapshot.queryParamMap.get(PREVIEW_SERVER_ID_KEY) || undefined;
 
       this.authorizationToken = this.authorizationToken ?? queryToken;
       this.serverId = this.serverId ?? queryServerId;
 
-      this.configuration = {
-        debug: true,
-        endpoint: environment.libConfig.endpoint,
-        request,
-        endpointQueryParameter: 'endpoint',
-        path: router.url,
-        ...(this.authorizationToken ? { authorizationToken: this.authorizationToken } : {}),
-        ...(this.serverId ? { serverId: this.serverId } : {}),
-      } as BrxComponent['configuration'];
-    });
-
-    this.navigationEnd = router.events.pipe(
-      filter((event) => event instanceof NavigationEnd),
-    ) as Observable<NavigationEnd>;
-  }
-
-  ngOnInit(): void {
-    this.navigationEnd.subscribe((event) => {
-      this.showSpinner = true;
-
       this.endpointFromParams = this.route.snapshot.queryParamMap.get('endpoint') || undefined;
-      this.configuration = {
-        ...this.configuration,
-        endpoint: this.endpointFromParams ? this.endpointFromParams : this.envConfigService.config.endpoint,
-      };
+      const endpoint: string = this.endpointFromParams
+        ? this.endpointFromParams
+        : this.envConfigService.config.endpoint;
 
-      this.configuration = { ...this.configuration, path: event.url };
+      this.configuration = buildConfiguration(event.url, request, this.authorizationToken, this.serverId, endpoint);
+
       this.brxHttpError = undefined;
       this.pageContext$ = this.routingService
         .getPageContext()

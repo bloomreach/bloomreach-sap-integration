@@ -15,8 +15,7 @@
  */
 import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
-import { ActiveCartService } from '@spartacus/core';
-import { MiniCartComponent } from '@spartacus/storefront';
+import { MiniCartComponent, MiniCartComponentService } from '@spartacus/cart/base/components/mini-cart';
 import { SpartacusMiniCartDirective } from './spartacus-mini-cart.directive';
 
 @Component({
@@ -33,7 +32,7 @@ export class SpartacusMiniCartComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
-    protected activeCartService: ActiveCartService,
+    protected miniCartComponentService: MiniCartComponentService,
   ) {}
 
   ngOnInit(): void {
@@ -48,8 +47,8 @@ export class SpartacusMiniCartComponent implements OnInit {
     const componentInjector = Injector.create({
       providers: [
         {
-          provide: ActiveCartService,
-          useValue: this.activeCartService,
+          provide: MiniCartComponentService,
+          useValue: this.miniCartComponentService,
         },
       ],
     });

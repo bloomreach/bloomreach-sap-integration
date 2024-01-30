@@ -15,7 +15,7 @@
  */
 
 import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import {
   AnonymousConsentsConfig,
@@ -24,9 +24,9 @@ import {
   GlobalMessageService,
   RoutingService,
 } from '@spartacus/core';
-import { RegisterComponent } from '@spartacus/user/profile/components';
-import { UserRegisterFacade } from '@spartacus/user/profile/root';
+import { RegisterComponent, RegisterComponentService } from '@spartacus/user/profile/components';
 import { SpartacusRegisterDirective } from './spartacus-register.directive';
+import { SpartacusRegisterComponentService } from '../../services/spartacus-register-component.service';
 
 @Component({
   selector: 'brx-spartacus-register',
@@ -42,9 +42,9 @@ export class SpartacusRegisterComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
-    protected userRegister: UserRegisterFacade,
+    private registerComponentService: SpartacusRegisterComponentService,
     protected globalMessageService: GlobalMessageService,
-    protected fb: FormBuilder,
+    protected fb: UntypedFormBuilder,
     protected router: RoutingService,
     protected anonymousConsentsService: AnonymousConsentsService,
     protected anonymousConsentsConfig: AnonymousConsentsConfig,
@@ -64,15 +64,11 @@ export class SpartacusRegisterComponent implements OnInit {
     const componentInjector = Injector.create({
       providers: [
         {
-          provide: UserRegisterFacade,
-          useValue: this.userRegister,
-        },
-        {
           provide: GlobalMessageService,
           useValue: this.globalMessageService,
         },
         {
-          provide: FormBuilder,
+          provide: UntypedFormBuilder,
           useValue: this.fb,
         },
         {
@@ -90,6 +86,10 @@ export class SpartacusRegisterComponent implements OnInit {
         {
           provide: AuthConfigService,
           useValue: this.authConfigService,
+        },
+        {
+          provide: RegisterComponentService,
+          useValue: this.registerComponentService,
         },
       ],
     });

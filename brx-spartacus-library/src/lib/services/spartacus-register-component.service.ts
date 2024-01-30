@@ -14,4 +14,16 @@
  * limitations under the License.
  */
 
-export * from './spartacus-order-confirmation-overview.component';
+import { Injectable } from '@angular/core';
+import { GlobalMessageService } from '@spartacus/core';
+import { UserRegisterFacade } from '@spartacus/user/profile/root';
+import { RegisterComponentService } from '@spartacus/user/profile/components';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class SpartacusRegisterComponentService extends RegisterComponentService {
+  constructor(protected userRegisterFacade: UserRegisterFacade, protected globalMessage: GlobalMessageService) {
+    super(userRegisterFacade, globalMessage);
+  }
+}

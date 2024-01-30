@@ -14,18 +14,27 @@
  * limitations under the License.
  */
 
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Component as BrComponent, Document, ImageSet, Page } from '@bloomreach/spa-sdk';
 import { DocumentModels, DocumentData } from '../../models/common-types.model';
+import { sanitize } from '../../utils/sanitize';
 
 @Component({
   selector: 'brx-banner',
   templateUrl: './banner.component.html',
 })
-export class BannerComponent {
+export class BannerComponent implements OnInit {
   @Input() component!: BrComponent;
 
   @Input() page!: Page;
+
+  safeHTML?: string | null;
+
+  async ngOnInit(): Promise<void> {
+    const content = this.document?.getData<DocumentData>().content;
+    const sanitized = sanitize(content!.value);
+    this.safeHTML = this.page.rewriteLinks(sanitized);
+  }
 
   get document(): Document | undefined {
     const { document } = this.component.getModels<DocumentModels>();

@@ -17,7 +17,7 @@
 import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
-import { PaymentMethodComponent } from '@spartacus/checkout/components';
+import { CheckoutPaymentMethodComponent } from '@spartacus/checkout/base/components';
 import { setActivatedRouteSnapshotUrl } from '../utils/set-activated-route-snapshot-url';
 import { SpartacusPaymentMethodDirective } from './spartacus-payment-method.directive';
 
@@ -45,10 +45,10 @@ export class SpartacusPaymentMethodComponent implements OnInit {
   }
 
   renderWrappedPaymentMethod(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(PaymentMethodComponent);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(CheckoutPaymentMethodComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
-    viewContainerRef.createComponent<PaymentMethodComponent>(componentFactory, 0);
+    viewContainerRef.createComponent<CheckoutPaymentMethodComponent>(componentFactory, 0);
   }
 }

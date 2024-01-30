@@ -16,16 +16,21 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NewsPageComponent } from './pages/news-page/news-page.component';
+import { CmsPageGuard } from '@spartacus/storefront';
+import { BrxComponent } from './brx/brx.component';
 
-const routes: Routes = [{ path: 'news', component: NewsPageComponent }];
+const routes: Routes = [
+  { path: 'search/:query', component: BrxComponent },
+  { path: 'product/:productCode', canActivate: [CmsPageGuard], component: BrxComponent },
+  { path: 'category/:categoryCode', component: BrxComponent },
+  { path: '**', component: BrxComponent },
+];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
       anchorScrolling: 'enabled',
-      relativeLinkResolution: 'corrected',
-      initialNavigation: 'enabled',
+      initialNavigation: 'enabledBlocking',
       scrollPositionRestoration: 'enabled', // Fixing the scrool restoration issue
     }),
   ],

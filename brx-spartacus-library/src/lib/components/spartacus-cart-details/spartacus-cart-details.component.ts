@@ -16,8 +16,9 @@
 
 import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
-import { ActiveCartService, AuthService, RoutingService, SelectiveCartService } from '@spartacus/core';
-import { CartDetailsComponent } from '@spartacus/storefront';
+import { AuthService, RoutingService } from '@spartacus/core';
+import { CartDetailsComponent } from '@spartacus/cart/base/components';
+import { ActiveCartFacade, SelectiveCartFacade } from '@spartacus/cart/base/root';
 import { SpartacusCartDetailsDirective } from './spartacus-cart-details.directive';
 
 @Component({
@@ -35,8 +36,8 @@ export class SpartacusCartDetailsComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
-    private activeCartService: ActiveCartService,
-    private selectiveCartService: SelectiveCartService,
+    private activeCartService: ActiveCartFacade,
+    private selectiveCartService: SelectiveCartFacade,
     private authService: AuthService,
     private routingService: RoutingService,
   ) {}
@@ -53,11 +54,11 @@ export class SpartacusCartDetailsComponent implements OnInit {
     const componentInjector = Injector.create({
       providers: [
         {
-          provide: ActiveCartService,
+          provide: ActiveCartFacade,
           useValue: this.activeCartService,
         },
         {
-          provide: SelectiveCartService,
+          provide: SelectiveCartFacade,
           useValue: this.selectiveCartService,
         },
         {

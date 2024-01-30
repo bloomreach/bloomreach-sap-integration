@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-2021 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2020-2024 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,32 +16,32 @@
 
 import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
-import { OrderConfirmationOverviewComponent } from '@spartacus/checkout/components';
-import { SpartacusOrderConfirmationOverviewDirective } from './spartacus-order-confirmation-overview.directive';
+import { OrderDetailShippingComponent } from '@spartacus/order/components';
+import { SpartacusOrderDetailShippingDirective } from './spartacus-order-detail-shipping.directive';
 
 @Component({
-  selector: 'brx-spartacus-order-confirmation-overview',
-  templateUrl: './spartacus-order-confirmation-overview.component.html',
+  selector: 'brx-spartacus-order-detail-shipping',
+  templateUrl: './spartacus-order-detail-shipping.component.html',
 })
-export class SpartacusOrderConfirmationOverviewComponent implements OnInit {
+export class SpartacusOrderDetailShippingComponent implements OnInit {
   @Input() component!: BrComponent;
 
   @Input() page!: Page;
 
-  @ViewChild(SpartacusOrderConfirmationOverviewDirective, { static: true })
-  wrappedComponent!: SpartacusOrderConfirmationOverviewDirective;
+  @ViewChild(SpartacusOrderDetailShippingDirective, { static: true })
+  wrappedComponent!: SpartacusOrderDetailShippingDirective;
 
   constructor(private readonly componentFactoryResolver: ComponentFactoryResolver) {}
 
   ngOnInit(): void {
-    this.renderWrappedOrderConfirmationTotals();
+    this.renderWrappedOrderDetailShipping();
   }
 
-  renderWrappedOrderConfirmationTotals(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(OrderConfirmationOverviewComponent);
+  renderWrappedOrderDetailShipping(): void {
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(OrderDetailShippingComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
-    viewContainerRef.createComponent<OrderConfirmationOverviewComponent>(componentFactory, 0);
+    viewContainerRef.createComponent<OrderDetailShippingComponent>(componentFactory, 0);
   }
 }

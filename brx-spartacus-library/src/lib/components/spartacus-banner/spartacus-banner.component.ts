@@ -21,6 +21,7 @@ import { BannerComponent, CmsComponentData } from '@spartacus/storefront';
 import { of } from 'rxjs';
 import { BannerCompound } from '../../models/common-types.model';
 import { SpartacusBannerDirective } from './spartacus-banner.directive';
+import { sanitize } from '../../utils/sanitize';
 
 @Component({
   selector: 'brx-spartacus-banner',
@@ -48,10 +49,12 @@ export class SpartacusBannerComponent implements OnInit {
     const banner = getContainerItemContent<BannerCompound>(this.component, this.page);
     const image = banner?.image && this.page.getContent<ImageSet>(banner.image);
     const link = banner?.link && this.page.getContent<Document>(banner.link);
+    const sanitized = sanitize(banner?.content?.value ?? '');
+    const content = this.page.rewriteLinks(sanitized);
 
     const componentProperties: CmsBannerComponent = {
       headline: banner?.title,
-      content: this.page.rewriteLinks(banner?.content?.value ?? ''),
+      content,
       media: {
         url: image?.getOriginal()?.getUrl(),
       },

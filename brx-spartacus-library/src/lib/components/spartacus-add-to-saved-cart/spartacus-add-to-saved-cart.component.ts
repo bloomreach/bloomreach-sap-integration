@@ -23,15 +23,10 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
-import {
-  ActiveCartService,
-  AuthService,
-  CartVoucherService,
-  CustomerCouponService,
-  RoutingService,
-} from '@spartacus/core';
+import { AuthService, RoutingService } from '@spartacus/core';
 import { LaunchDialogService } from '@spartacus/storefront';
 import { AddToSavedCartComponent } from '@spartacus/cart/saved-cart/components';
+import { ActiveCartFacade } from '@spartacus/cart/base/root';
 import { SpartacusAddToSavedCartDirective } from './spartacus-add-to-saved-cart.directive';
 
 @Component({
@@ -49,7 +44,7 @@ export class SpartacusAddToSavedCartComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
-    protected activeCartService: ActiveCartService,
+    protected activeCartService: ActiveCartFacade,
     protected authService: AuthService,
     protected routingService: RoutingService,
     protected vcr: ViewContainerRef,
@@ -68,7 +63,7 @@ export class SpartacusAddToSavedCartComponent implements OnInit {
     const componentInjector = Injector.create({
       providers: [
         {
-          provide: ActiveCartService,
+          provide: ActiveCartFacade,
           useValue: this.activeCartService,
         },
         {

@@ -12,6 +12,7 @@ describe('BrxProductNormalizer', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [{ provide: ConverterService, useValue: mockConverterService }],
+      teardown: { destroyAfterEach: false },
     });
     service = TestBed.inject(BrxProductNormalizer);
   });

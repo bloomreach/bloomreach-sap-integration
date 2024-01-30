@@ -16,7 +16,7 @@
 
 import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
-import { CheckoutProgressMobileBottomComponent } from '@spartacus/checkout/components';
+import { CheckoutProgressMobileBottomComponent } from '@spartacus/checkout/base/components';
 import { SpartacusCheckoutProgressMobileBottomDirective } from './spartacus-checkout-progress-mobile-bottom.directive';
 
 @Component({

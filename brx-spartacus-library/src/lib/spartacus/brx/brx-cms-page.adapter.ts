@@ -76,7 +76,14 @@ export class BrxCmsPageAdapter implements CmsPageAdapter {
           return this.generateOrderConfirmationPageTemplate(pageContext, queryParams);
         }
 
+        // Convert to uid
+        let uid = path;
+        if (uid === '__HOMEPAGE__') {
+          uid = 'homepage';
+        }
+        uid = uid.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
         return {
+          uid,
           typeCode: pageContext?.type,
           template: this.getPageTemplate(pageContext),
           contentSlots: {

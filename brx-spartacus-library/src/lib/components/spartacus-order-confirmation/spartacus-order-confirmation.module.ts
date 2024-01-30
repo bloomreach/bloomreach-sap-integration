@@ -21,8 +21,6 @@ import { SpartacusOrderConfirmationThankYouMessageComponent } from './spartacus-
 import { SpartacusOrderConfirmationThankYouMessageDirective } from './spartacus-order-confirmation-thank-you-message/spartacus-order-confirmation-thank-you-message.directive';
 import { SpartacusOrderConfirmationTotalsDirective } from './spartacus-order-confirmation-totals/spartacus-order-confirmation-totals.directive';
 import { SpartacusOrderConfirmationTotalsComponent } from './spartacus-order-confirmation-totals';
-import { SpartacusOrderConfirmationOverviewDirective } from './spartacus-order-confirmation-overview/spartacus-order-confirmation-overview.directive';
-import { SpartacusOrderConfirmationOverviewComponent } from './spartacus-order-confirmation-overview';
 import { SpartacusOrderConfirmationItemsComponent } from './spartacus-order-confirmation-items';
 import { SpartacusOrderConfirmationItemsDirective } from './spartacus-order-confirmation-items/spartacus-order-confirmation-items.directive';
 
@@ -33,15 +31,12 @@ import { SpartacusOrderConfirmationItemsDirective } from './spartacus-order-conf
     SpartacusOrderConfirmationThankYouMessageDirective,
     SpartacusOrderConfirmationTotalsComponent,
     SpartacusOrderConfirmationTotalsDirective,
-    SpartacusOrderConfirmationOverviewComponent,
-    SpartacusOrderConfirmationOverviewDirective,
     SpartacusOrderConfirmationItemsComponent,
     SpartacusOrderConfirmationItemsDirective,
   ],
   exports: [
     SpartacusOrderConfirmationThankYouMessageComponent,
     SpartacusOrderConfirmationTotalsComponent,
-    SpartacusOrderConfirmationOverviewComponent,
     SpartacusOrderConfirmationItemsComponent,
   ],
 })

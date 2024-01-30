@@ -16,7 +16,7 @@
 
 import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
-import { ReviewSubmitComponent } from '@spartacus/checkout/components';
+import { CheckoutReviewSubmitComponent } from '@spartacus/checkout/base/components';
 import { SpartacusReviewSubmitDirective } from './spartacus-review-submit.directive';
 
 @Component({
@@ -38,10 +38,10 @@ export class SpartacusReviewSubmitComponent implements OnInit {
   }
 
   renderWrappedReviewSubmit(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ReviewSubmitComponent);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(CheckoutReviewSubmitComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
-    viewContainerRef.createComponent<ReviewSubmitComponent>(componentFactory, 0);
+    viewContainerRef.createComponent<CheckoutReviewSubmitComponent>(componentFactory, 0);
   }
 }

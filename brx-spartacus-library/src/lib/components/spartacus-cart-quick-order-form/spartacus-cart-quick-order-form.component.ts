@@ -16,9 +16,10 @@
 
 import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
-import { FormBuilder } from '@angular/forms';
-import { ActiveCartService, EventService, GlobalMessageService } from '@spartacus/core';
+import { UntypedFormBuilder } from '@angular/forms';
+import { EventService, GlobalMessageService } from '@spartacus/core';
 import { CartQuickOrderFormComponent } from '@spartacus/cart/quick-order/components';
+import { ActiveCartFacade } from '@spartacus/cart/base/root';
 import { SpartacusCartQuickOrderFormDirective } from './spartacus-cart-quick-order-form.directive';
 
 @Component({
@@ -36,9 +37,9 @@ export class SpartacusCartQuickOrderFormComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
-    protected activeCartService: ActiveCartService,
+    protected activeCartService: ActiveCartFacade,
     protected eventService: EventService,
-    protected formBuilder: FormBuilder,
+    protected formBuilder: UntypedFormBuilder,
     protected globalMessageService: GlobalMessageService,
   ) {}
 
@@ -54,7 +55,7 @@ export class SpartacusCartQuickOrderFormComponent implements OnInit {
     const componentInjector = Injector.create({
       providers: [
         {
-          provide: ActiveCartService,
+          provide: ActiveCartFacade,
           useValue: this.activeCartService,
         },
         {
@@ -62,7 +63,7 @@ export class SpartacusCartQuickOrderFormComponent implements OnInit {
           useValue: this.eventService,
         },
         {
-          provide: FormBuilder,
+          provide: UntypedFormBuilder,
           useValue: this.formBuilder,
         },
         {

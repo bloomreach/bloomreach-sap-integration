@@ -42,8 +42,9 @@
       }
     }
   },
-  "defaultProject": "brx-spartacus-lib",
   "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

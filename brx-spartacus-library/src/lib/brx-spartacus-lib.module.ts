@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { BrSdkModule } from '@bloomreach/ng-sdk';
@@ -31,14 +31,12 @@ import { SpartacusProductListComponent } from './components/spartacus-product-li
 import { SpartacusProductListDirective } from './components/spartacus-product-list/spartacus-product-list.directive';
 import { SpartacusSearchBoxComponent } from './components/spartacus-search-box/spartacus-search-box.component';
 import { SpartacusSearchBoxDirective } from './components/spartacus-search-box/spartacus-search-box.directive';
-import { ConfigType } from './models/brx-config-type.model';
-import { BrxEndpointService } from './services/brx-endpoint.service';
 import { BrxProductSearchModule } from './spartacus/brx/adapters/brx-product-search.module';
 import { CmsBrxModule } from './spartacus/brx/cms-brx.module';
 import { BrxProductNormalizerModule } from './spartacus/brx/normalizers/brx-product-normalizer.module';
 // eslint-disable-next-line max-len
 import { PathwaysRecommendationsComponent } from './components/pathways-recommendations/pathways-recommendations.component';
-import { SpartacusProductFacetNavigationModule } from './components/spartacus-product-facet-navigation/index';
+import { SpartacusProductFacetNavigationModule } from './components/spartacus-product-facet-navigation';
 import { SpartacusLoginFormComponent } from './components/spartacus-login-form/spartacus-login-form.component';
 import { SpartacusLoginFormDirective } from './components/spartacus-login-form/spartacus-login-form.directive';
 import { CustomPipesModule } from './pipes/custom-pipes.module';
@@ -72,10 +70,12 @@ import { SpartacusMiniCartDirective } from './components/spartacus-mini-cart/spa
 import { MyAccountMenuComponent } from './components/my-account-menu/my-account-menu.component';
 import { SpartacusWishListComponent } from './components/spartacus-wish-list/spartacus-wish-list.component';
 import { SpartacusWishListDirective } from './components/spartacus-wish-list/spartacus-wish-list.directive';
-import { SpartacusCheckoutModule } from './components/spartacus-checkout/spartacus-checkout.module';
+import { SpartacusCheckoutModule } from './components/spartacus-checkout';
 import { SpartacusOrderConfirmationModule } from './components/spartacus-order-confirmation/spartacus-order-confirmation.module';
 import { SpartacusForgotPasswordComponent } from './components/spartacus-forgot-password/spartacus-forgot-password.component';
 import { SpartacusForgotPassswordDirective } from './components/spartacus-forgot-password/spartacus-forgot-password.directive';
+import { SpartacusOrderDetailShippingComponent } from './components/spartacus-order-detail-shipping/spartacus-order-detail-shipping.component';
+import { SpartacusOrderDetailShippingDirective } from './components/spartacus-order-detail-shipping/spartacus-order-detail-shipping.directive';
 
 @NgModule({
   declarations: [
@@ -123,6 +123,8 @@ import { SpartacusForgotPassswordDirective } from './components/spartacus-forgot
     SpartacusWishListDirective,
     SpartacusForgotPasswordComponent,
     SpartacusForgotPassswordDirective,
+    SpartacusOrderDetailShippingComponent,
+    SpartacusOrderDetailShippingDirective,
   ],
   imports: [
     BrowserModule,
@@ -170,6 +172,7 @@ import { SpartacusForgotPassswordDirective } from './components/spartacus-forgot
     MyAccountMenuComponent,
     SpartacusWishListComponent,
     SpartacusForgotPasswordComponent,
+    SpartacusOrderDetailShippingComponent,
   ],
 })
 export class BrxSpartacusLibModule {}

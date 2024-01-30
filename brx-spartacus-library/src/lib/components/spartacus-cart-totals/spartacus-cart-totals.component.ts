@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
-import { ActiveCartService, CartVoucherService, CustomerCouponService } from '@spartacus/core';
-import { CartTotalsComponent } from '@spartacus/storefront';
+import { CustomerCouponService } from '@spartacus/core';
+import { CartTotalsComponent } from '@spartacus/cart/base/components';
+import { ActiveCartFacade, CartVoucherFacade } from '@spartacus/cart/base/root';
 import { SpartacusCartTotalsDirective } from './spartacus-cart-totals.directive';
 
 @Component({
@@ -35,10 +36,10 @@ export class SpartacusCartTotalsComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
-    private cartVoucherService: CartVoucherService,
-    private formBuilder: FormBuilder,
+    private cartVoucherService: CartVoucherFacade,
+    private formBuilder: UntypedFormBuilder,
     private customerCouponService: CustomerCouponService,
-    private activeCartService: ActiveCartService,
+    private activeCartService: ActiveCartFacade,
   ) {}
 
   ngOnInit(): void {
@@ -53,15 +54,15 @@ export class SpartacusCartTotalsComponent implements OnInit {
     const componentInjector = Injector.create({
       providers: [
         {
-          provide: ActiveCartService,
+          provide: ActiveCartFacade,
           useValue: this.activeCartService,
         },
         {
-          provide: CartVoucherService,
+          provide: CartVoucherFacade,
           useValue: this.cartVoucherService,
         },
         {
-          provide: FormBuilder,
+          provide: UntypedFormBuilder,
           useValue: this.formBuilder,
         },
         {
