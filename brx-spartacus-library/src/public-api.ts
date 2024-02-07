@@ -47,7 +47,6 @@ export * from './lib/components/spartacus-wish-list/spartacus-wish-list.componen
 export * from './lib/components/spartacus-checkout/index';
 export * from './lib/components/spartacus-order-confirmation/index';
 export * from './lib/components/spartacus-forgot-password/spartacus-forgot-password.component';
-export * from './lib/components/spartacus-order-detail-shipping/spartacus-order-detail-shipping.component';
 
 export * from './lib/spartacus/brx/cms-brx.module';
 export * from './lib/spartacus/brx/adapters/brx-product-search.module';
