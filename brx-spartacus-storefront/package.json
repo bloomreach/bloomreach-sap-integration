@@ -58,6 +58,7 @@
   },
   "devDependencies": {
     "@angular-builders/jest": "15.0.0",
+    "@angular-devkit/architect": "0.1502.10",
     "@angular-devkit/build-angular": "15.2.10",
     "@angular-devkit/schematics": "15.2.10",
     "@angular-eslint/builder": "15.2.1",
