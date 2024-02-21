@@ -40,7 +40,6 @@ import {
   SpartacusLoginRegisterComponent,
   SpartacusMiniCartComponent,
   SpartacusOrderConfirmationItemsComponent,
-  SpartacusOrderDetailShippingComponent,
   SpartacusOrderConfirmationThankYouMessageComponent,
   SpartacusOrderConfirmationTotalsComponent,
   SpartacusParagraphComponent,
@@ -122,7 +121,6 @@ export class BrxComponent implements OnDestroy {
     SpartacusPlaceOrder: SpartacusPlaceOrderComponent,
     SpartacusOrderConfirmationThankYouMessage: SpartacusOrderConfirmationThankYouMessageComponent,
     SpartacusOrderConfirmationItems: SpartacusOrderConfirmationItemsComponent,
-    SpartacusOrderDetailShippingComponent,
     SpartacusOrderConfirmationTotals: SpartacusOrderConfirmationTotalsComponent,
     SpartacusForgotPassword: SpartacusForgotPasswordComponent,
   };

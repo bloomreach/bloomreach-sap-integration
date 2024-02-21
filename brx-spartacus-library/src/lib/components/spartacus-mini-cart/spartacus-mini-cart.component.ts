@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-2021 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2020-2024 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { MiniCartComponent, MiniCartComponentService } from '@spartacus/cart/base/components/mini-cart';
 import { SpartacusMiniCartDirective } from './spartacus-mini-cart.directive';
+import { SpartacusMiniCartComponentService } from '../../services/spartacus-mini-cart-component.service';
 
 @Component({
   selector: 'brx-spartacus-mini-cart',
@@ -32,7 +33,7 @@ export class SpartacusMiniCartComponent implements OnInit {
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver,
-    protected miniCartComponentService: MiniCartComponentService,
+    protected miniCartComponentService: SpartacusMiniCartComponentService,
   ) {}
 
   ngOnInit(): void {
