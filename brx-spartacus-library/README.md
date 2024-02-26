@@ -13,14 +13,16 @@ Spartacus Library interacts with the following:
 ## Installation
 
 Before installing, make sure you have met the following requirements:
-- Angular 14
-- Spartacus 5
+- Node 16
+- NPM 8
+- Angular 15
+- Spartacus 6.x.x
 - @bloomreach/spa-sdk 22 or later
 - @bloomreach/ng-sdk 22 or later
 
 It's assumed that you already have working app with @bloomreach/spa-sdk, @bloomreach/ng-sdk and Spartacus installed.
 If you haven't set up Bloomreach SPA SDK in your app yet, please follow the instructions provided [here](https://github.com/bloomreach/spa-sdk).
-To set up Spartacus 5, you can refer to [this guide](https://help.sap.com/docs/SAP_COMMERCE_COMPOSABLE_STOREFRONT/cfcf687ce2544bba9799aa6c8314ecd0/5de67850bd8d487181fef9c9ba59a31d.html?version=5.0#loio5de67850bd8d487181fef9c9ba59a31d). 
+To set up Spartacus 6.x.x, you can refer to [this guide](https://help.sap.com/docs/SAP_COMMERCE_COMPOSABLE_STOREFRONT/cfcf687ce2544bba9799aa6c8314ecd0/5de67850bd8d487181fef9c9ba59a31d.html?version=6.0). 
 
 For installing the brx-spartacus-library run following command
 
@@ -106,7 +108,6 @@ See brx-spartacus-storefront as reference [here](https://github.com/bloomreach/b
 - Spartacus order confirmation items
 - Spartacus order confirmation totals
 - Spartacus order confirmation thank you message
-- Spartacus order detail shipping
 - Spartacus payment method
 - Spartacus place order
 - Spartacus product facet navigation
