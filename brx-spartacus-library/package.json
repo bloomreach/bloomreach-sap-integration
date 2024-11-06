@@ -38,9 +38,7 @@
   "dependencies": {
     "@bloomreach/spa-sdk": "22.0.2",
     "sanitize-html": "2.11.0",
-    "tslib": "2.6.2"
-  },
-  "peerDependencies": {
+    "tslib": "2.6.2",
     "@angular/common": "15.2.10",
     "@angular/core": "15.2.10",
     "@angular/forms": "15.2.10",
@@ -57,6 +55,9 @@
     "@spartacus/styles": "^6.0.3",
     "@spartacus/user": "^6.0.3",
     "rxjs": "6.6.7"
+  },
+  "peerDependencies": {
+
   },
   "devDependencies": {
     "@angular-builders/jest": "15.0.0",
