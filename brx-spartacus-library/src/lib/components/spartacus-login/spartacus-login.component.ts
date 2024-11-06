@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { AuthService } from '@spartacus/core';
 import { LoginComponent } from '@spartacus/user/account/components';
@@ -34,17 +34,15 @@ export class SpartacusLoginComponent implements OnInit {
   wrappedComponent!: SpartacusLoginDirective;
 
   constructor(
-    private readonly componentFactoryResolver: ComponentFactoryResolver,
     private auth: AuthService,
     private userAccount: UserAccountFacade,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.renderWrapper();
   }
 
   renderWrapper(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(LoginComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
@@ -61,6 +59,6 @@ export class SpartacusLoginComponent implements OnInit {
       ],
     });
 
-    viewContainerRef.createComponent<LoginComponent>(componentFactory, 0, componentInjector);
+    viewContainerRef.createComponent(LoginComponent, { index: 0, injector: componentInjector });
   }
 }

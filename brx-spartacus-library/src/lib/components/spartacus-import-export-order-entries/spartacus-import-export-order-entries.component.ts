@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { ImportExportOrderEntriesComponent } from '@spartacus/cart/import-export/components';
 import { ContextService } from '@spartacus/storefront';
@@ -33,16 +33,14 @@ export class SpartacusImportExportOrderEntriesComponent implements OnInit {
   wrappedComponent!: SpartacusImportExportOrderEntriesDirective;
 
   constructor(
-    private readonly componentFactoryResolver: ComponentFactoryResolver,
     protected contextService: ContextService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.renderWrapper();
   }
 
   renderWrapper(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ImportExportOrderEntriesComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
@@ -55,6 +53,6 @@ export class SpartacusImportExportOrderEntriesComponent implements OnInit {
       ],
     });
 
-    viewContainerRef.createComponent<ImportExportOrderEntriesComponent>(componentFactory, 0, componentInjector);
+    viewContainerRef.createComponent(ImportExportOrderEntriesComponent, { index: 0, injector: componentInjector });
   }
 }

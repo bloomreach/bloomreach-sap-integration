@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { OrderConfirmationTotalsComponent } from '@spartacus/order/components';
 import { SpartacusOrderConfirmationTotalsDirective } from './spartacus-order-confirmation-totals.directive';
@@ -31,17 +31,14 @@ export class SpartacusOrderConfirmationTotalsComponent implements OnInit {
   @ViewChild(SpartacusOrderConfirmationTotalsDirective, { static: true })
   wrappedComponent!: SpartacusOrderConfirmationTotalsDirective;
 
-  constructor(private readonly componentFactoryResolver: ComponentFactoryResolver) {}
-
   ngOnInit(): void {
     this.renderWrappedOrderConfirmationTotals();
   }
 
   renderWrappedOrderConfirmationTotals(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(OrderConfirmationTotalsComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
-    viewContainerRef.createComponent<OrderConfirmationTotalsComponent>(componentFactory, 0);
+    viewContainerRef.createComponent(OrderConfirmationTotalsComponent, { index: 0 });
   }
 }

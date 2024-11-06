@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, OnInit, ComponentFactoryResolver, ViewChild, Injector, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Injector, Input } from '@angular/core';
 import { ContainerItem, getContainerItemContent, Page } from '@bloomreach/spa-sdk';
 import { CmsProductCarouselComponent, ProductService } from '@spartacus/core';
 import { CmsComponentData, ProductCarouselComponent } from '@spartacus/storefront';
@@ -40,16 +40,14 @@ export class SpartacusProductHighlightComponent implements OnInit {
   wrappedComponent!: SpartacusProductHighlightDirective;
 
   constructor(
-    private readonly componentFactoryResolver: ComponentFactoryResolver,
     private productService: ProductService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.renderWrappedBanner();
   }
 
   renderWrappedBanner(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ProductCarouselComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
@@ -79,6 +77,6 @@ export class SpartacusProductHighlightComponent implements OnInit {
       ],
     });
 
-    viewContainerRef.createComponent<ProductCarouselComponent>(componentFactory, 0, componentInjector);
+    viewContainerRef.createComponent(ProductCarouselComponent, { index: 0, injector: componentInjector });
   }
 }

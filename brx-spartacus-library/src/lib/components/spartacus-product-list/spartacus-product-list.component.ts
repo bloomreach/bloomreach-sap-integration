@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { ContainerItem, getContainerItemContent, Page } from '@bloomreach/spa-sdk';
 import {
   CmsComponentData,
@@ -55,17 +55,15 @@ export class SpartacusProductListComponent implements OnInit {
   wrappedComponent!: SpartacusProductListDirective;
 
   constructor(
-    private readonly componentFactoryResolver: ComponentFactoryResolver,
     private pageLayoutService: PageLayoutService,
     private injector: Injector,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.renderWrappedProductList();
   }
 
   renderWrappedProductList(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ProductListComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
@@ -107,6 +105,6 @@ export class SpartacusProductListComponent implements OnInit {
       parent: this.injector,
     });
 
-    viewContainerRef.createComponent<ProductListComponent>(componentFactory, 0, componentInjector);
+    viewContainerRef.createComponent(ProductListComponent, { index: 0, injector: componentInjector });
   }
 }

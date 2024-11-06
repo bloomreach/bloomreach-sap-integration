@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import {
@@ -41,7 +41,6 @@ export class SpartacusRegisterComponent implements OnInit {
   wrappedComponent!: SpartacusRegisterDirective;
 
   constructor(
-    private readonly componentFactoryResolver: ComponentFactoryResolver,
     private registerComponentService: SpartacusRegisterComponentService,
     protected globalMessageService: GlobalMessageService,
     protected fb: UntypedFormBuilder,
@@ -49,7 +48,7 @@ export class SpartacusRegisterComponent implements OnInit {
     protected anonymousConsentsService: AnonymousConsentsService,
     protected anonymousConsentsConfig: AnonymousConsentsConfig,
     protected authConfigService: AuthConfigService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.renderWrappedRegister();
@@ -57,7 +56,6 @@ export class SpartacusRegisterComponent implements OnInit {
   }
 
   renderWrappedRegister(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(RegisterComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
@@ -93,6 +91,6 @@ export class SpartacusRegisterComponent implements OnInit {
         },
       ],
     });
-    viewContainerRef.createComponent<RegisterComponent>(componentFactory, 0, componentInjector);
+    viewContainerRef.createComponent(RegisterComponent, { index: 0, injector: componentInjector });
   }
 }

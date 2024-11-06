@@ -15,7 +15,6 @@
  */
 import {
   Component,
-  ComponentFactoryResolver,
   Injector,
   Input,
   OnInit,
@@ -43,20 +42,18 @@ export class SpartacusAddToSavedCartComponent implements OnInit {
   wrappedComponent!: SpartacusAddToSavedCartDirective;
 
   constructor(
-    private readonly componentFactoryResolver: ComponentFactoryResolver,
     protected activeCartService: ActiveCartFacade,
     protected authService: AuthService,
     protected routingService: RoutingService,
     protected vcr: ViewContainerRef,
     protected launchDialogService: LaunchDialogService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.renderWrapper();
   }
 
   renderWrapper(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(AddToSavedCartComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
@@ -85,6 +82,6 @@ export class SpartacusAddToSavedCartComponent implements OnInit {
       ],
     });
 
-    viewContainerRef.createComponent<AddToSavedCartComponent>(componentFactory, 0, componentInjector);
+    viewContainerRef.createComponent(AddToSavedCartComponent, { index: 0, injector: componentInjector });
   }
 }

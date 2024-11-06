@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { AuthService, RoutingService } from '@spartacus/core';
 import { CartDetailsComponent } from '@spartacus/cart/base/components';
@@ -35,19 +35,17 @@ export class SpartacusCartDetailsComponent implements OnInit {
   wrappedComponent!: SpartacusCartDetailsDirective;
 
   constructor(
-    private readonly componentFactoryResolver: ComponentFactoryResolver,
     private activeCartService: ActiveCartFacade,
     private selectiveCartService: SelectiveCartFacade,
     private authService: AuthService,
     private routingService: RoutingService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.renderWrapper();
   }
 
   renderWrapper(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(CartDetailsComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
@@ -72,6 +70,6 @@ export class SpartacusCartDetailsComponent implements OnInit {
       ],
     });
 
-    viewContainerRef.createComponent<CartDetailsComponent>(componentFactory, 0, componentInjector);
+    viewContainerRef.createComponent(CartDetailsComponent, { index: 0, injector: componentInjector });
   }
 }

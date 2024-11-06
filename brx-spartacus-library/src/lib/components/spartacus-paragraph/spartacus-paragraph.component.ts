@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { ContainerItem, getContainerItemContent, Page } from '@bloomreach/spa-sdk';
 import { CmsParagraphComponent } from '@spartacus/core';
 import { CmsComponentData, ParagraphComponent } from '@spartacus/storefront';
@@ -34,14 +34,11 @@ export class SpartacusParagraphComponent implements OnInit {
   @ViewChild(SpartacusParagraphDirective, { static: true })
   wrappedComponent!: SpartacusParagraphDirective;
 
-  constructor(private readonly componentFactoryResolver: ComponentFactoryResolver) {}
-
   ngOnInit(): void {
     this.renderWrappedBanner();
   }
 
   renderWrappedBanner(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ParagraphComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
@@ -62,6 +59,6 @@ export class SpartacusParagraphComponent implements OnInit {
       ],
     });
 
-    viewContainerRef.createComponent<ParagraphComponent>(componentFactory, 0, componentInjector);
+    viewContainerRef.createComponent(ParagraphComponent, { index: 0, injector: componentInjector });
   }
 }

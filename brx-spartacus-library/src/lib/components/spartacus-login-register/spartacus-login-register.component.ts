@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { LoginRegisterComponent } from '@spartacus/user/account/components';
@@ -34,16 +34,14 @@ export class SpartacusLoginRegisterComponent implements OnInit {
   wrappedComponent!: SpartacusLoginRegisterDirective;
 
   constructor(
-    private readonly componentFactoryResolver: ComponentFactoryResolver,
     protected activatedRoute: ActivatedRoute,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.renderWrappedLoginForm();
   }
 
   renderWrappedLoginForm(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(LoginRegisterComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
@@ -56,6 +54,6 @@ export class SpartacusLoginRegisterComponent implements OnInit {
       ],
     });
 
-    viewContainerRef.createComponent<LoginRegisterComponent>(componentFactory, 0, componentInjector);
+    viewContainerRef.createComponent(LoginRegisterComponent, { index: 0, injector: componentInjector });
   }
 }
