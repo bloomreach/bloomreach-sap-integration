@@ -31,9 +31,7 @@ export class SpartacusMiniCartComponent implements OnInit {
   @ViewChild(SpartacusMiniCartDirective, { static: true })
   wrappedComponent!: SpartacusMiniCartDirective;
 
-  constructor(
-    protected miniCartComponentService: SpartacusMiniCartComponentService,
-  ) { }
+  constructor(protected miniCartComponentService: SpartacusMiniCartComponentService) {}
 
   ngOnInit(): void {
     this.renderWrapper();

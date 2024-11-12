@@ -33,9 +33,7 @@ export class SpartacusCartCouponComponent implements OnInit {
   @ViewChild(SpartacusCartCouponDirective, { static: true })
   wrappedComponent!: SpartacusCartCouponDirective;
 
-  constructor(
-    private activeCartService: ActiveCartFacade,
-  ) { }
+  constructor(private activeCartService: ActiveCartFacade) {}
 
   ngOnInit(): void {
     this.renderWrapper();

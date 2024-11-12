@@ -32,9 +32,7 @@ export class SpartacusWishListComponent implements OnInit {
   @ViewChild(SpartacusWishListDirective, { static: true })
   wrappedComponent!: SpartacusWishListDirective;
 
-  constructor(
-    private wishListFacade: WishListFacade,
-  ) { }
+  constructor(private wishListFacade: WishListFacade) {}
 
   ngOnInit(): void {
     this.renderWrapper();

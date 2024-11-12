@@ -13,14 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {
-  Component,
-  Injector,
-  Input,
-  OnInit,
-  ViewChild,
-  ViewContainerRef,
-} from '@angular/core';
+import { Component, Injector, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { AuthService, RoutingService } from '@spartacus/core';
 import { LaunchDialogService } from '@spartacus/storefront';
@@ -47,7 +40,7 @@ export class SpartacusAddToSavedCartComponent implements OnInit {
     protected routingService: RoutingService,
     protected vcr: ViewContainerRef,
     protected launchDialogService: LaunchDialogService,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.renderWrapper();

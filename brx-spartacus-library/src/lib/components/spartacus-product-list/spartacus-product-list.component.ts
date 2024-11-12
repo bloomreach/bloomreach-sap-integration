@@ -54,10 +54,7 @@ export class SpartacusProductListComponent implements OnInit {
   @ViewChild(SpartacusProductListDirective, { static: true })
   wrappedComponent!: SpartacusProductListDirective;
 
-  constructor(
-    private pageLayoutService: PageLayoutService,
-    private injector: Injector,
-  ) { }
+  constructor(private pageLayoutService: PageLayoutService, private injector: Injector) {}
 
   ngOnInit(): void {
     this.renderWrappedProductList();

@@ -48,7 +48,7 @@ export class SpartacusRegisterComponent implements OnInit {
     protected anonymousConsentsService: AnonymousConsentsService,
     protected anonymousConsentsConfig: AnonymousConsentsConfig,
     protected authConfigService: AuthConfigService,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.renderWrappedRegister();

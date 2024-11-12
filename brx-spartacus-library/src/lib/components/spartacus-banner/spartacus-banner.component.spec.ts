@@ -38,9 +38,7 @@ describe('SpartacusBannerComponent', () => {
     TestBed.configureTestingModule({
       imports: [RouterModule],
       declarations: [SpartacusBannerComponent],
-      providers: [
-        { provide: APP_BASE_HREF, useValue: '/' },
-      ],
+      providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       teardown: { destroyAfterEach: false },
     }).compileComponents();

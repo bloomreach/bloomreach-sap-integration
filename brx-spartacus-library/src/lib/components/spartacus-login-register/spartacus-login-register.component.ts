@@ -33,9 +33,7 @@ export class SpartacusLoginRegisterComponent implements OnInit {
   @ViewChild(SpartacusLoginRegisterDirective, { static: true })
   wrappedComponent!: SpartacusLoginRegisterDirective;
 
-  constructor(
-    protected activatedRoute: ActivatedRoute,
-  ) { }
+  constructor(protected activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.renderWrappedLoginForm();

@@ -43,9 +43,7 @@ export class SpartacusSearchBoxComponent implements OnInit {
   @ViewChild(SpartacusSearchBoxDirective, { static: true })
   wrappedComponent!: SpartacusSearchBoxDirective;
 
-  constructor(
-    private readonly searchBoxComponentService: SpartacusSearchBoxComponentService,
-  ) { }
+  constructor(private readonly searchBoxComponentService: SpartacusSearchBoxComponentService) {}
 
   ngOnInit(): void {
     this.renderWrappedSearchBox();

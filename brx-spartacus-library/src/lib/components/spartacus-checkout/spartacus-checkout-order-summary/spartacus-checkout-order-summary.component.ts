@@ -31,7 +31,6 @@ export class SpartacusCheckoutOrderSummaryComponent implements OnInit {
   @ViewChild(SpartacusCheckoutOrderSummaryDirective, { static: true })
   wrappedComponent!: SpartacusCheckoutOrderSummaryDirective;
 
-
   ngOnInit(): void {
     this.renderWrappedCheckoutOrderSummary();
   }

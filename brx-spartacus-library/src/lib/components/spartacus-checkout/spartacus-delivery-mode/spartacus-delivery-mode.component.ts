@@ -33,10 +33,7 @@ export class SpartacusDeliveryModeComponent implements OnInit {
   @ViewChild(SpartacusDeliveryModeDirective, { static: true })
   wrappedComponent!: SpartacusDeliveryModeDirective;
 
-  constructor(
-    private readonly activatedRoute: ActivatedRoute,
-    private readonly router: Router,
-  ) { }
+  constructor(private readonly activatedRoute: ActivatedRoute, private readonly router: Router) {}
 
   ngOnInit(): void {
     setActivatedRouteSnapshotUrl(this.page, this.activatedRoute, this.router);

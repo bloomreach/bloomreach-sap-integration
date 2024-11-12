@@ -12,8 +12,6 @@
         "createDefaultProgram": true
       },
       "extends": [
-        "airbnb-base",
-        "airbnb-typescript/base",
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
         "plugin:prettier/recommended"
@@ -53,7 +51,11 @@
         "plugin:@angular-eslint/template/recommended",
         "plugin:prettier/recommended"
       ],
-      "rules": {}
+      "rules": {},
+      "plugins": [
+        "@typescript-eslint",
+        "@angular-eslint"
+      ]
     }
   ]
 }

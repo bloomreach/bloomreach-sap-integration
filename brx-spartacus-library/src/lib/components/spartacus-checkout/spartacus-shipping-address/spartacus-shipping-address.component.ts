@@ -33,10 +33,7 @@ export class SpartacusShippingAddressComponent implements OnInit {
   @ViewChild(SpartacusShippingAddressDirective, { static: true })
   wrappedComponent!: SpartacusShippingAddressDirective;
 
-  constructor(
-    private readonly activatedRoute: ActivatedRoute,
-    private readonly router: Router,
-  ) { }
+  constructor(private readonly activatedRoute: ActivatedRoute, private readonly router: Router) {}
 
   ngOnInit(): void {
     setActivatedRouteSnapshotUrl(this.page, this.activatedRoute, this.router);

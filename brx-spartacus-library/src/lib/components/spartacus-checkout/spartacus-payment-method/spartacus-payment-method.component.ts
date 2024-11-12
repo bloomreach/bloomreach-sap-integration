@@ -33,10 +33,7 @@ export class SpartacusPaymentMethodComponent implements OnInit {
   @ViewChild(SpartacusPaymentMethodDirective, { static: true })
   wrappedComponent!: SpartacusPaymentMethodDirective;
 
-  constructor(
-    private readonly activatedRoute: ActivatedRoute,
-    private readonly router: Router,
-  ) { }
+  constructor(private readonly activatedRoute: ActivatedRoute, private readonly router: Router) {}
 
   ngOnInit(): void {
     setActivatedRouteSnapshotUrl(this.page, this.activatedRoute, this.router);

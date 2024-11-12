@@ -32,9 +32,7 @@ export class SpartacusLoginFormComponent implements OnInit {
   @ViewChild(SpartacusLoginFormDirective, { static: true })
   wrappedComponent!: SpartacusLoginFormDirective;
 
-  constructor(
-    private readonly loginFormComponentService: SpartacusLoginFormComponentService,
-  ) { }
+  constructor(private readonly loginFormComponentService: SpartacusLoginFormComponentService) {}
 
   ngOnInit(): void {
     this.renderWrappedLoginForm();

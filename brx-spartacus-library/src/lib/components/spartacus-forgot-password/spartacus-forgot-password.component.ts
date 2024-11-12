@@ -33,9 +33,7 @@ export class SpartacusForgotPasswordComponent implements OnInit {
   @ViewChild(SpartacusForgotPassswordDirective, { static: true })
   wrappedComponent!: SpartacusForgotPassswordDirective;
 
-  constructor(
-    private fpservice: SpartacusForgotPasswordComponentService,
-  ) { }
+  constructor(private fpservice: SpartacusForgotPasswordComponentService) {}
 
   ngOnInit(): void {
     this.renderWrapper();

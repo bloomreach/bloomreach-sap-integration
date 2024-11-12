@@ -42,10 +42,7 @@ export class SpartacusProductDetailsComponent implements OnInit {
   @ViewChild(SpartacusTabParagraphContainerDirective, { static: true })
   wrappedTabParagraphContainer!: SpartacusTabParagraphContainerDirective;
 
-  constructor(
-    private deliveryTabService: BrxDeliveryTabService,
-    private cmsService: CmsService,
-  ) { }
+  constructor(private deliveryTabService: BrxDeliveryTabService, private cmsService: CmsService) {}
 
   summaryComponents$: Observable<any[]> = this.cmsService.getContentSlot('Summary').pipe(
     map((slot) => {

@@ -32,9 +32,7 @@ export class SpartacusImportExportOrderEntriesComponent implements OnInit {
   @ViewChild(SpartacusImportExportOrderEntriesDirective, { static: true })
   wrappedComponent!: SpartacusImportExportOrderEntriesDirective;
 
-  constructor(
-    protected contextService: ContextService,
-  ) { }
+  constructor(protected contextService: ContextService) {}
 
   ngOnInit(): void {
     this.renderWrapper();

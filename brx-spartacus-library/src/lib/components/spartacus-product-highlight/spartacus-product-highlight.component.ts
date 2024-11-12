@@ -39,9 +39,7 @@ export class SpartacusProductHighlightComponent implements OnInit {
   @ViewChild(SpartacusProductHighlightDirective, { static: true })
   wrappedComponent!: SpartacusProductHighlightDirective;
 
-  constructor(
-    private productService: ProductService,
-  ) { }
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
     this.renderWrappedBanner();

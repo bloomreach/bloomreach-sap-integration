@@ -39,7 +39,7 @@ export class SpartacusCartTotalsComponent implements OnInit {
     private formBuilder: UntypedFormBuilder,
     private customerCouponService: CustomerCouponService,
     private activeCartService: ActiveCartFacade,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.renderWrapper();

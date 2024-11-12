@@ -40,7 +40,7 @@ export class SpartacusCartQuickOrderFormComponent implements OnInit {
     protected eventService: EventService,
     protected formBuilder: UntypedFormBuilder,
     protected globalMessageService: GlobalMessageService,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.renderWrapper();

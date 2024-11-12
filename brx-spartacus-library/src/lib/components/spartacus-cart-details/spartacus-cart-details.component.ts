@@ -39,7 +39,7 @@ export class SpartacusCartDetailsComponent implements OnInit {
     private selectiveCartService: SelectiveCartFacade,
     private authService: AuthService,
     private routingService: RoutingService,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.renderWrapper();

@@ -33,10 +33,7 @@ export class SpartacusLoginComponent implements OnInit {
   @ViewChild(SpartacusLoginDirective, { static: true })
   wrappedComponent!: SpartacusLoginDirective;
 
-  constructor(
-    private auth: AuthService,
-    private userAccount: UserAccountFacade,
-  ) { }
+  constructor(private auth: AuthService, private userAccount: UserAccountFacade) {}
 
   ngOnInit(): void {
     this.renderWrapper();
