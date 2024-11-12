@@ -102,14 +102,14 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "port": 4200,
-            "browserTarget": "brx-spartacus:build"
+            "buildTarget": "brx-spartacus:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "brx-spartacus:build:production"
+              "buildTarget": "brx-spartacus:build:production"
             },
             "development": {
-              "browserTarget": "brx-spartacus:build:development"
+              "buildTarget": "brx-spartacus:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -132,7 +132,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "brx-spartacus:build"
+            "buildTarget": "brx-spartacus:build"
           }
         },
         "server": {
@@ -161,7 +161,7 @@
           "defaultConfiguration": ""
         },
         "serve-ssr": {
-          "builder": "@nguniversal/builders:ssr-dev-server",
+          "builder": "@angular-devkit/build-angular:ssr-dev-server",
           "options": {
             "browserTarget": "brx-spartacus:build",
             "serverTarget": "brx-spartacus:server"
@@ -174,7 +174,7 @@
           }
         },
         "prerender": {
-          "builder": "@nguniversal/builders:prerender",
+          "builder": "@angular-devkit/build-angular:prerender",
           "options": {
             "browserTarget": "brx-spartacus:build:production",
             "serverTarget": "brx-spartacus:server:production",

@@ -56,7 +56,7 @@ import {
   SpartacusWishListComponent,
 } from '@bloomreach/brx-spartacus-library';
 import { Page } from '@bloomreach/spa-sdk';
-import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { REQUEST } from '../../express.tokens';
 import { PageContext, RoutingService } from '@spartacus/core';
 import { OutletPosition } from '@spartacus/storefront';
 import { Request } from 'express';
