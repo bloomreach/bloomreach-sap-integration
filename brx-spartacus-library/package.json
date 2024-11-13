@@ -29,7 +29,6 @@
     "dist/"
   ],
   "module": "dist/fesm2022/bloomreach-brx-spartacus-library.mjs",
-  "es2020": "dist/fesm2022/bloomreach-brx-spartacus-library.mjs",
   "esm2022": "dist/esm2022/bloomreach-brx-spartacus-library.mjs",
   "fesm2022": "dist/fesm2022/bloomreach-brx-spartacus-library.mjs",
   "typings": "dist/index.d.ts",
