@@ -301,9 +301,9 @@
 
 		<!-- For more information where to find those extensions: -->
 		<!-- https://launchpad.support.sap.com/#/notes/2817992 -->
-		<!-- <extension name='azurecloudhotfolder' />
+		<extension name='azurecloudhotfolder' />
 		<extension name='cloudcommons' />
-		<extension name='cloudhotfolder' /> -->
+		<extension name='cloudhotfolder' />
 
 
 		<!-- Configuring Required Extensions and AddOns for SAP Commerce integration with SAP Cloud Platform Integration -->
