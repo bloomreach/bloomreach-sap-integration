@@ -16,8 +16,8 @@
 
 import { Inject, Injectable } from '@angular/core';
 import { BrxEndpointService } from '@bloomreach/brx-spartacus-library';
-import { APP_CONFIG, LibConfig } from 'src/app.config';
-import { environment } from 'src/environments/environment';
+import { APP_CONFIG, LibConfig } from '../../app.config';
+import { environment } from '../../environments/environment';
 
 export interface ChannelProps {
   graphql_baseurl: string;

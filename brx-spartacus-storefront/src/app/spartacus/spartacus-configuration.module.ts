@@ -47,7 +47,7 @@ import { defaultSavedCartFormLayoutConfig } from './default-saved-cart-form-layo
     provideConfig({
       backend: {
         occ: {
-          baseUrl: 'https://api.cvbrtj6s9u-bloomreac2-d1-public.model-t.cc.commerce.ondemand.com',
+          baseUrl: 'https://localhost:9002',
           prefix: '/occ/v2/',
         },
       },
@@ -56,7 +56,7 @@ import { defaultSavedCartFormLayoutConfig } from './default-saved-cart-form-layo
       context: {
         currency: ['USD'],
         language: ['en'],
-        baseSite: ['pacificSupply'],
+        baseSite: ['electronics'],
       },
     } as SiteContextConfig),
     provideConfig({
@@ -82,7 +82,7 @@ import { defaultSavedCartFormLayoutConfig } from './default-saved-cart-form-layo
     } as I18nConfig),
     provideConfig({
       features: {
-        level: '5.2',
+        level: '2211.20',
       },
     } as FeaturesConfig),
     provideConfig(defaultImportEntriesLayoutConfig),

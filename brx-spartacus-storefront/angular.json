@@ -117,7 +117,12 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "./tsconfig.spec.json"
+            "tsConfig": "./tsconfig.spec.json",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules/"
+              ]
+            }
           }
         },
         "lint": {

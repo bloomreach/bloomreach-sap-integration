@@ -27,7 +27,6 @@ type ConfigurationBuilder = Omit<Configuration & Partial<BuildConfigurationOptio
 
 export function buildConfiguration(
   path: string,
-  request?: Request,
   token?: string,
   serverId?: string,
   endpoint: string = BRXM_ENDPOINT,
@@ -48,9 +47,6 @@ export function buildConfiguration(
     configuration.endpoint = searchParams.get(endpointQueryParameter) ?? '';
     configuration.baseUrl = `?${endpointQueryParameter}=${searchParams.get(endpointQueryParameter)}`;
     configuration.path = url;
-  }
-  if (request) {
-    configuration.request = request;
   }
   if (token) {
     configuration.authorizationToken = token;
