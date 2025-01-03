@@ -50,7 +50,7 @@ export class BrxProductSearchAdapter implements ProductSearchAdapter {
     protected http: HttpClient,
     protected converter: ConverterService,
     protected brxEndpointService: BrxEndpointService,
-  ) {}
+  ) { }
 
   search(query = '', searchConfig: BrxSearchConfig = DEFAULT_SEARCH_CONFIG): Observable<ProductSearchPage> {
     // console.log('[** Product Search Adapter - Custom Brx API Req---]', query, searchConfig);
@@ -97,6 +97,13 @@ export class BrxProductSearchAdapter implements ProductSearchAdapter {
         };
       }),
       this.converter.pipeable(PRODUCT_SEARCH_PAGE_NORMALIZER),
+    );
+  }
+
+  searchByCodes(codes: string[]) {
+    return this.http.get<any[]>(this.getSearchEndpoint(codes.toString(), {})).pipe(
+      this.converter.pipeableMany(PRODUCT_NORMALIZER),
+      map((products) => ({ products }))
     );
   }
 
