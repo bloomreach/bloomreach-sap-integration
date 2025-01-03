@@ -1,6 +1,6 @@
 {
   "name": "@bloomreach/brx-spartacus-library",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "description": "Bloomreach Spartacus Integration Library",
   "keywords": [
     "bloomreach",
@@ -54,7 +54,7 @@
     "@spartacus/storefront": "2211.31.1",
     "@spartacus/styles": "2211.31.1",
     "@spartacus/user": "2211.31.1",
-    "rxjs": "7.8.0"
+    "rxjs": "7.8.1"
   },
   "devDependencies": {
     "@angular-builders/jest": "17.0.3",
