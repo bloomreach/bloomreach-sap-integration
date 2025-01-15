@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { WishListComponent } from '@spartacus/cart/wish-list/components';
 import { WishListFacade } from '@spartacus/cart/wish-list/root';
@@ -32,17 +32,13 @@ export class SpartacusWishListComponent implements OnInit {
   @ViewChild(SpartacusWishListDirective, { static: true })
   wrappedComponent!: SpartacusWishListDirective;
 
-  constructor(
-    private readonly componentFactoryResolver: ComponentFactoryResolver,
-    private wishListFacade: WishListFacade,
-  ) {}
+  constructor(private wishListFacade: WishListFacade) {}
 
   ngOnInit(): void {
     this.renderWrapper();
   }
 
   renderWrapper(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(WishListComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
@@ -55,6 +51,6 @@ export class SpartacusWishListComponent implements OnInit {
       ],
     });
 
-    viewContainerRef.createComponent<WishListComponent>(componentFactory, 0, componentInjector);
+    viewContainerRef.createComponent(WishListComponent, { index: 0, injector: componentInjector });
   }
 }

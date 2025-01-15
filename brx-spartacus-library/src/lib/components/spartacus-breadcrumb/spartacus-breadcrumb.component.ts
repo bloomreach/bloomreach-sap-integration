@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { CmsBreadcrumbsComponent } from '@spartacus/core';
 import { BreadcrumbComponent, CmsComponentData } from '@spartacus/storefront';
@@ -33,14 +33,11 @@ export class SpartacusBreadcrumbComponent implements OnInit {
   @ViewChild(SpartacusBreadcrumbDirective, { static: true })
   wrappedComponent!: SpartacusBreadcrumbDirective;
 
-  constructor(private readonly componentFactoryResolver: ComponentFactoryResolver) {}
-
   ngOnInit(): void {
     this.renderWrappedBreadcrumb();
   }
 
   renderWrappedBreadcrumb(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(BreadcrumbComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
     const componentProperties: CmsBreadcrumbsComponent = {};
@@ -55,6 +52,6 @@ export class SpartacusBreadcrumbComponent implements OnInit {
       ],
     });
 
-    viewContainerRef.createComponent<BreadcrumbComponent>(componentFactory, 0, componentInjector);
+    viewContainerRef.createComponent(BreadcrumbComponent, { index: 0, injector: componentInjector });
   }
 }

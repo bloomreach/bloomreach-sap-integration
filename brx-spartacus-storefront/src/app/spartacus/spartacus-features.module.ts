@@ -19,14 +19,13 @@ import {
   AnonymousConsentsModule,
   AuthModule,
   CostCenterOccModule,
+  ExternalRoutesModule,
   ProductModule,
   ProductOccModule,
-  UserOccModule,
   UserModule,
-  ExternalRoutesModule,
+  UserOccModule,
 } from '@spartacus/core';
 import {
-  AddressBookModule,
   AnonymousConsentManagementBannerModule,
   AnonymousConsentsDialogModule,
   BannerCarouselModule,
@@ -63,16 +62,17 @@ import {
   StockNotificationModule,
   TabParagraphContainerModule,
 } from '@spartacus/storefront';
-import { CartSavedCartFeatureModule } from './features/cart/cart-saved-cart-feature.module';
-import { CheckoutFeatureModule } from './features/checkout/checkout-feature.module';
-import { ProductVariantsFeatureModule } from './features/product/product-variants-feature.module';
-import { UserFeatureModule } from './features/user/user-feature.module';
+import { AddressBookModule } from '@spartacus/user/profile/components';
 import { CartBaseFeatureModule } from './features/cart/cart-base-feature.module';
 import { CartImportExportFeatureModule } from './features/cart/cart-import-export-feature.module';
 import { CartQuickOrderFeatureModule } from './features/cart/cart-quick-order-feature.module';
-import { OrderFeatureModule } from './features/order/order-feature.module';
+import { CartSavedCartFeatureModule } from './features/cart/cart-saved-cart-feature.module';
 import { WishListFeatureModule } from './features/cart/wish-list-feature.module';
+import { CheckoutFeatureModule } from './features/checkout/checkout-feature.module';
+import { OrderFeatureModule } from './features/order/order-feature.module';
 import { ProductImageZoomFeatureModule } from './features/product/product-image-zoom-feature.module';
+import { ProductVariantsFeatureModule } from './features/product/product-variants-feature.module';
+import { UserFeatureModule } from './features/user/user-feature.module';
 
 @NgModule({
   declarations: [],

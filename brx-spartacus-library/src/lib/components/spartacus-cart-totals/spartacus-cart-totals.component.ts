@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { CustomerCouponService } from '@spartacus/core';
@@ -35,7 +35,6 @@ export class SpartacusCartTotalsComponent implements OnInit {
   wrappedComponent!: SpartacusCartTotalsDirective;
 
   constructor(
-    private readonly componentFactoryResolver: ComponentFactoryResolver,
     private cartVoucherService: CartVoucherFacade,
     private formBuilder: UntypedFormBuilder,
     private customerCouponService: CustomerCouponService,
@@ -47,7 +46,6 @@ export class SpartacusCartTotalsComponent implements OnInit {
   }
 
   renderWrapper(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(CartTotalsComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
@@ -72,6 +70,6 @@ export class SpartacusCartTotalsComponent implements OnInit {
       ],
     });
 
-    viewContainerRef.createComponent<CartTotalsComponent>(componentFactory, 0, componentInjector);
+    viewContainerRef.createComponent(CartTotalsComponent, { index: 0, injector: componentInjector });
   }
 }

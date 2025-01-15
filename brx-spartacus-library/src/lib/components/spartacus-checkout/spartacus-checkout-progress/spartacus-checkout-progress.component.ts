@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { CheckoutProgressComponent } from '@spartacus/checkout/base/components';
 import { SpartacusCheckoutProgressDirective } from './spartacus-checkout-progress.directive';
@@ -31,17 +31,14 @@ export class SpartacusCheckoutProgressComponent implements OnInit {
   @ViewChild(SpartacusCheckoutProgressDirective, { static: true })
   wrappedComponent!: SpartacusCheckoutProgressDirective;
 
-  constructor(private readonly componentFactoryResolver: ComponentFactoryResolver) {}
-
   ngOnInit(): void {
     this.renderWrappedCheckoutProgress();
   }
 
   renderWrappedCheckoutProgress(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(CheckoutProgressComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
-    viewContainerRef.createComponent<CheckoutProgressComponent>(componentFactory, 0);
+    viewContainerRef.createComponent(CheckoutProgressComponent, { index: 0 });
   }
 }

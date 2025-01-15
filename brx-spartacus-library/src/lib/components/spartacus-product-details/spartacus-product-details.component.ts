@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { ContainerItem, getContainerItemContent, Page } from '@bloomreach/spa-sdk';
 import { CmsService, CMSTabParagraphContainer } from '@spartacus/core';
 import { CmsComponentData, TabParagraphContainerComponent } from '@spartacus/storefront';
@@ -42,11 +42,7 @@ export class SpartacusProductDetailsComponent implements OnInit {
   @ViewChild(SpartacusTabParagraphContainerDirective, { static: true })
   wrappedTabParagraphContainer!: SpartacusTabParagraphContainerDirective;
 
-  constructor(
-    private readonly componentFactoryResolver: ComponentFactoryResolver,
-    private deliveryTabService: BrxDeliveryTabService,
-    private cmsService: CmsService,
-  ) {}
+  constructor(private deliveryTabService: BrxDeliveryTabService, private cmsService: CmsService) {}
 
   summaryComponents$: Observable<any[]> = this.cmsService.getContentSlot('Summary').pipe(
     map((slot) => {
@@ -61,7 +57,6 @@ export class SpartacusProductDetailsComponent implements OnInit {
   }
 
   async renderWrappedTabParagraphContainer(): Promise<void> {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(TabParagraphContainerComponent);
     const { viewContainerRef } = this.wrappedTabParagraphContainer;
     viewContainerRef.clear();
 
@@ -91,6 +86,6 @@ export class SpartacusProductDetailsComponent implements OnInit {
       ],
     });
 
-    viewContainerRef.createComponent<TabParagraphContainerComponent>(componentFactory, 0, componentInjector);
+    viewContainerRef.createComponent(TabParagraphContainerComponent, { index: 0, injector: componentInjector });
   }
 }

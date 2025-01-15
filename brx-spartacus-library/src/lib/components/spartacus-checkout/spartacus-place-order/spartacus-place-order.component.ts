@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { CheckoutPlaceOrderComponent } from '@spartacus/checkout/base/components';
 import { SpartacusPlaceOrderDirective } from './spartacus-place-order.directive';
@@ -31,17 +31,14 @@ export class SpartacusPlaceOrderComponent implements OnInit {
   @ViewChild(SpartacusPlaceOrderDirective, { static: true })
   wrappedComponent!: SpartacusPlaceOrderDirective;
 
-  constructor(private readonly componentFactoryResolver: ComponentFactoryResolver) {}
-
   ngOnInit(): void {
     this.renderWrappedPlaceOrder();
   }
 
   renderWrappedPlaceOrder(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(CheckoutPlaceOrderComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
-    viewContainerRef.createComponent<CheckoutPlaceOrderComponent>(componentFactory, 0);
+    viewContainerRef.createComponent(CheckoutPlaceOrderComponent, { index: 0 });
   }
 }

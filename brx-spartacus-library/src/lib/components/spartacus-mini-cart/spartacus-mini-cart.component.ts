@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { MiniCartComponent, MiniCartComponentService } from '@spartacus/cart/base/components/mini-cart';
 import { SpartacusMiniCartDirective } from './spartacus-mini-cart.directive';
@@ -31,17 +31,13 @@ export class SpartacusMiniCartComponent implements OnInit {
   @ViewChild(SpartacusMiniCartDirective, { static: true })
   wrappedComponent!: SpartacusMiniCartDirective;
 
-  constructor(
-    private readonly componentFactoryResolver: ComponentFactoryResolver,
-    protected miniCartComponentService: SpartacusMiniCartComponentService,
-  ) {}
+  constructor(protected miniCartComponentService: SpartacusMiniCartComponentService) {}
 
   ngOnInit(): void {
     this.renderWrapper();
   }
 
   renderWrapper(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(MiniCartComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
@@ -54,6 +50,6 @@ export class SpartacusMiniCartComponent implements OnInit {
       ],
     });
 
-    viewContainerRef.createComponent<MiniCartComponent>(componentFactory, 0, componentInjector);
+    viewContainerRef.createComponent(MiniCartComponent, { index: 0, injector: componentInjector });
   }
 }

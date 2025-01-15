@@ -56,7 +56,7 @@ export class BrxProductSearchAdapter implements ProductSearchAdapter {
     // console.log('[** Product Search Adapter - Custom Brx API Req---]', query, searchConfig);
     if (searchConfig.type === 'suggestion') {
       return this.http.get(this.getSuggestionEndpoint(query)).pipe(
-        pluck<any, any[]>('response', 'products'),
+        map((response: any) => response.response?.products || []),
         map((model: any[]) => model.slice(0, searchConfig.pageSize)),
         this.converter.pipeableMany(PRODUCT_NORMALIZER),
         map<Product[], ProductSearchPage>((model: Product[]) => ({
@@ -100,9 +100,16 @@ export class BrxProductSearchAdapter implements ProductSearchAdapter {
     );
   }
 
+  searchByCodes(codes: string[]) {
+    return this.http.get<any[]>(this.getSearchEndpoint(codes.toString(), {})).pipe(
+      this.converter.pipeableMany(PRODUCT_NORMALIZER),
+      map((products) => ({ products })),
+    );
+  }
+
   loadSuggestions(term: string, pageSize = 3): Observable<Suggestion[]> {
     return this.http.get(this.getSuggestionEndpoint(term)).pipe(
-      pluck<any, any[]>('response', 'suggestions'),
+      map((response: any) => response.response?.suggestions || []),
       map((model: any[]) => model.slice(0, pageSize)),
       this.converter.pipeableMany(PRODUCT_SUGGESTION_NORMALIZER),
     );

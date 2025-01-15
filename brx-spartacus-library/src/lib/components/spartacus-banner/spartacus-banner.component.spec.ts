@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
-import { ComponentFactoryResolver, CUSTOM_ELEMENTS_SCHEMA, ViewContainerRef } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, ViewContainerRef } from '@angular/core';
 import { Page } from '@bloomreach/spa-sdk';
 import sanitizeHTML from 'sanitize-html';
 import mockPage from '../../../__mocks__/page';
@@ -15,10 +15,6 @@ describe('SpartacusBannerComponent', () => {
   let component: SpartacusBannerComponent;
   let componentEl: HTMLElement;
   let fixture: ComponentFixture<SpartacusBannerComponent>;
-
-  const mockComponentFactoryResolver: Partial<ComponentFactoryResolver> = {
-    resolveComponentFactory: jest.fn(),
-  };
 
   const mockWrappedComponent = {
     viewContainerRef: {
@@ -42,10 +38,7 @@ describe('SpartacusBannerComponent', () => {
     TestBed.configureTestingModule({
       imports: [RouterModule],
       declarations: [SpartacusBannerComponent],
-      providers: [
-        { provide: APP_BASE_HREF, useValue: '/' },
-        { provide: ComponentFactoryResolver, useValue: mockComponentFactoryResolver },
-      ],
+      providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       teardown: { destroyAfterEach: false },
     }).compileComponents();

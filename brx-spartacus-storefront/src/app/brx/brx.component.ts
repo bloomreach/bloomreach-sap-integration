@@ -56,16 +56,15 @@ import {
   SpartacusWishListComponent,
 } from '@bloomreach/brx-spartacus-library';
 import { Page } from '@bloomreach/spa-sdk';
-import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { PageContext, RoutingService } from '@spartacus/core';
 import { OutletPosition } from '@spartacus/storefront';
 import { Request } from 'express';
 import { Observable } from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
 import { BrPageComponent } from '@bloomreach/ng-sdk';
 import { EnvConfigService } from '../services/env-config.service';
 import { buildConfiguration } from '../utils/buildConfiguration';
+import { environment } from '../../environments/environment';
 
 export const ENDPOINT = new InjectionToken<string>('brXM API endpoint');
 
@@ -138,7 +137,6 @@ export class BrxComponent implements OnDestroy {
     private route: ActivatedRoute,
     private routingService: RoutingService,
     private envConfigService: EnvConfigService,
-    @Inject(REQUEST) @Optional() request?: Request,
   ) {
     router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe((navigationEvent) => {
       const event = navigationEvent as NavigationEnd;
@@ -158,7 +156,7 @@ export class BrxComponent implements OnDestroy {
         ? this.endpointFromParams
         : this.envConfigService.config.endpoint;
 
-      this.configuration = buildConfiguration(event.url, request, this.authorizationToken, this.serverId, endpoint);
+      this.configuration = buildConfiguration(event.url, this.authorizationToken, this.serverId, endpoint);
 
       this.brxHttpError = undefined;
       this.pageContext$ = this.routingService

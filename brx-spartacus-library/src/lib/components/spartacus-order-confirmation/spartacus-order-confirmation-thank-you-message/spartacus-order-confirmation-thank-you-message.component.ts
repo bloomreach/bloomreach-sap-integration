@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { OrderConfirmationThankYouMessageComponent } from '@spartacus/order/components';
 // eslint-disable-next-line max-len
@@ -32,19 +32,14 @@ export class SpartacusOrderConfirmationThankYouMessageComponent implements OnIni
   @ViewChild(SpartacusOrderConfirmationThankYouMessageDirective, { static: true })
   wrappedComponent!: SpartacusOrderConfirmationThankYouMessageDirective;
 
-  constructor(private readonly componentFactoryResolver: ComponentFactoryResolver) {}
-
   ngOnInit(): void {
     this.renderWrappedOrderConfirmationThankYouMessage();
   }
 
   renderWrappedOrderConfirmationThankYouMessage(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      OrderConfirmationThankYouMessageComponent,
-    );
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
-    viewContainerRef.createComponent<OrderConfirmationThankYouMessageComponent>(componentFactory, 0);
+    viewContainerRef.createComponent(OrderConfirmationThankYouMessageComponent, { index: 0 });
   }
 }

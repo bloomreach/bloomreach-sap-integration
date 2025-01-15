@@ -40,40 +40,23 @@ INSERT_UPDATE ConsignmentEntry;consignment(code)[unique=true];orderEntry(order(c
 ;100000a;100000:0
 ;100000b;100000:1
 ;100000c;100000:2
-############# CDS (Merchandising carousel) E2E test data ###################
-$contentCatalog=apparel-uk-spaContentCatalog
-$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Online])[default=$contentCatalog:Online]
 
-# Homepage carousel
-# Create the CMS Component
-INSERT_UPDATE MerchandisingCarouselComponent;$contentCV[unique=true];uid[unique=true];name;title;numberToDisplay;strategy;&componentRef
-;;HomepageE2EMerchandisingCarousel;Homepage E2E Merchandising Carousel;Homepage E2E Merchandising Carousel;10;00000000-0000-0000-0000-000000000000;HomepageE2EMerchandisingCarousel
 
-# Add the component to the slot
-INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV)
-;;Section2CSlot-Homepage;HomepageE2EMerchandisingCarousel
+############ Customer Isolation ###############
 
-# Category Page carousel
-# Create the CMS Component
-INSERT_UPDATE MerchandisingCarouselComponent;$contentCV[unique=true];uid[unique=true];name;title;numberToDisplay;strategy;&componentRef
-;;CategoryPageE2EMerchandisingCarousel;Category Page E2E Merchandising Carousel;Category Page E2E Merchandising Carousel;10;00000000-0000-0000-0000-000000000000;CategoryPageE2EMerchandisingCarousel
+$spaSiteUid=apparel-uk-standalone
+$spaContentCatalog=apparel-uk-spaContentCatalog
+$spaContentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$spaContentCatalog]),CatalogVersion.version[default=Staged])[default=$spaContentCatalog:Staged]
+$productCatalog=apparelProductCatalog
 
-# Add the component to the slot
-INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV)[mode=append]
-;;BottomHeaderSlot;CategoryPageE2EMerchandisingCarousel
+### Updating product catalogs
 
-# SLR Page carousel
-# Create the CMS Component
-INSERT_UPDATE MerchandisingCarouselComponent;$contentCV[unique=true];uid[unique=true];name;title;numberToDisplay;strategy;&componentRef
-;;SLRCategoryPageE2EMerchandisingCarousel;SLR Category Page E2E Merchandising Carousel;SLR Category Page E2E Merchandising Carousel;10;00000000-0000-0000-0000-000000000000;SLRCategoryPageE2EMerchandisingCarousel
+INSERT_UPDATE CMSSite;uid[unique=true];contentCatalogs(id);defaultCatalog(id)
+;$spaSiteUid;$spaContentCatalog;$productCatalog
 
-# Add the component to the slot
-INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV)
-;;SLRCamerasBottomHeaderSlot;SLRCategoryPageE2EMerchandisingCarousel
+### Creating consents
 
-############# CDS (Profile tag) E2E test data ###################
-INSERT_UPDATE CMSFlexComponent;$contentCV[unique=true];uid[unique=true];name;flexType;&componentRef;
-;;ProfileTagComponent;ProfileTag Spartacus Component;ProfileTagComponent;ProfileTagComponent;
-
-INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid, $contentCV)[mode=append]
-;;FooterSlot;ProfileTagComponent
+INSERT_UPDATE ConsentTemplate;id[unique=true];name;description;version[unique=true];baseSite(uid)[unique=true,default=$spaSiteUid];exposed
+;PROFILE;"Allow SAP Commerce Cloud, Context-Driven Services tracking";"We would like to store your browsing behaviour so that our website can dynamically present you with a personalised browsing experience and our customer support agents can provide you with contextual customer support.";0;;true
+;MARKETING_NEWSLETTER;"I approve to this sample MARKETING consent";"This is a sample marketing consent description that will need to be updated or replaced, based on the valid registration consent required.";0;;true
+;STORE_USER_INFORMATION;"I approve to this sample STORE USER INFORMATION consent";"This is a sample store user information consent description that will need to be updated or replaced.";0;;true

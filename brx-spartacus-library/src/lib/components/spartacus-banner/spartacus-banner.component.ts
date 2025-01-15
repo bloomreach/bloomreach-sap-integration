@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { ContainerItem, Document, getContainerItemContent, ImageSet, Page } from '@bloomreach/spa-sdk';
 import { CmsBannerComponent } from '@spartacus/core';
 import { BannerComponent, CmsComponentData } from '@spartacus/storefront';
@@ -35,14 +35,11 @@ export class SpartacusBannerComponent implements OnInit {
   @ViewChild(SpartacusBannerDirective, { static: true })
   wrappedComponent!: SpartacusBannerDirective;
 
-  constructor(private readonly componentFactoryResolver: ComponentFactoryResolver) {}
-
   ngOnInit(): void {
     this.renderWrappedBanner();
   }
 
   renderWrappedBanner(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(BannerComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
@@ -66,6 +63,6 @@ export class SpartacusBannerComponent implements OnInit {
       providers: [{ provide: CmsComponentData, useValue: { data$: of(componentProperties) } }],
     });
 
-    viewContainerRef.createComponent<BannerComponent>(componentFactory, 0, componentInjector);
+    viewContainerRef.createComponent(BannerComponent, { index: 0, injector: componentInjector });
   }
 }
