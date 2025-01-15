@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { CheckoutReviewSubmitComponent } from '@spartacus/checkout/base/components';
 import { SpartacusReviewSubmitDirective } from './spartacus-review-submit.directive';
@@ -31,17 +31,14 @@ export class SpartacusReviewSubmitComponent implements OnInit {
   @ViewChild(SpartacusReviewSubmitDirective, { static: true })
   wrappedComponent!: SpartacusReviewSubmitDirective;
 
-  constructor(private readonly componentFactoryResolver: ComponentFactoryResolver) {}
-
   ngOnInit(): void {
     this.renderWrappedReviewSubmit();
   }
 
   renderWrappedReviewSubmit(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(CheckoutReviewSubmitComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
-    viewContainerRef.createComponent<CheckoutReviewSubmitComponent>(componentFactory, 0);
+    viewContainerRef.createComponent(CheckoutReviewSubmitComponent, { index: 0 });
   }
 }

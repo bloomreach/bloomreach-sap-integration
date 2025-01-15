@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { CmsSearchBoxComponent } from '@spartacus/core';
 import { CmsComponentData, SearchBoxComponent, SearchBoxComponentService } from '@spartacus/storefront';
@@ -43,17 +43,13 @@ export class SpartacusSearchBoxComponent implements OnInit {
   @ViewChild(SpartacusSearchBoxDirective, { static: true })
   wrappedComponent!: SpartacusSearchBoxDirective;
 
-  constructor(
-    private readonly componentFactoryResolver: ComponentFactoryResolver,
-    private readonly searchBoxComponentService: SpartacusSearchBoxComponentService,
-  ) {}
+  constructor(private readonly searchBoxComponentService: SpartacusSearchBoxComponentService) {}
 
   ngOnInit(): void {
     this.renderWrappedSearchBox();
   }
 
   renderWrappedSearchBox(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(SearchBoxComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
@@ -88,6 +84,6 @@ export class SpartacusSearchBoxComponent implements OnInit {
       ],
     });
 
-    viewContainerRef.createComponent<SearchBoxComponent>(componentFactory, 0, componentInjector);
+    viewContainerRef.createComponent(SearchBoxComponent, { index: 0, injector: componentInjector });
   }
 }

@@ -13,15 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {
-  Component,
-  ComponentFactoryResolver,
-  Injector,
-  Input,
-  OnInit,
-  ViewChild,
-  ViewContainerRef,
-} from '@angular/core';
+import { Component, Injector, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { AuthService, RoutingService } from '@spartacus/core';
 import { LaunchDialogService } from '@spartacus/storefront';
@@ -43,7 +35,6 @@ export class SpartacusAddToSavedCartComponent implements OnInit {
   wrappedComponent!: SpartacusAddToSavedCartDirective;
 
   constructor(
-    private readonly componentFactoryResolver: ComponentFactoryResolver,
     protected activeCartService: ActiveCartFacade,
     protected authService: AuthService,
     protected routingService: RoutingService,
@@ -56,7 +47,6 @@ export class SpartacusAddToSavedCartComponent implements OnInit {
   }
 
   renderWrapper(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(AddToSavedCartComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
@@ -85,6 +75,6 @@ export class SpartacusAddToSavedCartComponent implements OnInit {
       ],
     });
 
-    viewContainerRef.createComponent<AddToSavedCartComponent>(componentFactory, 0, componentInjector);
+    viewContainerRef.createComponent(AddToSavedCartComponent, { index: 0, injector: componentInjector });
   }
 }

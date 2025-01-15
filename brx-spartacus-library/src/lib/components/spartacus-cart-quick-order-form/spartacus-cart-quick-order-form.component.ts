@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { UntypedFormBuilder } from '@angular/forms';
 import { EventService, GlobalMessageService } from '@spartacus/core';
@@ -36,7 +36,6 @@ export class SpartacusCartQuickOrderFormComponent implements OnInit {
   wrappedComponent!: SpartacusCartQuickOrderFormDirective;
 
   constructor(
-    private readonly componentFactoryResolver: ComponentFactoryResolver,
     protected activeCartService: ActiveCartFacade,
     protected eventService: EventService,
     protected formBuilder: UntypedFormBuilder,
@@ -48,7 +47,6 @@ export class SpartacusCartQuickOrderFormComponent implements OnInit {
   }
 
   renderWrapper(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(CartQuickOrderFormComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
@@ -73,6 +71,6 @@ export class SpartacusCartQuickOrderFormComponent implements OnInit {
       ],
     });
 
-    viewContainerRef.createComponent<CartQuickOrderFormComponent>(componentFactory, 0, componentInjector);
+    viewContainerRef.createComponent(CartQuickOrderFormComponent, { index: 0, injector: componentInjector });
   }
 }

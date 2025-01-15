@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { CartCouponComponent } from '@spartacus/cart/base/components';
 import { ActiveCartFacade } from '@spartacus/cart/base/root';
@@ -33,17 +33,13 @@ export class SpartacusCartCouponComponent implements OnInit {
   @ViewChild(SpartacusCartCouponDirective, { static: true })
   wrappedComponent!: SpartacusCartCouponDirective;
 
-  constructor(
-    private readonly componentFactoryResolver: ComponentFactoryResolver,
-    private activeCartService: ActiveCartFacade,
-  ) {}
+  constructor(private activeCartService: ActiveCartFacade) {}
 
   ngOnInit(): void {
     this.renderWrapper();
   }
 
   renderWrapper(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(CartCouponComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
@@ -56,6 +52,6 @@ export class SpartacusCartCouponComponent implements OnInit {
       ],
     });
 
-    viewContainerRef.createComponent<CartCouponComponent>(componentFactory, 0, componentInjector);
+    viewContainerRef.createComponent(CartCouponComponent, { index: 0, injector: componentInjector });
   }
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { CheckoutOrderSummaryComponent } from '@spartacus/checkout/base/components';
 import { SpartacusCheckoutOrderSummaryDirective } from './spartacus-checkout-order-summary.directive';
@@ -31,17 +31,14 @@ export class SpartacusCheckoutOrderSummaryComponent implements OnInit {
   @ViewChild(SpartacusCheckoutOrderSummaryDirective, { static: true })
   wrappedComponent!: SpartacusCheckoutOrderSummaryDirective;
 
-  constructor(private readonly componentFactoryResolver: ComponentFactoryResolver) {}
-
   ngOnInit(): void {
     this.renderWrappedCheckoutOrderSummary();
   }
 
   renderWrappedCheckoutOrderSummary(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(CheckoutOrderSummaryComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
-    viewContainerRef.createComponent<CheckoutOrderSummaryComponent>(componentFactory, 0);
+    viewContainerRef.createComponent(CheckoutOrderSummaryComponent, { index: 0 });
   }
 }

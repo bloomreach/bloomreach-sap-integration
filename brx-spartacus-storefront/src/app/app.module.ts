@@ -16,8 +16,8 @@
 
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
+import { APP_ID, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { BrxSpartacusLibModule } from '@bloomreach/brx-spartacus-library';
@@ -33,17 +33,17 @@ import { EnvConfigService } from './services/env-config.service';
   declarations: [AppComponent, NewsPageComponent],
   imports: [
     CommonModule,
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserModule,
     HttpClientModule,
     I18nModule,
     AppRoutingModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     SpartacusModule,
-    BrowserTransferStateModule,
     BrxModule,
     BrxSpartacusLibModule,
   ],
+  providers: [{ provide: APP_ID, useValue: 'serverApp' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {

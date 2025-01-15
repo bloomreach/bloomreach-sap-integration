@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { CheckoutProgressMobileBottomComponent } from '@spartacus/checkout/base/components';
 import { SpartacusCheckoutProgressMobileBottomDirective } from './spartacus-checkout-progress-mobile-bottom.directive';
@@ -31,19 +31,14 @@ export class SpartacusCheckoutProgressMobileBottomComponent implements OnInit {
   @ViewChild(SpartacusCheckoutProgressMobileBottomDirective, { static: true })
   wrappedComponent!: SpartacusCheckoutProgressMobileBottomDirective;
 
-  constructor(private readonly componentFactoryResolver: ComponentFactoryResolver) {}
-
   ngOnInit(): void {
     this.renderWrappedCheckoutProgressMobileTop();
   }
 
   renderWrappedCheckoutProgressMobileTop(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      CheckoutProgressMobileBottomComponent,
-    );
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
-    viewContainerRef.createComponent<CheckoutProgressMobileBottomComponent>(componentFactory, 0);
+    viewContainerRef.createComponent(CheckoutProgressMobileBottomComponent, { index: 0 });
   }
 }

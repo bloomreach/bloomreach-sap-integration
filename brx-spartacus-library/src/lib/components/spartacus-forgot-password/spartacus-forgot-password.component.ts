@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ComponentFactoryResolver, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { Component as BrComponent, Page } from '@bloomreach/spa-sdk';
 import { ForgotPasswordComponent, ForgotPasswordComponentService } from '@spartacus/user/profile/components';
 import { SpartacusForgotPasswordComponentService } from '../../services/spartacus-forgot-password-component.service';
@@ -33,17 +33,13 @@ export class SpartacusForgotPasswordComponent implements OnInit {
   @ViewChild(SpartacusForgotPassswordDirective, { static: true })
   wrappedComponent!: SpartacusForgotPassswordDirective;
 
-  constructor(
-    private readonly componentFactoryResolver: ComponentFactoryResolver,
-    private fpservice: SpartacusForgotPasswordComponentService,
-  ) {}
+  constructor(private fpservice: SpartacusForgotPasswordComponentService) {}
 
   ngOnInit(): void {
     this.renderWrapper();
   }
 
   renderWrapper(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ForgotPasswordComponent);
     const { viewContainerRef } = this.wrappedComponent;
     viewContainerRef.clear();
 
@@ -55,6 +51,6 @@ export class SpartacusForgotPasswordComponent implements OnInit {
         },
       ],
     });
-    viewContainerRef.createComponent<ForgotPasswordComponent>(componentFactory, 0, componentInjector);
+    viewContainerRef.createComponent(ForgotPasswordComponent, { index: 0, injector: componentInjector });
   }
 }
